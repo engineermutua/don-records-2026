@@ -15,8 +15,14 @@
     padding: 5px;
     border-radius: 10px;
 }
+.featured-merchandise .featured-merch .featured-merch-image img:hover{
+    cursor: pointer;
+}
 #featured-merch-cart{
     max-width: 20%;
+}
+#featured-merch-cart:hover{
+    cursor: pointer;
 }
 .featured-merch-details{
     display: flex;

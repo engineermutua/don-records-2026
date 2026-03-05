@@ -21,6 +21,9 @@
 #featured-beat-cart-image{
     max-width: 20%;
 } 
+#featured-beat-cart-image:hover{
+    cursor: pointer;
+}
 .featured-beat-producer{
     margin-top: 5px;
 }
@@ -31,6 +34,14 @@
     width: 100%;
     border-radius: 10px;
     max-height: 70vh;
+}
+
+.featured-beat-container .featured-beat-thumbnail img:hover{
+    cursor: pointer;
+}
+.beats-component-container a{
+    text-decoration: none;
+    color: white;
 }
 
 

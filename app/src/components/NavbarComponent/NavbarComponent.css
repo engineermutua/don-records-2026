@@ -10,20 +10,26 @@
     border-bottom: 0.5px solid gray;
     align-items: center;
 }
-.sidemenu{
-    max-width: 100%;
-    background-color: #28282B;
-    height: 20vh;
-    margin-top: 75px;
-    z-index: 1;
-}
+
 .navbar-container img{
-    max-width: 50px;
+    max-width: 40px;
+}
+
+.navbar-container img:hover{
+    cursor: pointer;
 }
 
 
 .navbar-container .navbar-left{
     display: flex;
+}
+
+.navbar-container .navbar-left .navbar-logo{
+    align-self: center;
+    margin-left: 10px;
+    color: white;
+    word-spacing: 10px;
+    letter-spacing: 5px;
 }
 
 .navbar-container .navbar-right{
@@ -40,8 +46,85 @@
     color: white;
 }
 
+#navbar-dropdown:hover{
+   transform: rotate(180deg);
+}
 
+.drop-down-hover{
+    z-index: 1000;
+    position: fixed;
+    right: 10px;
+    margin-top: 70px;
+    width: 250px;
+    height: fit-content;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #A9A9A9;
+}
 
+.drop-down-hover ul{
+    list-style: none;
+}
+
+.drop-down-hover ul li{
+    margin: 10px;
+}
+.drop-down-hover ul li:hover{
+    cursor: pointer;
+}
+
+.drop-down-hover ul hr{
+    margin-top: 30px;
+}
+
+.nav-sidemenu{
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: white;
+}
+
+.nav-sidemenu .sidemenu-header {
+    background-color: black;
+}
+
+.nav-sidemenu .sidemenu-header img{
+    width: 50%;
+    justify-self: center;
+    display: flex;
+}
+
+.nav-sidemenu .sidemenu-footer{
+    position: fixed;
+    bottom: 0;
+    width: 250px;
+    background-color: black;
+}
+.nav-sidemenu .sidemenu-footer img{
+    width: 20%;
+    display: flex;
+    justify-self: center;
+    padding: 10px;
+}
+.nav-sidemenu .sidemenu-footer img:hover{
+    cursor: pointer;
+}
+.nav-sidemenu .sidemenu-list{
+    padding: 10px;
+}
+
+.nav-sidemenu .sidemenu-list ul{
+    list-style:none;
+}
+.nav-sidemenu .sidemenu-list ul li{
+    margin: 10px;
+}
+.nav-sidemenu .sidemenu-list ul li:hover{
+    cursor: pointer;
+}
 /*
 black
 #000000

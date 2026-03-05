@@ -1,13 +1,18 @@
 import React from 'react'
 import './FooterComponent.css'
 import { assets } from '../../assets/assets'
+import { Link, useNavigate } from 'react-router-dom'
 
 const FooterComponent = () => {
+  const navigate=useNavigate()
   const getYear=()=>{
     const date=new Date();
     return date.getFullYear();
     
   }
+  const navigateTo=(id)=>{
+        document.getElementById(id)?.scrollIntoView({behavior:'smooth'})
+    }
   return (
     <>
     <div className="footer">
@@ -34,13 +39,14 @@ const FooterComponent = () => {
         </div>
         <div className="footer-center-links">
           <ul>
-            <li>Home</li>
-            <li>Beats</li>
-            <li>Artists</li>
-            <li>Producers</li>
-            <li>Contact Us</li>
-            <li>Admin panel</li>
-            <li>Merchandise</li>
+            <li onClick={()=>(navigate('/') && navigateTo('hero-container'))}>Home</li>
+            <li onClick={()=>navigateTo('beats-component-container')}>Beats</li>
+            <li onClick={()=>navigateTo('featured-artists-container')}>Artists</li>
+            <li onClick={()=>navigateTo('featured-producers-container')}>Producers</li>
+            <Link to='/contactUs'><li>Contact Us</li></Link>
+            <Link to='/login'><li>Register</li></Link>
+            <li onClick={()=>navigateTo('beats-component-container')}>Admin panel</li>
+            <li onClick={()=>navigateTo('featured-merchandise-container')}>Merchandise</li>
           </ul>
         </div>
       </div>

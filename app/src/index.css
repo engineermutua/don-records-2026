@@ -53,3 +53,14 @@ white
   font-family: "Josefin Sans", sans-serif;
   font-optical-sizing: auto;
 }
+
+*::-webkit-scrollbar {
+  width: 0px; 
+}
+*::-webkit-scrollbar-track {
+  background: lightgray;  
+}
+*::-webkit-scrollbar-thumb {
+  background-color: gray; 
+  border-radius: 10px;
+}

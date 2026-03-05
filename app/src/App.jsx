@@ -1,5 +1,5 @@
 import React from 'react'
-import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import {BrowserRouter, Route, Router, Routes} from 'react-router-dom'
 import NavbarComponent from './components/NavbarComponent/NavbarComponent'
 import FooterComponent from './components/FooterComponent/FooterComponent'
 import {Toaster} from 'react-hot-toast'
@@ -10,21 +10,54 @@ import FeaturedArtistsComponents from './components/FeaturedArtistsComponents/Fe
 import FeaturedProducersComponents from './components/FeaturedProducersComponents/FeaturedProducersComponents'
 import FeaturedBlogsComponent from './components/FeaturedBlogsComponent/FeaturedBlogsComponent'
 import AboveFooterComponent from './components/AboveFooterComponent/AboveFooterComponent'
+import SingleBeatPage from './pages/SingleBeatPage/SingleBeatPage'
+import SingleMerchandisePage from './pages/SingleMerchandisePage/SingleMerchandisePage'
+import SingleArtistPage from './pages/SingleArtistPage/SingleArtistPage'
+import SingleProducerPage from './pages/SingleProducerPage/SingleProducerPage'
+import SingleBlogPage from './pages/SingleBlogPage/SingleBlogPage'
+import ContactsPage from './pages/ContactsPage/ContactsPage'
+//Map leaflet Configurations-React Leaflet
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
+import icon from 'leaflet/dist/images/marker-icon.png';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+import AuthPage from './pages/AuthPage/AuthPage'
+import PortalPage from './pages/PortalPage/PortalPage'
+
+let DefaultIcon = L.icon({
+    iconUrl: icon,
+    shadowUrl: iconShadow,
+    iconSize: [25, 41],
+    iconAnchor: [12, 41]
+});
+L.Marker.prototype.options.icon = DefaultIcon;
 
 const App = () => {
   return (
     <BrowserRouter>
     <NavbarComponent/>
-    <HeroComponent/>
-    <BeatsComponent/>
-    <MerchandiseComponent/>
-    <FeaturedArtistsComponents/>
-    <FeaturedProducersComponents/>
-    <FeaturedBlogsComponent/>
-    <AboveFooterComponent/>
     <Toaster/>
     <Routes>
-      <Route></Route>
+      <Route path='/' element={
+        <>
+        <HeroComponent/>
+        <BeatsComponent/>
+        <MerchandiseComponent/>
+        <FeaturedArtistsComponents/>
+        <FeaturedProducersComponents/>
+        <FeaturedBlogsComponent/>
+        <AboveFooterComponent/>
+        </>
+      }>
+      </Route>
+      <Route path='/beat/:id' element={<SingleBeatPage/>}></Route>
+      <Route path='/merchandise/:id' element={<SingleMerchandisePage/>}></Route>
+      <Route path='/artist/:username' element={<SingleArtistPage/>}></Route>
+      <Route path='/producer/:username' element={<SingleProducerPage/>}></Route>
+      <Route path='/blog/:id' element={<SingleBlogPage/>} ></Route>
+      <Route path='/contactUs' element={<ContactsPage/>}></Route>
+      <Route path='/login' element={<AuthPage/>}></Route>
+      <Route path='/portal' element={<PortalPage/>}></Route>
     </Routes>
     <FooterComponent/>
     </BrowserRouter>

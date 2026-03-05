@@ -3,12 +3,13 @@ import './BeatsComponent.css'
 import TitleComponent from '../TitleComponent/TitleComponent'
 import { assets, beats } from '../../assets/assets'
 import { ShopContext } from '../../Context/ShopContext'
+import { Link } from 'react-router-dom'
 
 const BeatsComponent = () => {
     const {currency}=useContext(ShopContext);
   return (
     <>
-    <div className="beats-component-container">
+    <div id='beats-component-container' className="beats-component-container">
         <TitleComponent title="Featured Beats & Instrumentals" />
         <div className="featured-beats-container">
             {
@@ -18,7 +19,7 @@ const BeatsComponent = () => {
                     <div className="featured-beat">
                         <div key={beat._id} className="featured-beat-container">
                             <div className="featured-beat-thumbnail">
-                                <img src={beat.thumbnail} alt="" />
+                               <Link to={`/beat/${beat._id}`}><img src={beat.thumbnail} alt="" /></Link> 
                             </div>
                             
                             <div className="featured-beat-details">
@@ -32,7 +33,7 @@ const BeatsComponent = () => {
                             </div>
                         </div>
                         <div className="featured-beat-producer">
-                            <p>@{beat.producer}<img id='featured-beat-checkmark' src={assets.goldCheckMark}  alt="" /> </p>
+                          <Link to={`/producer/${beat.producer}`}> <p>@{beat.producer}<img id='featured-beat-checkmark' src={assets.goldCheckMark}  alt="" /> </p></Link> 
                         </div>
                         </div>
                     </>

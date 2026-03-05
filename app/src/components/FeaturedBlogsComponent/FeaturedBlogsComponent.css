@@ -19,8 +19,12 @@
 
 .featured-blogs .featured-blog .featured-blog-image img{
     border-radius: 5px;
-    height: 100vh;
+    height: 50vh;
     width: 100%;
+}
+
+.featured-blogs .featured-blog .featured-blog-image img:hover{
+    cursor: pointer;
 }
 
 .featured-blogs .featured-blog .featured-blog-description{

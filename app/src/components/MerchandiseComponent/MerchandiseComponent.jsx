@@ -3,12 +3,13 @@ import './MerchandiseComponent.css'
 import TitleComponent from '../TitleComponent/TitleComponent'
 import { assets, products } from '../../assets/assets'
 import { ShopContext } from '../../Context/ShopContext'
+import { Link } from 'react-router-dom'
 
 const MerchandiseComponent = () => {
     const {currency}=useContext(ShopContext);
   return (
     <>
-    <div className="featured-merchandise-container">
+    <div id='featured-merchandise-container' className="featured-merchandise-container">
         <TitleComponent title="Bestseller Merchandise" />
         <div className="featured-merchandise">
             {
@@ -16,7 +17,7 @@ const MerchandiseComponent = () => {
                     product.bestseller ?
                     <div key={product._id} className="featured-merch">
                         <div className="featured-merch-image">
-                            <img src={product.images[0]} alt="" />
+                          <Link to={`/merchandise/${product._id}`}><img src={product.images[0]} alt="" /></Link> 
                         </div>
                         <div className="featured-merch-details">
                             <div className="featured-merch-detail1">

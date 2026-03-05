@@ -11,6 +11,7 @@
     display: flex;
     padding: 10px;
     justify-content: space-between;
+   
 }
 
 .footer-container .footer-left .footer-left-links{
@@ -20,6 +21,9 @@
 
 .footer-container .footer-left .footer-left-links img{
     width: 40px;
+}
+.footer-container .footer-left .footer-left-links img:hover{
+    cursor: pointer;
 }
 
 .footer-container .footer-center{
@@ -69,4 +73,9 @@
     text-align: center;
     padding: 5px;
     color: white;
+}
+
+.footer-center-links a{
+ text-decoration: none;
+ color: white;
 }

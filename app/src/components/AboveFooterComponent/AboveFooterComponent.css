@@ -12,5 +12,8 @@
 }
 .above-footer-container p img{
     width: 80px;
+}
 
+.above-footer-container p img:hover{
+    cursor: pointer;
 }

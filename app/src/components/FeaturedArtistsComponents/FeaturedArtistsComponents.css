@@ -17,15 +17,25 @@
     border-radius: 50%;
     justify-content: center;
     align-items: center;
+    margin: 3px;
 }
 
 .featured-artists-profile .featured-artist .featured-artist-image img{
     width: 120px;
+    height: 120px;
     border-radius: 50%;
+}
+
+.featured-artists-profile .featured-artist .featured-artist-image img:hover{
+    cursor: pointer;
 }
 
 .featured-artists-profile .featured-artist .featured-artist-detail{
     padding: 10px;
+}
+
+.featured-artists-profile .featured-artist .featured-artist-detail:hover{
+    cursor: pointer;
 }
 
 .featured-artists-profile .featured-artist .featured-artist-detail img{

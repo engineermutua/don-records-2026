@@ -1,0 +1,59 @@
+.contacts-container{
+    background-color: #282828;
+    color: white;
+    padding: 10px;
+    padding-bottom: 120px;
+    display: flex;
+}
+
+.contacts-map{
+    margin-top: 100px;
+    width: 50%; 
+    padding: 10px;
+}
+
+.contacts-map h3{
+    margin-bottom: 20px;
+}
+
+.contacts-form{
+    margin-top: 100px;
+    width: 50%;
+}
+.contacts-form h3{
+    padding-left: 20px;
+}
+.contacts-form form{
+    color: white;
+}
+.contacts-form form input{
+    padding: 20px ;
+    width: 100%;
+    border-radius: 5px;
+    border: 2px solid white;
+    outline: 0;
+    color: white;
+    background: transparent;
+}
+
+.contacts-form form textarea{
+    color: white;
+    padding: 20px;
+    width: 100%;
+    border-radius: 5px;
+    border: 2px solid white;
+    outline: 0;
+    background: transparent;
+}
+.contacts-form form button{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+}
+.contacts-form form button:hover{
+    cursor: pointer;
+}
+
+.contacts-container .contacts-form .input-class{
+    margin: 20px;
+}

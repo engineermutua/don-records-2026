@@ -23,9 +23,17 @@
     border-radius: 50%;
 }
 
+.featured-producers .featured-producer .featured-producer-image img:hover{
+    cursor: pointer;
+}
+
 .featured-producers .featured-producer .featured-producer-details{
    padding: 10px;
    margin-left: 10px;
+}
+
+.featured-producers .featured-producer .featured-producer-details:hover{
+    cursor: pointer;
 }
 
 .featured-producers .featured-producer .featured-producer-details p img{
