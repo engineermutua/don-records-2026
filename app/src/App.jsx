@@ -23,6 +23,8 @@ import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import AuthPage from './pages/AuthPage/AuthPage'
 import PortalPage from './pages/PortalPage/PortalPage'
+import SearchedItemPage from './pages/SearchedItemPage/SearchedItemPage'
+import ProfilePage from './pages/ProfilePage/ProfilePage'
 
 let DefaultIcon = L.icon({
     iconUrl: icon,
@@ -58,6 +60,8 @@ const App = () => {
       <Route path='/contactUs' element={<ContactsPage/>}></Route>
       <Route path='/login' element={<AuthPage/>}></Route>
       <Route path='/portal' element={<PortalPage/>}></Route>
+      <Route path='/searchResults/:search' element={<SearchedItemPage/>}></Route>
+      <Route path='/profile' element={<ProfilePage/>}></Route>
     </Routes>
     <FooterComponent/>
     </BrowserRouter>

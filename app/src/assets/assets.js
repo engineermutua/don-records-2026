@@ -1031,7 +1031,7 @@ export const producers = [
   {
     _id: "p002",
     avatar: avatar1,
-    name: "top-boyz-records",
+    name: "top-boyz",
     embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
     bio: "I am an artist testing out this system.",
     featured: true,
@@ -1063,7 +1063,7 @@ export const producers = [
   {
     _id: "p006",
     avatar: avatar1,
-    name: "top-boyz-records2",
+    name: "top-.boyz",
     embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
     bio: "I am an artist testing out this system.",
     featured: true,

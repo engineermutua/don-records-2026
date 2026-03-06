@@ -1,41 +1,48 @@
 .hero-container{
     width: 100%;
     background-color:#28282B;
+    position: relative;
+    
 }
 .hero-container img{
     width: 100%;
-    margin-top: 5px;
+    height: auto;
+    display: block;
+    margin-top: 65px;
     padding: 4px;
     border-radius: 10px;
 }
 
-
-.hero-container .search-bar{
-    display: none;
+.hero-container .hero-search-bar{
+    position:absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: black;
-    padding: 10px 10px;
-    border-radius: 20px;
-    max-width: 100%;
-    position: absolute;
-    top: calc(450px);
-    left: 5%;
+    width: 50%;
+    border-radius: 50px;
 }
-.hero-container .search-bar input{
-    width: 500px;
-    margin: 10px 60px;
-    margin-left: 0px;
-    margin-bottom: 0;
-    border: 0;
+
+.hero-container .hero-search-bar form input{
+    width: 80%;
+    padding: 15px;
+    border-radius: 50px;
     outline: 0;
+    border: 0;
     background: transparent;
     color: white;
 }
-.hero-container .search-bar button{
-    padding: 10px 30px;
-    border-radius: 20px;
-    border: 0;
+
+.hero-container .hero-search-bar form button{
+    padding: 5px 10px;
+    border-radius: 100px;
     outline: 0;
+    border: 0;
+    display: none;
 }
-.hero-container .search-bar button:hover{
+.hero-container .hero-search-bar form button:hover{
     cursor: pointer;
 }
+
+
+

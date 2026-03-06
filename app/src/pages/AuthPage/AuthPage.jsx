@@ -35,7 +35,6 @@ const AuthPage = () => {
             ) : (
               <>
               <div id="avatar-class" className="input-class">
-                  <label style={{marginLeft:"calc(20% + 30px )"}} htmlFor="">Avatar</label>
                   <br />
                   {image&&
                     image?
@@ -46,7 +45,7 @@ const AuthPage = () => {
                   {
                     image?
                     <>
-                    {image.name}
+                   <p style={{marginTop:"5px"}}>{image.name}</p> 
                     </>
                     :
                     <input onChange={handleClick} type="file" />

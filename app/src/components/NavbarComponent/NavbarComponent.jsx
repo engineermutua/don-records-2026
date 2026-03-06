@@ -25,7 +25,7 @@ const NavbarComponent = () => {
                 
             </div>
             <div className="navbar-logo">
-                <h1>The Don</h1>
+                <h1 style={{cursor:"pointer"}} onClick={()=>navigate('/')}>The Don</h1>
             </div>
 
         </div>
@@ -75,10 +75,10 @@ const NavbarComponent = () => {
         </div>
         <div className="drop-down-content">
             <ul>
-                <li onClick={()=>document.getElementById('drop-down-hover').style.display='none'}>User Profile</li>
+                <Link to='/profile'><li onClick={()=>(document.getElementById('drop-down-hover').style.display='none')}>User Profile</li></Link>
                 <Link to='/portal'><li onClick={()=>document.getElementById('drop-down-hover').style.display='none'} >Dashboard</li></Link> 
                 <hr/>
-                <li onClick={()=>(toast.success("Logged out Successfully"),document.getElementById('drop-down-hover').style.display='none')}>Logout</li>
+                <li onClick={()=>(toast.success("Logged out Successfully"),document.getElementById('drop-down-hover').style.display='none',navigate('/login'))}>Logout</li>
             </ul>
         </div>
     </div>

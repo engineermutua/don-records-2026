@@ -1,0 +1,69 @@
+.profile-container{
+    background-color: #282828;
+    color: white;
+    padding: 10px;
+    padding-bottom: 100px;
+    display: flex;
+    gap: 2rem;
+}
+.profile-left{
+    margin-top: 100px;
+}
+.profile-left .profile-left-avatar{
+    max-width: 100%;
+}
+.profile-left .profile-left-avatar img{
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+}
+.profile-left .profile-left-file{
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+.profile-right{
+    margin-top: 100px;
+    width: 50%;
+}
+
+.profile-right .profile-right-form form{
+    width: 100%;
+}
+.profile-right .profile-right-form form input{
+    width: 100%;
+    padding: 10px;
+    outline: 0;
+    border:1px solid white;
+    background: transparent;
+    border-radius: 5px;
+    margin: 10px 0;
+    color: white;
+}
+
+.profile-right .profile-right-form form textarea{
+    width: 100%;
+    padding: 10px;
+    outline: 0;
+    border:1px solid white;
+    background: transparent;
+    border-radius: 5px;
+    margin: 10px 0;
+    color: white;
+}
+
+.profile-right .profile-right-form form button{
+    width: 100%;
+    padding: 15px;
+    background-color: #3a7bd7;
+    border: 0;
+    outline: 0;
+}
+.profile-left input[type=file]:hover{
+    cursor: pointer;
+}
+.profile-right .profile-right-form form button:hover{
+    cursor: pointer;
+}

@@ -1,0 +1,101 @@
+.searched-container{
+    background-color: #282828;
+    color: white;
+    padding: 10px;
+    padding-bottom: 100px;
+    overflow-x: hidden;
+}
+
+.searched-container .searched-results{
+    margin-top: 100px;
+}
+
+.searched-container .searched-results .searched-bar{
+    background-color: white;
+    width: fit-content;
+    justify-self: center;
+    border-radius: 20px;
+    
+}
+.searched-container .searched-results .searched-bar input{
+    border: 0;
+    outline: 0;
+    width: 100%;
+    padding: 10px 140px;
+    border-radius: 20px;
+}
+
+.searched-container .searched-results .searched-bar img{
+    width: 50px;
+}
+
+.searched-container .searched-item{
+    background-color: white;
+    color: black;
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    width: 80%;
+    padding: 20px;
+    border-radius: 10px;
+}
+.searched-header{
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.searched-container .searched-item-details p{
+    margin: 20px 0;
+}
+
+
+.searched-related .searched-related-header{
+    margin: 20px 0;
+}
+
+
+
+.searched-related .beat-related{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    background-color: white;
+    border-radius: 5px;
+    color: black;
+    align-items: center;
+    margin: 20px 0px;
+    padding: 10px;
+}
+
+.searched-related .beat-related .beat-related-thumbnail img{
+    width: 50px;
+    border-radius: 5px;
+}
+
+.searched-related .beat-related .beat-related-thumbnail img:hover{
+    cursor: pointer;
+}
+
+#beat-related-cart{
+    width: 20px;
+}
+
+#beat-related-cart:hover{
+    cursor: pointer;
+}
+
+#verified-mark{
+    width: 10px;
+}
+.beat-related-producer{
+    cursor: pointer;
+}
+
+#searched-cart{
+    width: 50px;
+    margin: 20px 0;
+}
+#searched-item-image{
+    width: 300px;
+    border-radius: 10px;
+}
