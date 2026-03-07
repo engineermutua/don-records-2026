@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./SingleArtistPage.css";
 import { Link, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
-import { artists } from "../../assets/assets";
+import { artists, assets } from "../../assets/assets";
 
 const SingleArtistPage = () => {
   const { username } = useParams();
@@ -32,9 +32,9 @@ const SingleArtistPage = () => {
             <img id="single-artist-image" src={artist.avatar} alt="" />
           </div>
           <div className="single-artist-details">
-            <h4>{artist.name}</h4>
+            <h4>{artist.name} <img id="single-artist-verify" src={assets.blueCheckMark} alt="" /> </h4>
             <div className="single-artist-button">
-              <button>Follow</button>
+              <button onClick={()=>toast.success(`Started Following ${artist.name}`)}>Follow</button>
             </div>
           </div>
         </div>

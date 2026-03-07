@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 
 const NavbarComponent = () => {
-    const {username}=useContext(ShopContext);
+    const {username,count}=useContext(ShopContext);
     const navigate=useNavigate();
     const [hover,setHover]=useState(false);
     const navigateTo=(id)=>{
@@ -21,7 +21,7 @@ const NavbarComponent = () => {
         
         <div className="navbar-left">
             <div className="navbar-sidemenu">
-                <img onClick={()=>document.getElementById('nav-sidemenu').style.display='block'} src={assets.menuIcon} alt="" />
+                <img id='nav-menu-icon' onClick={()=>document.getElementById('nav-sidemenu').style.display='block'} src={assets.menuIcon} alt="" />
                 
             </div>
             <div className="navbar-logo">
@@ -32,11 +32,20 @@ const NavbarComponent = () => {
         {/*--------------Right----------------*/}
         <div className="navbar-right">
             <div className="navbar-cart">
-                <img src={assets.cartIcon} alt="" />
+                <img onClick={()=>navigate('/cart')} id='nav-cart-icon' src={assets.cartIcon} alt="" />
+                {
+                    count>0
+                    ?
+                    <div id='nav-cart-count' className="nav-cart-count">
+                        <p>{count}</p> 
+                    </div>
+                    :
+                    <></>
+                }
 
             </div>
             <div className="navbar-user">
-                <img src={assets.userIcon} alt="" />
+                <img onClick={()=>(navigate('/profile'))} id='nav-user-icon' src={assets.userIcon} alt="" />
                 <h4>{username}</h4>
             </div>
             <div className="navbar-dropdown">

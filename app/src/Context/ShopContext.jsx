@@ -1,16 +1,34 @@
-import { createContext } from "react";
+import { createContext, useEffect, useState } from "react";
+import {toast} from 'react-hot-toast'
 
 
 export const ShopContext=createContext();
 
 const ShopContextProvider=(props)=>{
-    const username="test";
+    const username="the_don";
     const currency="kes";
 
+    const [count,setCount]=useState(0);
+    
+
+    const addToCart=async(productId)=>{
+        try {
+            if(productId){
+                setCount(count+1);
+            }else{
+                toast.error('Failed to add Product')
+            }
+        } catch (error) {
+            toast.error(error);
+        }
+    }
 
     const value={
         username,
         currency,
+        addToCart,
+        count,
+        setCount,
     };
 
 return (

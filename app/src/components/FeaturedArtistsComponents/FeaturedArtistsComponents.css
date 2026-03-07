@@ -1,6 +1,6 @@
 .featured-artists-container{
     background-color: #282828;
-    color: white;
+    color: #FAF9F6;
     padding: 10px;
 }
 .featured-artists-profile::-webkit-scrollbar{
@@ -37,7 +37,8 @@
 }
 
 .featured-artists-profile .featured-artist .featured-artist-detail{
-    padding: 10px;
+    position: relative;
+    left: calc(20%);
 }
 
 .featured-artists-profile .featured-artist .featured-artist-detail:hover{
@@ -45,7 +46,9 @@
 }
 
 .featured-artists-profile .featured-artist .featured-artist-detail img{
-    width: 10%;
+    width: 15px;
+    position: relative;
+    top: 4px;
 }
 
 @keyframes fade {

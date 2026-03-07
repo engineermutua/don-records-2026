@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './PortalPage.css'
+import {ShopContext} from '../../Context/ShopContext'
 
 const PortalPage = () => {
     const [role]=useState("producer");
+    const {username}=useContext(ShopContext);
   return (
     <>
     <div className="portal-container">
@@ -27,7 +29,9 @@ const PortalPage = () => {
         ?
         <>
         <div className="fan-portal">
-            <h1>Producer</h1>
+            <h1>Producer Dashboard</h1>
+            <p>Welcome back {username}</p>
+            <h6>Please be patient your portal is under development.</h6>
         </div>
         </>
         :

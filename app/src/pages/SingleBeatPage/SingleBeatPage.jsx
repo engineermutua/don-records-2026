@@ -9,7 +9,7 @@ import { ShopContext } from '../../Context/ShopContext'
 const SingleBeatPage = () => {
   const { id } = useParams();
 
-  const {currency}=useContext(ShopContext)
+  const {currency,addToCart}=useContext(ShopContext)
 
   const [beat, setBeat] = useState(false);
 
@@ -55,6 +55,7 @@ const SingleBeatPage = () => {
                 <b>{currency} {beat.price}</b>
                 <div className="cart-img">
                   <img
+                    onClick={()=>(addToCart(beat._id),toast.success(`${beat.title} added to cart`))}
                     id="single-beat-left-cart"
                     src={assets.blackCart}
                     alt=""

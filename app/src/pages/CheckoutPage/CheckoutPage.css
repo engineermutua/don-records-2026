@@ -1,0 +1,192 @@
+.checkout-container{
+    background-color: #282828;
+    color: #FAF9F6;
+    padding: 10px;
+    width: 100%;
+    padding-bottom: 200px;
+    display: flex;
+    gap: 2rem;
+}
+
+.checkout-container .checkout-left{
+    margin-top: 100px;
+    width: 70%;
+}
+.checkout-container .checkout-left .checkout-left-form{
+    width: 100%;
+    margin-top: 20px;
+}
+
+.checkout-container .checkout-left .checkout-left-form form{
+    width: 100%;
+}
+.checkout-container .checkout-left .checkout-left-form form input,textarea{
+    color: #FAF9F6;
+}
+
+
+.checkout-container .checkout-left .checkout-left-form form .form-class{
+    display: flex;
+    gap: 5px;
+}
+
+.checkout-container .checkout-left .checkout-left-form form input[name=fname]{
+    width: 50%;
+    background: transparent;
+    outline: 0;
+    border: 2px solid #FAF9F6;
+    padding: 10px;
+    border-radius: 5px;
+}
+.checkout-container .checkout-left .checkout-left-form form input[name=lname]{
+    width: 50%;
+    background: transparent;
+    outline: 0;
+    border: 2px solid #FAF9F6;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.checkout-container .checkout-left .checkout-left-form form input[name=email]{
+    width: 100%;
+    background: transparent;
+    outline: 0;
+    border: 2px solid #FAF9F6;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.checkout-container .checkout-left .checkout-left-form form input[name=phone]{
+    width: 100%;
+    background: transparent;
+    outline: 0;
+    border: 2px solid #FAF9F6;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.checkout-container .checkout-left .checkout-left-form form input[name=county]{
+    width: 50%;
+    background: transparent;
+    outline: 0;
+    border: 2px solid #FAF9F6;
+    padding: 10px;
+    border-radius: 5px;
+}
+.checkout-container .checkout-left .checkout-left-form form input[name=code]{
+    width: 50%;
+    background: transparent;
+    outline: 0;
+    border: 2px solid #FAF9F6;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.checkout-container .checkout-left .checkout-left-form form input[name=ward]{
+    width: 50%;
+    background: transparent;
+    outline: 0;
+    border: 2px solid #FAF9F6;
+    padding: 10px;
+    border-radius: 5px;
+}
+.checkout-container .checkout-left .checkout-left-form form input[name=street]{
+    width: 50%;
+    background: transparent;
+    outline: 0;
+    border: 2px solid #FAF9F6;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.checkout-container .checkout-left .checkout-left-form form textarea{
+    width: 100%;
+    background: transparent;
+    outline: 0;
+    border: 2px solid #FAF9F6;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.checkout-container .checkout-right{
+    margin-top: 100px;
+    width: 30%;
+}
+
+.checkout-container .checkout-right .checkout-right-order{
+    margin: 20px 0;
+}
+
+.checkout-container .checkout-right hr{
+    width: 33%;
+}
+.checkout-container .checkout-right .checkout-right-payment{
+    margin-top: 20px;
+}
+.checkout-container .checkout-right .checkout-right-payment h4{
+    margin-bottom: 10px;
+}
+.checkout-container .checkout-right .checkout-right-payment .checkout-right-mpesa{
+    display: flex;
+    margin-bottom: 10px;
+}
+.checkout-container .checkout-right .checkout-right-payment .checkout-right-mpesa .mpesa-box{
+    width: 15px;
+    height: 15px;
+    border: 1px solid #FAF9F6;
+    border-radius: 100px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.checkout-container .checkout-right .checkout-right-payment .checkout-right-paypal{
+    display: flex;
+    margin-bottom: 10px;
+}
+.checkout-container .checkout-right .checkout-right-payment .checkout-right-paypal .paypal-box{
+    width: 15px;
+    height: 15px;
+    border: 1px solid #FAF9F6;
+    border-radius: 100px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.checkout-container .checkout-right .checkout-right-payment .checkout-right-cod{
+    display: flex;
+}
+.checkout-container .checkout-right .checkout-right-payment .checkout-right-cod .cod-box{
+    width: 15px;
+    height: 15px;
+    border: 1px solid #FAF9F6;
+    border-radius: 100px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.checkout-container .checkout-right .checkout-right-payment button{
+    padding: 5px 30px;
+    outline: 0;
+    border: 0;
+    border-radius: 5px;
+    font-weight: 800;
+    margin-top: 10px;
+}
+
+.checkout-container .checkout-right .checkout-right-payment button:hover{
+    cursor: pointer;
+}
+
+
+.checkout-container .checkout-right .checkout-right-order{
+    display: flex;
+}
+
+.checkout-container .checkout-right .checkout-right-order .checkout-right-order-details{
+    align-self: center;
+}
+
+#checkout-right-order-img{
+    width: 50px;
+}

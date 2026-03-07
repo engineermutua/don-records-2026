@@ -8,17 +8,38 @@
     width: 100%;
     height: auto;
     display: block;
-    margin-top: 65px;
     padding: 4px;
     border-radius: 10px;
 }
-
+.hero-container .hero-explore{
+    position:absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-self: center;
+}
+.hero-container .hero-explore button{
+    background: transparent;
+    outline: 0;
+    border: 1px solid #FAF9F6;
+    padding: 10px 100px;
+    border-radius: 5px;
+    color: #FAF9F6;
+    animation: redux 5s infinite;
+    
+}
+.hero-container .hero-explore button:hover{
+    background-color: #FAF9F6;
+    opacity: 0.5;
+    color: #000000;
+    cursor: pointer;
+}
 .hero-container .hero-search-bar{
     position:absolute;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: black;
+    background-color: #000000;
     width: 50%;
     border-radius: 50px;
 }
@@ -30,7 +51,8 @@
     outline: 0;
     border: 0;
     background: transparent;
-    color: white;
+    color: #FAF9F6;
+    animation: place 10s ease-in-out;
 }
 
 .hero-container .hero-search-bar form button{
@@ -44,5 +66,82 @@
     cursor: pointer;
 }
 
+
+@keyframes place {
+    0%{
+        width: 0;
+    }
+    25%{
+        width: 25%;
+    }
+    50%{
+        width: 50%;
+    }
+    75%{
+        width: 75%;
+    }
+
+    100%{
+        width: 100%;
+    }   
+}
+@keyframes redux {
+    0%{
+        padding: 10px 100px;
+        border: 2px solid #FAF9F6;
+    }
+    25%{
+        padding: 10px 25px;
+    }
+    50%{
+        padding: 10px 50px;
+    }
+    75%{
+        padding: 10px 75px
+    }
+    100%{
+        padding: 10px 100px;
+        border: 2px solid #FAF9F6;
+    }
+    
+}
+
+@media (max-width:1300px) {
+.hero-container .hero-explore{
+    position:absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-self: center;
+    display: none;
+}
+}
+
+/*
+black
+	#000000 - 1
+  #28282B - 2
+
+grey
+  #C0C0C0
+  #C9C9C9
+
+white
+#FFFFFF - cream
+#FAF9F6  *
+
+green
+#32CD32 *
+
+blue
+#1F51FF
+
+yellow
+#FFEA00
+#FFD700 *
+
+red
+#FF0000
+*/
 
 

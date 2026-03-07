@@ -1,25 +1,6 @@
-/*
-black
-	#000000
-  #36454F
-  #28282B
-  #1B1212
-grey
-  #B2BEB5
-  #A9A9A9
-  #D3D3D3
-  #E5E4E2
-  #C0C0C0
-
-white
-#FFFFFF
-#EDEADE  
-#FAF9F6  *
-*/
-
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Prata&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@300;400;500;600;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
 .josefin-sans {
   font-family: "Josefin Sans", sans-serif;
   font-optical-sizing: auto;
@@ -46,6 +27,13 @@ white
   font-style: normal;
 }
 
+.creepster-regular {
+  font-family: "Creepster", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 *{
   margin: 0;
   padding: 0;
@@ -58,9 +46,36 @@ white
   width: 0px; 
 }
 *::-webkit-scrollbar-track {
-  background: lightgray;  
+  background: #C0C0C0;  
 }
 *::-webkit-scrollbar-thumb {
-  background-color: gray; 
+  background-color: #C9C9C9; 
   border-radius: 10px;
 }
+
+/*
+black
+	#000000 - 1
+  #28282B - 2
+
+grey
+  #C0C0C0
+  #C9C9C9
+
+white
+#FFFFFF - cream
+#FAF9F6  *
+
+green
+#32CD32 *
+
+blue
+#1F51FF
+
+yellow
+#FFEA00
+#FFD700 *
+
+red
+#FF0000
+*/

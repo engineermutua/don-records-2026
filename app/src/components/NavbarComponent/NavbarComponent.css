@@ -6,13 +6,34 @@
     display: flex;
     justify-content: space-between;
     background-color:#28282B;
-    padding: 10px;
+    padding: 5px;
     border-bottom: 0.5px solid gray;
     align-items: center;
 }
 
 .navbar-container img{
-    max-width: 40px;
+    width: 30px;
+    height: 30px;
+}
+
+.navbar-container #nav-menu-icon{
+    width: 30px;
+    height: 40px;
+    margin-right: 20px;
+}
+
+.navbar-container #nav-cart-icon{
+    width: 30px;
+}
+
+.navbar-container #nav-user-icon{
+    width: 30px;
+}
+.navbar-container #navbar-dropdown{
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: 15px;
 }
 
 .navbar-container img:hover{
@@ -27,9 +48,14 @@
 .navbar-container .navbar-left .navbar-logo{
     align-self: center;
     margin-left: 10px;
-    color: white;
+    color: #C0C0C0;
     word-spacing: 10px;
     letter-spacing: 5px;
+}
+
+.navbar-container .navbar-left .navbar-logo h1{
+    font-family: "Creepster", system-ui;
+    text-align: center;
 }
 
 .navbar-container .navbar-right{
@@ -43,7 +69,9 @@
 
 .navbar-container .navbar-right .navbar-user h4{
     align-self: flex-end;
-    color: white;
+    color: #C9C9C9;
+    position: relative;
+    bottom: 15px;
 }
 
 #navbar-dropdown:hover{
@@ -53,13 +81,13 @@
 .drop-down-hover{
     z-index: 1000;
     position: fixed;
-    right: 10px;
-    margin-top: 70px;
+    right: 5px;
+    margin-top: 50px;
     width: 250px;
     height: fit-content;
     padding: 20px;
     border-radius: 5px;
-    background-color: #A9A9A9;
+    background-color: #C0C0C0;
     display: none;
 }
 
@@ -85,12 +113,13 @@
     left: 0;
     width: 250px;
     height: 100%;
-    background-color: white;
+    background-color: #C0C0C0;
     display: none;
+    overflow-y: auto;
 }
 
 .nav-sidemenu .sidemenu-header {
-    background-color: black;
+    background-color: #000000;
 }
 
 .nav-sidemenu .sidemenu-header img{
@@ -103,7 +132,7 @@
     position: fixed;
     bottom: 0;
     width: 250px;
-    background-color: black;
+    background-color: #000000;
 }
 .nav-sidemenu .sidemenu-footer img{
     width: 20%;
@@ -127,21 +156,44 @@
 .nav-sidemenu .sidemenu-list ul li:hover{
     cursor: pointer;
 }
+
+#nav-cart-count{
+    position: relative;
+    left: 18px;
+    bottom: 18px;
+    background-color: #FF0000;
+    width: 15px;
+    height: 15px;
+    border-radius: 100px;
+}
+#nav-cart-count p{
+   color: #FAF9F6;
+    text-align: center;
+    font-size: small;
+}
 /*
 black
-#000000
-  #36454F
-  #28282B
-  #1B1212
+	#000000 - 1
+  #28282B - 2
+
 grey
-  #B2BEB5
-  #A9A9A9
-  #D3D3D3
-  #E5E4E2
   #C0C0C0
+  #C9C9C9
 
 white
-#FFFFFF
-#EDEADE  
+#FFFFFF - cream
 #FAF9F6  *
+
+green
+#32CD32 *
+
+blue
+#1F51FF
+
+yellow
+#FFEA00
+#FFD700 *
+
+red
+#FF0000
 */

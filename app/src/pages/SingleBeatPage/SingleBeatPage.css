@@ -54,23 +54,25 @@
 }
 
 .single-beat-right{
-   background-color:white ; 
+   background-color:#FAF9F6; 
    border-radius: 10px;
    max-width: 50%;
    height: fit-content;
 }
 
 .single-beat-right .single-beat-right-header{
- background-color: gray;
+ background-color: #C9C9C9;
  padding: 20px;
- color: black;
+ color: #000000;
+ border-top-left-radius: 10px;
+ border-top-right-radius: 10px;
 }
 
 
 .similar-beat-right{
     display: flex;
     overflow-x: scroll;
-    color: black;
+    color: #000000;
     padding: 5px;
 }
 
@@ -90,7 +92,7 @@
 }
 
 a{
-    color: black;
+    color: #000000;
     text-decoration: none;
 }
 #single-beat-related-verify{

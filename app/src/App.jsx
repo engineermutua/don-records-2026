@@ -25,6 +25,9 @@ import AuthPage from './pages/AuthPage/AuthPage'
 import PortalPage from './pages/PortalPage/PortalPage'
 import SearchedItemPage from './pages/SearchedItemPage/SearchedItemPage'
 import ProfilePage from './pages/ProfilePage/ProfilePage'
+import CartPage from './pages/CartPage/CartPage'
+import CheckoutPage from './pages/CheckoutPage/CheckoutPage'
+import OrderPage from './pages/OrderPage/OrderPage'
 
 let DefaultIcon = L.icon({
     iconUrl: icon,
@@ -62,6 +65,9 @@ const App = () => {
       <Route path='/portal' element={<PortalPage/>}></Route>
       <Route path='/searchResults/:search' element={<SearchedItemPage/>}></Route>
       <Route path='/profile' element={<ProfilePage/>}></Route>
+      <Route path='/cart' element={<CartPage/>}></Route>
+      <Route path='/checkout' element={<CheckoutPage/>}></Route>
+      <Route path='/order' element={<OrderPage/>}></Route>
     </Routes>
     <FooterComponent/>
     </BrowserRouter>

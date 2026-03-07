@@ -4,9 +4,10 @@ import TitleComponent from '../TitleComponent/TitleComponent'
 import { assets, beats } from '../../assets/assets'
 import { ShopContext } from '../../Context/ShopContext'
 import { Link } from 'react-router-dom'
+import toast from 'react-hot-toast'
 
 const BeatsComponent = () => {
-    const {currency}=useContext(ShopContext);
+    const {currency,addToCart}=useContext(ShopContext);
   return (
     <>
     <div id='beats-component-container' className="beats-component-container">
@@ -28,7 +29,7 @@ const BeatsComponent = () => {
                                 </div>
                                 
                                 <div className="featured-beat-cart">
-                                    <img id='featured-beat-cart-image' src={assets.addToCartIcon} alt="" />
+                                    <img onClick={()=>(addToCart(beat._id),toast.success(`${beat.title} added to cart`))} id='featured-beat-cart-image' src={assets.addToCartIcon} alt="" />
                                 </div>
                             </div>
                         </div>

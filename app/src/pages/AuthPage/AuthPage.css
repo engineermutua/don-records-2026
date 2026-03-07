@@ -1,6 +1,6 @@
 .register-container{
     background-color: #282828;
-    color: white;
+    color: #FAF9F6;
     padding: 10px;
     width: 100%;
     padding-bottom: 200px;
@@ -23,11 +23,14 @@
 }
 .register-container .register-form form  button{
     width: 100%;
-    padding: 20px;
-    background-color: green;
+    padding: 12px;
+    background-color: #32CD32;
     outline: 0;
     border: 0;
     font-size: x-large;
+}
+.register-container .register-form form  button:hover{
+    cursor: pointer;
 }
 .register-container .register-form p{
     text-align: center;
@@ -54,3 +57,30 @@
     justify-content: center;
     justify-self: center;
 }
+
+/*
+black
+  #000000 - 1
+  #28282B - 2
+
+grey
+  #C0C0C0
+  #C9C9C9
+
+white
+#FFFFFF - cream
+#FAF9F6  *
+
+green
+#32CD32 *
+
+blue
+#1F51FF
+
+yellow
+#FFEA00
+#FFD700 *
+
+red
+#FF0000
+*/

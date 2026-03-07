@@ -1,6 +1,6 @@
 .single-merchandise-container{
     background-color: #282828;
-    color: white;
+    color: #FAF9F6 ;
     padding: 10px;
     padding-bottom: 100px;
     width: 100%;
@@ -17,7 +17,7 @@
 }
 
 .single-merchandise-container .single-merchandise .single-merchandise-image{
-    background-color: white;
+    background-color: #FFFFFF ;
     border-radius: 10px;
     width: 100%;
     padding: 10px;
@@ -46,14 +46,17 @@
 }
 
 .single-merchandise-container .single-merch-related{
-   background-color: white; 
+   background-color: #FAF9F6; 
     height: fit-content;
+    border-radius: 10px;
 }
 .single-merchandise-container .single-merch-related .single-merch-related-header{
-    background-color: gray;
+    background-color: #C0C0C0;
     text-align: center;
     padding: 10px;
-    color: black;
+    color: #000000;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .single-merchandise-container .single-merch-related .single-merch{
@@ -78,6 +81,6 @@
 }
 .single-merchandise-container .single-merch-related .single-merch .single-m{
     margin: 10px;
-    color: black;
+    color: #000000;
 }
 

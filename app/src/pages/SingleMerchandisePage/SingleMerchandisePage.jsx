@@ -8,7 +8,7 @@ import { ShopContext } from "../../Context/ShopContext";
 const SingleMerchandisePage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(false);
-  const { currency } = useContext(ShopContext);
+  const { currency,addToCart } = useContext(ShopContext);
   const fetchProduct = async () => {
     try {
       products.map((prod) => {
@@ -43,7 +43,7 @@ const SingleMerchandisePage = () => {
                 : `In Stock (${product.Quantity})`}
             </p>
             <div className="single-merch-image">
-              <img id="single-merch-image" src={assets.addToCartIcon} alt="" />
+              <img onClick={()=>(addToCart(product._id),toast.success(`${product.title} added to cart`))} id="single-merch-image" src={assets.addToCartIcon} alt="" />
             </div>
           </div>
         </div>

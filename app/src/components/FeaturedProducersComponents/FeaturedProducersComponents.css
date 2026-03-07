@@ -1,6 +1,6 @@
 .featured-producers-container{
     background-color: #282828;
-    color: white;
+    color: #FAF9F6;
     padding: 10px;
 }
 .featured-producers::-webkit-scrollbar{
@@ -27,6 +27,7 @@
 
 .featured-producers .featured-producer .featured-producer-image img{
     width: 120px;
+    height: 120px;
     border-radius: 50%;
     animation: fade 5s ease;
 }
@@ -36,8 +37,9 @@
 }
 
 .featured-producers .featured-producer .featured-producer-details{
-   padding: 10px;
-   margin-left: 10px;
+  position: relative;
+  left: calc(20%);
+   
 }
 
 .featured-producers .featured-producer .featured-producer-details:hover{
@@ -45,7 +47,9 @@
 }
 
 .featured-producers .featured-producer .featured-producer-details p img{
-    width: 10%;
+    width: 14px;
+    position: relative;
+    top: 4px;
 }
 
 @keyframes fade {

@@ -2,7 +2,7 @@ import React from 'react'
 import './FooterComponent.css'
 import { assets } from '../../assets/assets'
 import { Link, useNavigate } from 'react-router-dom'
-
+import {toast} from 'react-hot-toast'
 const FooterComponent = () => {
   const navigate=useNavigate()
   const getYear=()=>{
@@ -12,6 +12,14 @@ const FooterComponent = () => {
   }
   const navigateTo=(id)=>{
         document.getElementById(id)?.scrollIntoView({behavior:'smooth'})
+    }
+
+    const handleSubmit=(e)=>{
+      try {
+        e.preventDefault();
+      } catch (error) {
+        toast.error(error)
+      }
     }
   return (
     <>
@@ -26,10 +34,10 @@ const FooterComponent = () => {
           <p>Premium beats destination</p>
         </div>
         <div className="footer-left-links">
-          <img src={assets.whatsappIcon} alt="" />
-          <img src={assets.instagramIcon} alt="" />
-          <img src={assets.facebookIcon} alt="" />
-          <img src={assets.emailIcon} alt="" />
+          <Link to='https://wa.me/+254793909678' target='_blank'><img src={assets.whatsappIcon} alt="" /></Link> 
+          <Link to='https://www.instagram.com/the._.don._/' target='_blank'><img src={assets.instagramIcon} alt="" /></Link>
+          <Link to='https://www.instagram.com/the._.don._/' target='_blank'><img src={assets.facebookIcon} alt="" /></Link>
+          <Link to='mailto:thedon254@gmail.com?subject=Hello&body=Message' target='_blank'><img src={assets.emailIcon} alt="" /></Link>
         </div>
       </div>
       {/*---------------Footer center---------------- */}
@@ -39,14 +47,14 @@ const FooterComponent = () => {
         </div>
         <div className="footer-center-links">
           <ul>
-            <li onClick={()=>(navigate('/') && navigateTo('hero-container'))}>Home</li>
-            <li onClick={()=>navigateTo('beats-component-container')}>Beats</li>
-            <li onClick={()=>navigateTo('featured-artists-container')}>Artists</li>
-            <li onClick={()=>navigateTo('featured-producers-container')}>Producers</li>
+            <li onClick={()=>(navigate('/'), navigateTo('hero-container'))}>Home</li>
+            <li onClick={()=>(navigate('/'),navigateTo('beats-component-container'))}>Beats</li>
+            <li onClick={()=>(navigate('/'),navigateTo('featured-artists-container'))}>Artists</li>
+            <li onClick={()=>(navigate('/'),navigateTo('featured-producers-container'))}>Producers</li>
             <Link to='/contactUs'><li>Contact Us</li></Link>
             <Link to='/login'><li>Register</li></Link>
-            <li onClick={()=>navigateTo('beats-component-container')}>Admin panel</li>
-            <li onClick={()=>navigateTo('featured-merchandise-container')}>Merchandise</li>
+            <li onClick={()=>(navigate('/'),navigateTo('beats-component-container'))}>Admin panel</li>
+            <li onClick={()=>(navigate('/'),navigateTo('featured-merchandise-container'))}>Merchandise</li>
           </ul>
         </div>
       </div>
@@ -58,9 +66,9 @@ const FooterComponent = () => {
           <h1>Newsletter</h1>
         </div>
         <div className="footer-right-form">
-          <form action="#" method='post'>
-            <input type="email" name="" id="" placeholder='Email Address' /><br/>
-            <button>Subscribe</button>
+          <form onSubmit={handleSubmit} method='post'>
+            <input type="email" name="" id="" placeholder='Email Address' required/><br/>
+            <button onClick={()=>toast.success('Thank you for subscribing.')}>Subscribe</button>
           </form>
         </div>
       </div>

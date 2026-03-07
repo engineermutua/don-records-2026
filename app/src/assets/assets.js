@@ -76,6 +76,7 @@ import heroImage2 from "./hero2.jpeg";
 import heroImage3 from "./hero3.jpeg";
 import heroImage4 from "./hero4.jpg";
 import heroImage5 from "./hero5.jpg";
+import heroImage6 from './hero6.jpg'
 import thumbnail from "./thumbnail1.jpeg";
 import thumbnail1 from "./thumbnail2.jpeg";
 import thumbnail2 from "./thumbnail3.jpeg";
@@ -124,8 +125,20 @@ import revenueIcon from "./increase.png";
 import UsersIcon from "./multiple-users-silhouette.png";
 import blackCart from './grocery-store.png'
 import pedroPic from './pedro.jpg'
-import profPic from './prof.jpg'
+import profPic from './ezra.jpg'
 import topBPic from './top.jpg'
+import sparrohPic from './sparroh.jpg'
+import shivaPic from './shiva.jpg'
+import topBoyzprod from './top records.jpg'
+import kitelPic from './kitel.jpg'
+import uncoPic from './umco.jpg'
+import zienPic from './zien.jpg'
+import rayanPic from './rayan.jpg'
+import steeviePic from './steevie.jpg'
+import toxicPic from './toxic.jpg'
+import kusuPic from './kusu.jpg'
+import wizzohPic from './wizzoh.jpg'
+import stunnaPic from './stunna.jpg'
 
 export const assets = {
   product1,
@@ -252,7 +265,8 @@ export const assets = {
   revenueIcon,
   UsersIcon,
   qualityHandshake,
-  blackCart
+  blackCart,
+  heroImage6
 }
 
 export const products = [
@@ -868,27 +882,27 @@ export const blogs = [
   {
     _id: "bl001",
     images: [blogImage1],
-    title: "Wanna record your first hit?",
+    title: "What is Lorem Ipsum?",
     description:
-      "This is a demo of how the final UI will look upon completion.This is a demo of how the final UI will look upon completion.",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
     author: "the_.don",
     featured: true,
   },
   {
     _id: "bl002",
     images: [blogImage2],
-    title: "Wanna record your first hit?",
+    title: "Where does it come from?",
     description:
-      "This is a demo of how the final UI will look upon completion.This is a demo of how the final UI will look upon completion.",
+      "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.",
     author: "the_.don",
     featured: true,
   },
   {
     _id: "bl003",
     images: [blogImage3],
-    title: "Wanna record your first hit?",
+    title: "Where can I get some?",
     description:
-      "This is a demo of how the final UI will look upon completion.This is a demo of how the final UI will look upon completion.",
+      "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.",
     author: "the_.don",
     featured: true,
   },
@@ -897,16 +911,16 @@ export const blogs = [
     images: [blogImage4],
     title: "Wanna record your first hit?",
     description:
-      "This is a demo of how the final UI will look upon completion.This is a demo of how the final UI will look upon completion.",
+      "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
     author: "the_.don",
     featured: true,
   },
   {
     _id: "bl005",
     images: [blogImage5],
-    title: "Wanna record your first hit?",
+    title: "Why do we use it?",
     description:
-      "This is a demo of how the final UI will look upon completion.This is a demo of how the final UI will look upon completion.",
+      "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.",
     author: "the_.don",
     featured: false,
   },
@@ -962,7 +976,7 @@ export const artists = [
   },
   {
     _id: "u002",
-    avatar: avatar1,
+    avatar: topBPic,
     name: "top-boyz",
     embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
     bio: "I am an artist testing out this system.",
@@ -971,47 +985,111 @@ export const artists = [
   {
     _id: "u003",
     avatar: pedroPic,
-    name: "myahudi",
+    name: "pedro",
     embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
     bio: "I am an artist testing out this system.",
     featured: true,
   },
   {
     _id: "u004",
-    avatar: avatar3,
-    name: "Kithongi",
+    avatar: stunnaPic,
+    name: "Stunna",
     embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
     bio: "I am an artist testing out this system.",
     featured: true,
   },
   {
     _id: "u005",
-    avatar: topBPic,
-    name: "top-boyz",
+    avatar: toxicPic,
+    name: "Lyrikali",
     embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
     bio: "I am an artist testing out this system.",
     featured: true,
   },
   {
     _id: "u006",
-    avatar: avatar1,
-    name: "topboyz",
+    avatar: uncoPic,
+    name: "Uncojing",
     embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
     bio: "I am an artist testing out this system.",
     featured: true,
   },
   {
     _id: "u007",
-    avatar: avatar2,
-    name: "myahudi2",
+    avatar: kusuPic,
+    name: "KusuWale",
     embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
     bio: "I am an artist testing out this system.",
     featured: true,
   },
   {
     _id: "u008",
-    avatar: avatar3,
-    name: "Kithongi2",
+    avatar: zienPic,
+    name: "kapitani",
+    embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
+    bio: "I am an artist testing out this system.",
+    featured: true,
+  },
+  {
+    _id: "u009",
+    avatar: wizzohPic,
+    name: "wizzoh_33",
+    embedded_link:"https://www.youtube.com/embed/HsaXkeejbEA?si=tIwrIMAZ6erUkqgR",
+    bio: "I am an artist testing out this system.",
+    featured: true,
+  },
+  {
+    _id: "u010",
+    avatar: kitelPic,
+    name: "mk_wolf",
+    embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
+    bio: "I am an artist testing out this system.",
+    featured: true,
+  },
+  {
+    _id: "u011",
+    avatar: topBoyzprod,
+    name: "top_boy.z",
+    embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
+    bio: "I am an artist testing out this system.",
+    featured: true,
+  },
+   {
+    _id: "u012",
+    avatar: profPic,
+    name: "lul_prof",
+    embedded_link:"https://www.youtube.com/embed/HsaXkeejbEA?si=tIwrIMAZ6erUkqgR",
+    bio: "I am an artist testing out this system.",
+    featured: true,
+  },
+  {
+    _id: "u013",
+    avatar: topBPic,
+    name: "Top-boyz",
+    embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
+    bio: "I am an artist testing out this system.",
+    featured: true,
+  },
+  {
+    _id: "u014",
+    avatar: pedroPic,
+    name: "Pedro",
+    embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
+    bio: "I am an artist testing out this system.",
+    featured: true,
+  },
+  {
+    _id: "u015",
+    avatar: stunnaPic,
+    name: "stunna",
+    embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
+    bio: "I am an artist testing out this system.",
+    featured: true,
+  },
+  {
+    _id: "u016",
+    avatar: toxicPic,
+    name: "lyrikali",
     embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
     bio: "I am an artist testing out this system.",
     featured: true,
@@ -1022,7 +1100,7 @@ export const artists = [
 export const producers = [
   {
     _id: "p001",
-    avatar: avatar,
+    avatar: stunnaPic,
     name: "the_.don",
     embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
     bio: "I am an artist testing out this system.",
@@ -1030,55 +1108,119 @@ export const producers = [
   },
   {
     _id: "p002",
-    avatar: avatar1,
-    name: "top-boyz",
-    embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
-    bio: "I am an artist testing out this system.",
-    featured: true,
-  },
-  {
-    _id: "p003",
-    avatar: avatar2,
+    avatar: sparrohPic,
     name: "sparroh",
     embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
     bio: "I am an artist testing out this system.",
     featured: true,
   },
   {
+    _id: "p003",
+    avatar: steeviePic,
+    name: "beat_kid",
+    embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
+    bio: "I am an artist testing out this system.",
+    featured: true,
+  },
+  {
     _id: "p004",
-    avatar: avatar3,
-    name: "Shiva",
+    avatar: topBoyzprod,
+    name: "top_boyz",
     embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
     bio: "I am an artist testing out this system.",
     featured: true,
   },
   {
     _id: "p005",
-    avatar: avatar,
-    name: "the_.don2",
+    avatar: shivaPic,
+    name: "shiva",
     embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
     bio: "I am an artist testing out this system.",
     featured: true,
   },
   {
     _id: "p006",
-    avatar: avatar1,
-    name: "top-.boyz",
+    avatar: rayanPic,
+    name: "rayan",
     embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
     bio: "I am an artist testing out this system.",
     featured: true,
   },
   {
     _id: "p007",
-    avatar: avatar2,
-    name: "sparroh2",
+    avatar: sparrohPic,
+    name: "sparroh",
     embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
     bio: "I am an artist testing out this system.",
     featured: true,
   },
   {
     _id: "p008",
-    avatar: avatar3,
+    avatar: steeviePic,
+    name: "beat_kid",
+    embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
+    bio: "I am an artist testing out this system.",
+    featured: true,
+  },
+  {
+    _id: "p009",
+    avatar: topBoyzprod,
+    name: "top_boyz",
+    embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
+    bio: "I am an artist testing out this system.",
+    featured: true,
+  },
+  {
+    _id: "p010",
+    avatar: shivaPic,
+    name: "shiva",
+    embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
+    bio: "I am an artist testing out this system.",
+    featured: true,
+  },
+  {
+    _id: "p011",
+    avatar: zienPic,
+    name: "sparroh",
+    embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
+    bio: "I am an artist testing out this system.",
+    featured: true,
+  },
+  {
+    _id: "p012",
+    avatar: toxicPic,
+    name: "Shiva",
+    embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
+    bio: "I am an artist testing out this system.",
+    featured: true,
+  },
+  {
+    _id: "p013",
+    avatar: stunnaPic,
+    name: "the_d.on",
+    embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
+    bio: "I am an artist testing out this system.",
+    featured: true,
+  },
+  {
+    _id: "p014",
+    avatar: topBoyzprod,
+    name: "top-.boyz",
+    embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
+    bio: "I am an artist testing out this system.",
+    featured: true,
+  },
+  {
+    _id: "p015",
+    avatar: sparrohPic,
+    name: "sparroh2",
+    embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
+    bio: "I am an artist testing out this system.",
+    featured: true,
+  },
+  {
+    _id: "p016",
+    avatar: shivaPic,
     name: "Shiva2",
     embedded_link:"https://www.youtube.com/embed/tP0aLPCuXKA?si=nEwqcypc82fGm7P3",
     bio: "I am an artist testing out this system.",

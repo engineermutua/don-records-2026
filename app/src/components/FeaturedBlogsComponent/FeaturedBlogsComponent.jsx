@@ -19,9 +19,9 @@ const FeaturedBlogsComponent = () => {
                            <Link to={`/blog/${blog._id}`}> <img src={blog.images[0]} alt="" /></Link>
                         </div>
                         <div className="blog-title">
-                            <h2>{blog.title}</h2>
+                            <h3>{blog.title}</h3>
                         </div>
-                        <div className="blog-decription">
+                        <div className="blog-description">
                             <p>{blog.description}</p>
                         </div>
                     </div>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./SingleProducerPage.css";
 import { Link, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
-import { producers } from "../../assets/assets.js";
+import { assets, producers } from "../../assets/assets.js";
 
 const SingleProducerPage = () => {
   const { username } = useParams();
@@ -32,9 +32,9 @@ const SingleProducerPage = () => {
             <img id="single-producer-image" src={producer.avatar} alt="" />
           </div>
           <div className="single-producer-details">
-            <h4>{producer.name}</h4>
+            <h4>{producer.name} <img id="single-producer-verify" src={assets.goldCheckMark} alt="" /> </h4>
             <div className="single-producer-button">
-              <button>Follow</button>
+              <button onClick={()=>toast.success(`Started Following ${producer.name}`)}>Follow</button>
             </div>
           </div>
         </div>

@@ -5,7 +5,7 @@
 .footer-container{
     width: 100%;
     background-color: #282828;
-    color: white;
+    color:#FAF9F6;
     border: 0;
     border-top: 0.5px solid gray;
     display: flex;
@@ -29,8 +29,6 @@
 .footer-container .footer-left .footer-left-links img:hover{
     cursor: pointer;
 }
-
-
 
 .footer-container .footer-center{
     width: 35%;
@@ -57,10 +55,10 @@
     background: transparent;
     width: 95%;
     padding: 10px;
-    border: 1px solid white;
+    border: 1px solid #FAF9F6;
     outline: 0;
     border-radius: 5px;
-    color: white;
+    color: #FAF9F6;
     margin-top: 10px;
 }
 
@@ -68,22 +66,26 @@
     width: 95%;
     padding: 10px;
     margin-top: 2px;
+    background-color: #FAF9F6;
+    outline: 0;
+    border: 0;
+    margin-top: 5px;
 }
 .footer-right form button:hover{
     cursor: pointer;
 }
 
 .footer hr{
-    border: 0.5px solid gainsboro;
+    border: 0.5px solid #C0C0C0;
 }
 
 #footer-p{
     text-align: center;
     padding: 5px;
-    color: white;
+    color: #FAF9F6;
 }
 
 .footer-center-links a{
  text-decoration: none;
- color: white;
+ color: #FAF9F6;
 }

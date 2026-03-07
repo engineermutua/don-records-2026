@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./AuthPage.css";
 import { assets } from "../../assets/assets";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import {ShopContext} from '../../Context/ShopContext'
 
 const AuthPage = () => {
   const [login, setLogin] = useState(true);
@@ -9,12 +12,27 @@ const AuthPage = () => {
     const image=e.target.files[0]
     setImage(image)
   }
+  const {username}=useContext(ShopContext);
+  const navigate=useNavigate();
+  const handleSubmit=(e)=>{
+    try {
+      e.preventDefault();
+      navigate('/');
+      login
+      ?
+      toast.success(`Welcome back ${username}`)
+      :
+      toast.success('Registration Successful');
+    } catch (error) {
+      toast.error(error);
+    }
+  }
   useEffect(()=>{},[image])
   return (
     <>
       <div className="register-container">
         <div className="register-form">
-          <form action="" method="post">
+          <form onSubmit={handleSubmit} >
             {login ? (
               <>
                 <div className="input-class">

@@ -1,6 +1,6 @@
 .featured-blogs-container{
     background-color: #282828;
-    color: white;
+    color: #FAF9F6;
     padding: 10px;
     overflow-x: hidden;
 }
@@ -11,7 +11,7 @@
 }
 
 .featured-blogs .featured-blog{
-    border: 1px solid gainsboro;
+    border: 1px solid #C0C0C0;
     padding: 5px;
     margin: 4px;
     border-radius: 10px;
@@ -27,6 +27,11 @@
     cursor: pointer;
 }
 
-.featured-blogs .featured-blog .featured-blog-description{
-   width: 100px; 
+.featured-blogs .featured-blog .blog-description{
+   overflow: hidden;
+   display: -webkit-box;
+   -webkit-line-clamp: 2; 
+   -webkit-box-orient: vertical;
+   text-overflow: ellipsis;
+   width: 100%;
 }

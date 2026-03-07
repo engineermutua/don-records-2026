@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './ProfilePage.css'
 import { assets } from '../../assets/assets'
 import toast from 'react-hot-toast';
+import {useNavigate} from 'react-router-dom'
 
 const ProfilePage = () => {
     const [image,setImage]=useState(false);
@@ -11,6 +12,16 @@ const ProfilePage = () => {
             const file=e.target.files[0];
             setImage(file);
             
+        } catch (error) {
+            toast.error(error)
+        }
+    }
+    const navigate=useNavigate();
+    const handleSubmit=(e)=>{
+        try {
+            e.preventDefault();
+            navigate('/');
+            toast.success("Details Updated.")
         } catch (error) {
             toast.error(error)
         }
@@ -48,7 +59,7 @@ const ProfilePage = () => {
         </div>
         <div className="profile-right">
             <div className="profile-right-form">
-                <form method='post'>
+                <form onSubmit={handleSubmit}>
                     <div className="input-class">
                         <input type="text" name="" id="" placeholder='First Name' />
                         <input type="text" name="" id="" placeholder='Last Name' />
@@ -64,7 +75,7 @@ const ProfilePage = () => {
                         <textarea rows={5} name="" id="" placeholder='Bio(Tell the fans about yourself)'></textarea>
                     </div>
                     <div className="input-btn">
-                        <button>Change</button>
+                        <button type='submit'>Change</button>
                     </div>
                 </form>
             </div>
