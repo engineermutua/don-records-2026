@@ -39,8 +39,8 @@
     left: 20px;
 }
 #producer-artist-img{
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border-radius: 100px;
 }
 #producer-artist-img:hover{
@@ -83,8 +83,8 @@
 }
 
 #producer-prod-img{
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border-radius: 100px;
 }
 #producer-prod-img:hover{
@@ -141,8 +141,8 @@
     left: 20px;
 }
 #artist-artist-img{
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border-radius: 100px;
 }
 #artist-artist-img:hover{
@@ -185,8 +185,8 @@
 }
 
 #artist-prod-img{
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border-radius: 100px;
 }
 #artist-prod-img:hover{

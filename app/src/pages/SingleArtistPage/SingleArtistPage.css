@@ -57,10 +57,38 @@
 
 .single-artist-container .single-artist-right .single-artist-right-Links{
     margin-bottom: 50px;
+    background-color: #FAF9F6;
+    border-radius: 10px;
 }
 
+.single-artist-container .single-artist-right .single-artist-right-Links .single-artist-right-Links-header{
+    background-color: #C0C0C0;
+    color: #000000;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.single-artist-container .single-artist-right .single-artist-right-Links .single-artist-right-Links-details{
+    padding: 10px;
+}
+.single-artist-container .single-artist-right .single-artist-right-Links .single-artist-right-Links-details p{
+    margin: 10px;
+    background-color: #FFFFFF;
+    padding: 10px;
+    border-radius: 10px;
+}
+.single-artist-container .single-artist-right .single-artist-right-Links .single-artist-right-Links-details p:hover{
+    transform: scaleY(45px);
+    border: 1px solid #C0C0C0;
+}
 #single-artist-verify{
     width: 15px;
     position: relative;
     top: 4px;
+}
+
+#social-link-icon{
+    width: 30px;
+    position: relative;
+    top: 8px;
 }

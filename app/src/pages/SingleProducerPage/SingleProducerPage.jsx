@@ -32,9 +32,22 @@ const SingleProducerPage = () => {
             <img id="single-producer-image" src={producer.avatar} alt="" />
           </div>
           <div className="single-producer-details">
-            <h4>{producer.name} <img id="single-producer-verify" src={assets.goldCheckMark} alt="" /> </h4>
+            <h4>
+              {producer.name}{" "}
+              <img
+                id="single-producer-verify"
+                src={assets.goldCheckMark}
+                alt=""
+              />{" "}
+            </h4>
             <div className="single-producer-button">
-              <button onClick={()=>toast.success(`Started Following ${producer.name}`)}>Follow</button>
+              <button
+                onClick={() =>
+                  toast.success(`Started Following ${producer.name}`)
+                }
+              >
+                Follow
+              </button>
             </div>
           </div>
         </div>
@@ -46,18 +59,52 @@ const SingleProducerPage = () => {
           </div>
 
           <div className="single-producer-right-Links">
-            <h1>Social Links</h1>
-            <p>Instagram</p>
-            <p>Spotify</p>
-            <p>Itunes</p>
-            <p>Youtube</p>
-            <p>Whatsapp</p>
+            <div className="single-producer-right-Links-header">
+              <h1>Social Links</h1>
+            </div>
+            <div className="single-producer-right-Links-details">
+              <Link to={`${producer.instagram}`} target="_blank">
+                <p>
+                  {" "}
+                  <img
+                    id="social-link-icon"
+                    src={assets.instagramIcon}
+                    alt=""
+                  />{" "}
+                  Instagram
+                </p>
+              </Link>
+              <Link to={`${producer.spotify}`} target="_blank">
+                <p>
+                  <img id="social-link-icon" src={assets.spotifyIcon} alt="" />
+                  Spotify
+                </p>
+              </Link>
+              <Link to={`${producer.itunes}`} target="_blank">
+                <p>
+                  <img id="social-link-icon" src={assets.itunesIcon} alt="" />
+                  Itunes
+                </p>
+              </Link>
+              <Link to={`${producer.youtube}`} target="_blank">
+                <p>
+                  <img id="social-link-icon" src={assets.youtubeIcon} alt="" />
+                  Youtube
+                </p>
+              </Link>
+              <Link to={`${producer.whatsapp}`} target="_blank">
+                <p>
+                  <img id="social-link-icon" src={assets.whatsappIcon} alt="" />
+                  Whatsapp
+                </p>
+              </Link>
+            </div>
           </div>
 
           <div className="single-producer-right-frame">
             <h1>Latest Beat Or Project</h1>
-            <iframe 
-              src={producer.embedded_link} 
+            <iframe
+              src={producer.embedded_link}
               frameborder="0"
               title="Latest Song"
               width="600"
@@ -67,7 +114,6 @@ const SingleProducerPage = () => {
               allowFullScreen
             ></iframe>
           </div>
-
         </div>
       </div>
     </>

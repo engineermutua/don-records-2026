@@ -39,6 +39,9 @@ const FooterComponent = () => {
           <Link to='https://www.instagram.com/the._.don._/' target='_blank'><img src={assets.facebookIcon} alt="" /></Link>
           <Link to='mailto:thedon254@gmail.com?subject=Hello&body=Message' target='_blank'><img src={assets.emailIcon} alt="" /></Link>
         </div>
+        <div className="footer-left-developer">
+          <p>Developed by <Link to={'https://portofolio-two-rosy-31.vercel.app/'} target='_blank'>HighValueTech</Link></p>
+        </div>
       </div>
       {/*---------------Footer center---------------- */}
       <div className="footer-center">

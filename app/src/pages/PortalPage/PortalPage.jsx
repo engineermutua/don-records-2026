@@ -44,7 +44,7 @@ const PortalPage = () => {
                                  <Link to={`/producer/${producer.name}`}> <img id='artist-prod-img' src={producer.avatar} alt="" /></Link>  
                                 </div> 
                                 <div className="artist-prod-details">
-                                    <p>{producer.name} <img id='producer-verify' src={assets.goldCheckMark} alt="" /> </p>
+                                    <p>{producer.name} <img id='producer-verify' src={producer.featured?assets.goldCheckMark:""} alt="" /> </p>
                                 </div>
                             </div>
                         ))
@@ -65,7 +65,7 @@ const PortalPage = () => {
                                   <Link to={`/artist/${artist.name}`}> <img id='artist-artist-img' src={artist.avatar} alt="" /></Link> 
                                 </div> 
                                 <div className="artist-artist-details">
-                                    <p>{artist.name} <img id='artist-verify' src={assets.blueCheckMark} alt="" /> </p>
+                                    <p>{artist.name} <img id='artist-verify' src={artist.featured?assets.blueCheckMark:""} alt="" /> </p>
                                 </div>
                             </div>
                         ))
@@ -103,7 +103,7 @@ const PortalPage = () => {
                                    <Link to={`/artist/${artist.name}`}><img id='producer-artist-img' src={artist.avatar} alt="" /></Link> 
                                 </div> 
                                 <div className="producer-artist-details">
-                                    <p>{artist.name} <img id='artist-verify' src={assets.blueCheckMark} alt="" /> </p>
+                                    <p>{artist.name} <img id='artist-verify' src={artist.featured?assets.blueCheckMark:""} alt="" /> </p>
                                 </div>
                             </div>
                         ))
@@ -125,7 +125,7 @@ const PortalPage = () => {
                                   <Link to={`/producer/${producer.name}`}> <img id='producer-prod-img' src={producer.avatar} alt="" /></Link> 
                                 </div> 
                                 <div className="producer-prod-details">
-                                    <p>{producer.name} <img id='producer-verify' src={assets.goldCheckMark} alt="" /> </p>
+                                    <p>{producer.name} <img id='producer-verify' src={producer.featured?assets.goldCheckMark:""} alt="" /> </p>
                                 </div>
                             </div>
                         ))
