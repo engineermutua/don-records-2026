@@ -15,7 +15,7 @@ const NavbarComponent = () => {
 
   return (
     <>
-    <div className="navbar">
+    <div onDoubleClick={()=>(window.location.reload(), toast.success('Status Updated'))} className="navbar">
     <div className="navbar-container">
         {/*--------------Left----------------*/}
         
