@@ -43,7 +43,8 @@
 }
 
 *::-webkit-scrollbar {
-  width: 0px; 
+  width: 0; 
+  height: 0;
 }
 *::-webkit-scrollbar-track {
   background: #C0C0C0;  
