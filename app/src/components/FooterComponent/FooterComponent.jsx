@@ -10,6 +10,7 @@ const FooterComponent = () => {
     return date.getFullYear();
     
   }
+  const admin_url=import.meta.env.VITE_ADMIN_URL;
   const navigateTo=(id)=>{
         document.getElementById(id)?.scrollIntoView({behavior:'smooth'})
     }
@@ -56,7 +57,7 @@ const FooterComponent = () => {
             <li onClick={()=>(navigate('/'),navigateTo('featured-producers-container'))}>Producers</li>
             <Link to='/contactUs'><li>Contact Us</li></Link>
             <Link to='/login'><li>Register</li></Link>
-            <li onClick={()=>(navigate('/'),navigateTo('beats-component-container'))}>Admin panel</li>
+            <Link to={admin_url}><li>Admin panel</li></Link>
             <li onClick={()=>(navigate('/'),navigateTo('featured-merchandise-container'))}>Merchandise</li>
           </ul>
         </div>
