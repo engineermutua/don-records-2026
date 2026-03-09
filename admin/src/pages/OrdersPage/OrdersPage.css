@@ -1,0 +1,93 @@
+.order-container{
+    width: 100%;
+    
+    overflow-x: auto;
+}
+.order-container .order-top{
+    margin-top: 20px;
+    justify-self: center;
+    width: 50%;
+    overflow-x: auto;
+}
+
+.order-container .order-top .order-search{
+    background-color: #C0C0C0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+}
+.order-container .order-top .order-search form input{
+    border: 0;
+    outline: 0;
+    background: transparent;
+    width: 400px;
+}
+#order-img{
+    width: 20px;
+}
+#order-img:hover{
+    cursor: pointer;
+}
+
+.order-container .order-bottom{
+    justify-self: center;
+    overflow-x: auto;
+    width: 100%;
+}
+.order-container .order-bottom .order-bottom-top{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+.order-container .order-bottom .order-bottom-top .bottom-class{
+    width: 12%;
+}
+
+.order-container .order-bottom .order-bottom-bottom{
+    display: flex;
+    flex-direction: column;
+}
+
+.order-container .order-bottom .order-bottom-bottom .order-class{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #C0C0C0;
+    overflow-x: auto;
+    margin: 4px;
+    padding: 5px;
+}
+
+.order-container .order-bottom .order-bottom-bottom .order-class .order-act{
+    width: 12%;
+}
+.order-container .order-bottom .order-bottom-bottom .order-class .order-id{
+    width: 12%;
+}
+.order-container .order-bottom .order-bottom-bottom .order-class .order-date{
+    width: 12%;
+}
+.order-container .order-bottom .order-bottom-bottom .order-class .order-ref{
+    width: 12%;
+}
+.order-container .order-bottom .order-bottom-bottom .order-class .order-cust{
+    width: 12%;
+}.order-container .order-bottom .order-bottom-bottom .order-class .order-address{
+    width: 12%;
+}
+.order-container .order-bottom .order-bottom-bottom .order-class .order-pay{
+    width: 12%;
+}
+.order-container .order-bottom .order-bottom-bottom .order-class .order-status{
+    width: 12%;
+}
+.order-container .order-bottom .order-bottom-bottom .order-class .order-contact{
+    width: 12%;
+}
+.order-container .order-bottom .order-bottom-bottom .order-class .order-status form select{
+    width: 75%;
+    outline: 0;
+    border: 0;
+    background: transparent;
+}

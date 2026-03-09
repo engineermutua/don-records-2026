@@ -1,0 +1,113 @@
+.navbar-container{
+    background-color: #FFFFFF;
+}
+.navbar-container .nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 10px;
+    border-bottom: 1px solid #000000;  
+    transform: scaleY(45px);
+}
+
+.navbar-container .nav .nav-center h1{
+    font-family: "Creepster", system-ui;
+    text-align: center;
+}
+
+.navbar-container .nav .nav-left #side-img{
+    width: 40px;
+}
+.navbar-container .nav .nav-left #side-img:hover{
+    cursor: pointer;
+}
+
+.navbar-container .nav .nav-right #avatar-img{
+    width: 40px;
+}
+
+.navbar-container .nav .nav-right #avatar-img:hover{
+    cursor: pointer;
+}
+
+.navbar-container a{
+    text-decoration: none;
+    color: #000000;
+}
+
+.navbar-container .nav-side{
+    position:fixed;
+    top: 0;
+    left: 0;
+    border-right: 0.2px solid #000000;
+    z-index: 1000;
+    width: 200px;
+    height: 100vh;
+    display: none;
+    background-color: #FFFFFF;
+}
+
+.navbar-container .nav-side .side-header{
+    background-color: #000000;
+    color: #FFFFFF;
+    padding: 10px;
+    text-align: center;
+}
+
+.navbar-container .nav-side .side-content{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;   
+    overflow-y: auto;
+}
+.navbar-container .nav-side .side-content ul{
+    list-style: none;
+    overflow-y: auto;
+}
+.navbar-container .nav-side .side-content ul li{
+    margin: 20px 0;
+}
+
+.navbar-container .nav-side .side-content ul li:hover{
+    cursor: pointer;
+    transform: scaleY(-45px);
+    background-color: #C0C0C0;
+    padding: 4px;
+    border-radius: 5px;
+
+}
+.navbar-container .nav-side .side-footer{
+    background-color: #000000;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 200px;
+    color: #FFFFFF;
+    text-align: center;
+    
+}
+
+.navbar-container .nav-side .side-header #header-img{
+    width: 100px;
+}
+
+.navbar-container .nav-side .side-header #header-img:hover{
+    cursor: pointer;
+}
+.navbar-container .nav-side .side-footer #footer-img{
+    width: 30px;
+}
+.navbar-container .nav-side .side-footer #footer-img:hover{
+    cursor: pointer;
+}
+#side-content-img{
+    width: 20px;
+    position: relative;
+    top: 4px;
+}
+
+#side-logout-img{
+    width: 30px;
+    position: fixed;
+    bottom: 10%;
+}
+

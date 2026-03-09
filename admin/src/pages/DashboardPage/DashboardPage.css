@@ -1,0 +1,176 @@
+.dashboard{
+    width: 100%;
+}
+.dashboard .dashboard-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    padding: 10px;  
+}
+
+.dashboard .dashboard-container .dash-top{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 0.5rem;
+    color: #FFFFFF;
+    font-weight: 700;
+    text-align: right;
+}
+
+.dashboard .dashboard-container .dash-top .dash-top-left{
+    background: linear-gradient(to top,#000080,#1F51FF);
+    width: 50%;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.dashboard .dashboard-container .dash-top .dash-top-center{
+    background: linear-gradient(to top,#32CD32,#0FFF50);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    padding: 30px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.dashboard .dashboard-container .dash-top .dash-top-right{
+    background: linear-gradient(to top ,#FF0000,#FF3131);
+    width: 50%;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.dashboard .dashboard-container .dash-top .dash-top-left:hover{
+    cursor: pointer;
+    transform:translateY(-4px);
+    transition: 0.1s ease-in;
+}
+.dashboard .dashboard-container .dash-top .dash-top-center:hover{
+    cursor: pointer;
+    transform:translateY(-4px);
+    transition: 0.1s ease-in;
+}
+.dashboard .dashboard-container .dash-top .dash-top-right:hover{
+    cursor: pointer;
+    transform:translateY(-4px);
+    transition: 0.1s ease-in;
+}
+
+.dashboard .dashboard-container .dash-bottom{
+    display: flex;
+    justify-content:space-evenly;
+    margin-top: 100px;
+    width: 100%;
+    gap: 0.5rem;
+}
+
+.dashboard .dashboard-container .dash-bottom .dash-bottom-left{
+    background-color: #C0C0C0;
+    width: 50%;
+    border-radius: 10px;
+}
+.dashboard .dashboard-container .dash-bottom .dash-bottom-left .dash-bottom-left-header{
+    background: linear-gradient(to right ,#FF0000,#FF3131);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 100px;
+    color: #FFFFFF;
+    font-weight: 700;
+}
+
+.dashboard .dashboard-container .dash-bottom .dash-bottom-right{
+    background-color: #C0C0C0;
+    width: 50%;
+    border-radius: 10px;
+}
+.dashboard .dashboard-container .dash-bottom .dash-bottom-right .dash-bottom-right-header{
+    background: linear-gradient(to left,#32CD32,#0FFF50);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 100px;
+    color: #FFFFFF;
+    font-weight: 700;
+}
+.dashboard .dashboard-container .dash-bottom .dash-bottom-right:hover{
+    cursor: pointer;
+    transform:translateY(-4px);
+    transition: 0.1s ease-in;
+}
+.dashboard .dashboard-container .dash-bottom .dash-bottom-left:hover{
+    cursor: pointer;
+    transform:translateY(-4px);
+    transition: 0.1s ease-in;
+}
+#dash-img{
+    width: 40px;
+}
+#dash-img2{
+    width: 30px;
+    position: relative;
+    top: 10px;
+    animation: rota 3s infinite;
+}
+
+.dashboard .dashboard-container .nav-act{
+    width: 100%;
+    
+}
+
+.dashboard .dashboard-container .nav-act .nav-act-header {
+    width: 100%;
+    background-color: #000000;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 100px;
+}
+
+.dashboard .dashboard-container .nav-act .quick-acts{
+    display: flex;
+    overflow-x: auto;
+    gap: 0.5rem;
+    justify-content: space-evenly;
+    margin-top: 10px;
+}
+.dashboard .dashboard-container .nav-act .quick-acts button{
+    width: 100%;
+    padding: 15px 100px;
+    outline: 0;
+    border: 0;
+    background: #28282B;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 100px;
+}
+
+.dashboard .dashboard-container .nav-act .quick-acts button:hover{
+    cursor: pointer;
+    transform:translateY(4px);
+    transition: 0.1s ease-in;
+    background: #26282B;
+}
+
+@keyframes rota {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+    
+}

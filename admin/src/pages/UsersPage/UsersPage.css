@@ -1,0 +1,109 @@
+.users-container{
+    width: 100%;
+    overflow: auto;
+}
+
+.users-top{
+    justify-self: center;
+    max-width: 100%;
+    margin-top: 20px;
+    
+}
+
+.users-top .users-top-left{
+    display: flex;
+    gap: 1rem;
+}
+
+.users-top .users-top-left form select{
+    width: 250px;
+    padding: 4px;
+    background-color: #C0C0C0;
+    outline: 0;
+    border: 0;
+}
+
+.users-top .users-top-left button{
+    width: 200px;
+    background-color:#1F51FF;
+    outline: 0;
+    border: 0;
+    padding: 5px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-weight: 700;
+}
+.users-top .users-top-left button:hover{
+    cursor: pointer;
+    
+}
+
+.users-container .users-bottom{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+}
+.users-container .users-bottom .users-bottom-top{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #C0C0C0;
+    padding: 10px 0;
+}
+.users-container .users-bottom .users-bottom-top .bottom-class{
+    width: 12%;
+}
+
+.users-container .users-bottom .users-bottom-bottom{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    overflow-x: auto;
+}
+.users-container .users-bottom .users-bottom-bottom .user-bottom{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+   
+    padding: 5px; 
+}
+.users-container .users-bottom .users-bottom-bottom .user-bottom .user-id{
+    width: 12%;
+}
+.users-container .users-bottom .users-bottom-bottom .user-bottom .user-name{
+    width: 12%;
+}
+.users-container .users-bottom .users-bottom-bottom .user-bottom .user-role{
+    width: 12%;
+}
+.users-container .users-bottom .users-bottom-bottom .user-bottom .user-phone{
+    width: 12%;
+}
+.users-container .users-bottom .users-bottom-bottom .user-bottom .user-email{
+    width: 12%;
+}
+.users-container .users-bottom .users-bottom-bottom .user-bottom .user-status{
+    width: 12%;
+}
+.users-container .users-bottom .users-bottom-bottom .user-bottom .user-date{
+    width: 12%;
+}
+.users-container .users-bottom .users-bottom-bottom .user-bottom .user-act{
+    width: 12%;
+    display: flex;
+    gap: 10px;
+}
+.user-role p{
+    background-color: #C0C0C0;
+    padding: 4px;
+    border-radius: 4px;
+    width: fit-content;
+}
+#user-act{
+    width: 20px;
+}
+
+#user-act:hover{
+    cursor: pointer;
+}
+

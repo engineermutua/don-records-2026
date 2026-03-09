@@ -1,0 +1,32 @@
+.revenue-container{
+    background: linear-gradient(to right,#32CD32,#1F51FF);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    padding: 20px 100px;
+    text-align: center;
+    justify-self: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    animation: colorC 5s  ease-in infinite;
+}
+
+@keyframes colorC {
+    0%{
+        background: linear-gradient(to right,#32CD32,#1F51FF);
+    }
+    25%{
+        background: linear-gradient(to bottom,#32CD32,#1F51FF);
+    }
+    50%{
+        background: linear-gradient(to left,#32CD32,#1F51FF);
+    }
+    75%{
+        background: linear-gradient(to top,#32CD32,#1F51FF);
+    }
+    100%{
+        background: linear-gradient(to right,#32CD32,#1F51FF);
+    }
+    
+}
