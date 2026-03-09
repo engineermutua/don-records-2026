@@ -57,7 +57,7 @@ const FooterComponent = () => {
             <li onClick={()=>(navigate('/'),navigateTo('featured-producers-container'))}>Producers</li>
             <Link to='/contactUs'><li>Contact Us</li></Link>
             <Link to='/login'><li>Register</li></Link>
-            <Link to={admin_url}><li>Admin panel</li></Link>
+            <Link to={admin_url} target="_blank"><li>Admin panel</li></Link>
             <li onClick={()=>(navigate('/'),navigateTo('featured-merchandise-container'))}>Merchandise</li>
           </ul>
         </div>
