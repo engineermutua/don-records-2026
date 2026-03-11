@@ -7,8 +7,7 @@ import adminRouter from '../routes/adminRoute.js';
 import jwt from 'jsonwebtoken';
 
 
-const admin_email=process.env.ADMIN_EMAIL;
-const admin_password=process.env.ADMIN_PASSWORD;
+
 const jwt_secret=process.env.JWT_SECRET;
 
 const createToken=(email)=>{

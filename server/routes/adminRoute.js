@@ -1,6 +1,7 @@
 import express from 'express'
 import { addBeat, addBlog, addMerchandise, adminLogin, deleteMerchandise, updateMerchandise } from '../controllers/adminController.js';
 import upload from '../middleware/multer.js';
+import adminAuth from '../middleware/adminAuth.js';
 
 const adminRouter=express.Router();
 
@@ -9,7 +10,7 @@ adminRouter.post('/addBeat',upload.fields([{name:"thumbnail",maxCount:1},{name:"
 adminRouter.post('/addBlog',upload.fields([{name:"image",maxCount:1}]),addBlog);
 adminRouter.post('/login',adminLogin);
 adminRouter.post('/deleteMerchandise/:merchandiseId',deleteMerchandise);
-adminRouter.post('/updateMerchandise/:merchandiseId',updateMerchandise)
+adminRouter.post('/updateMerchandise/:merchandiseId',adminAuth,updateMerchandise)
 
 
 export default adminRouter;
