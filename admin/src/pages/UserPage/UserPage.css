@@ -1,0 +1,39 @@
+.user-page{
+    width: 100%;
+}
+.user-page .user-container{
+    display: flex;
+    flex-direction:column;
+    margin: 15px;
+}
+
+.user-page .user-container .user-top{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.user-page .user-container .user-top .user-details p{
+    font-size: x-large;
+    margin: 10px;
+    background-color: #F1F4F9;
+    padding: 10px;
+}
+.user-page .user-container {
+    overflow: auto;
+}
+.user-page .user-container .user-bottom{
+    margin-top: 20px;
+}
+.user-page .user-container .user-bottom .header{
+    background-color: gray;
+}
+.user-page .user-container .user-bottom .orders-container{
+    display: flex;
+    margin-top: 10px;
+    overflow: auto;
+}
+#avatar{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+}

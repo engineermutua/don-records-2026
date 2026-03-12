@@ -75,6 +75,7 @@
     width: 12%;
 }.order-container .order-bottom .order-bottom-bottom .order-class .order-address{
     width: 12%;
+    overflow-x: auto;
 }
 .order-container .order-bottom .order-bottom-bottom .order-class .order-pay{
     width: 12%;

@@ -34,7 +34,7 @@ const NavbarComponent = () => {
             <Link to={'/orders'}><li onClick={()=>(document.getElementById('nav-side').style.display='none')}><img id="side-content-img" src={assets.orderIcon} alt="" />Orders</li></Link>
             <Link to={'/revenue'}><li onClick={()=>(document.getElementById('nav-side').style.display='none')}><img id="side-content-img" src={assets.revenueIcon} alt="" />Revenue</li></Link>
           </ul>
-          <p><img onClick={()=>(setToken(false),toast.success('Logout Successful'))} id="side-logout-img" src={assets.logout} alt="" /></p>
+          <p><img onClick={()=>(localStorage.removeItem("token"),setToken(""),toast.success('Logout Successful'))} id="side-logout-img" src={assets.logout} alt="" /></p>
         </div>
         <div className="side-footer">
           <p><img onClick={()=>(document.getElementById('nav-side').style.display='none')} id="footer-img" src={assets.close} alt="" /></p>

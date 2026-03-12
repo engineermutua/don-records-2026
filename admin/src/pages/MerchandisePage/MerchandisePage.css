@@ -49,12 +49,32 @@
     overflow-x: auto;
 }
 .merchandise-container .merchandise-right .merchandise-right-content form .form-img{
-    justify-self: center;
+    width: 80%;
+    display: flex;
+    margin: 10px;
+    overflow-x: scroll;
+    border: 1px solid #000000;
+    padding: 10px;
+    border-style: dashed;
+    border-radius: 10px;
 }
+
 
 .merchandise-container .merchandise-right .merchandise-right-content form .form-class{
     margin: 10px;
     width: 80%;
+}
+
+.merchandise-container .merchandise-right .merchandise-right-content form .form-check{
+    display: flex;
+    margin: 10px;
+}
+.merchandise-container .merchandise-right .merchandise-right-content form .form-check input{
+    width:50px;
+
+}
+.merchandise-container .merchandise-right .merchandise-right-content form .form-check input:hover{
+    cursor: pointer;
 }
 .merchandise-container .merchandise-right .merchandise-right-content form .form-class input{
     width: 100%;
@@ -91,7 +111,8 @@
 }
 
 #prod-img{
-    width: 20%;
+    width: 100%;
+    margin: 10px;
 }
 #prod-img:hover{
     cursor: pointer;

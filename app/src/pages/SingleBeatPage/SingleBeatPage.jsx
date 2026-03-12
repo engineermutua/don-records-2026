@@ -4,6 +4,7 @@ import { assets, beats } from "../../assets/assets";
 import toast from "react-hot-toast";
 import "./SingleBeatPage.css";
 import { ShopContext } from '../../Context/ShopContext'
+import { useRef } from "react";
 
 
 const SingleBeatPage = () => {
@@ -12,6 +13,9 @@ const SingleBeatPage = () => {
   const {currency,addToCart}=useContext(ShopContext)
 
   const [beat, setBeat] = useState(false);
+
+  const audio_tag=useRef(null);
+
 
   const fetchBeat = async () => {
     try {
@@ -37,10 +41,17 @@ const SingleBeatPage = () => {
             <div className="single-beat-left-image">
               <img id="single-beat-left-img" src={beat.thumbnail} alt="" />
               <div className="single-beat-preview">
-                <audio controls preload="auto" autoPlay>
-                  <source src={beat.audio} type="audio/mpeg" />
-                  Your browser does not support the audio element.
-                </audio>
+                <audio 
+                  ref={audio_tag} 
+                  controls 
+                  preload="auto" 
+                  autoPlay
+                  controlsList="nodownload" 
+                  onContextMenu={(e) => e.preventDefault()}
+                  >
+                  <source src={beat?beat.audio:""} type="audio/mpeg" />
+                    Your browser does not support the audio element.
+                  </audio>
               </div>
               <div className="single-beat-left-details">
                 <h3>{beat.title} by <Link to={`/producer/${beat.producer}`}>@{beat.producer}</Link>{" "}

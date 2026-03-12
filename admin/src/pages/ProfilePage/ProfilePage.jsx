@@ -39,7 +39,7 @@ const ProfilePage = () => {
             <textarea name="" id=""  rows="4" placeholder='Bio'></textarea>
           </div>
           <div className="form-class-btn">
-            <button>Update</button>
+            <button onClick={()=>{toast.success('Feature under development.')}}>Update</button>
           </div>
         </form>
       </div>
