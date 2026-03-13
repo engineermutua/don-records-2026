@@ -12,6 +12,10 @@ const DashboardPage = () => {
 
   const [orders,setOrders]=useState([]);
 
+  const [beats,setBeats]=useState([])
+  const [merchandise,setMerchandise]=useState([])
+  const [blogs,setBlogs]=useState([])
+
   const {backend_url}=useContext(ManagementContext);
 
   useEffect(()=>{
@@ -42,6 +46,50 @@ const DashboardPage = () => {
         toast.error(error);
       }
     }
+    const fetchBeats=async()=>{
+      try {
+        const response=await axios.get(`${backend_url}/api/admin/beats`);
+        if(response.data.success){
+          setBeats(response.data.beats);
+        }else{
+          toast.error(response.data.message);
+        }
+        
+      } catch (error) {
+        toast.error(error);
+      }
+    }
+
+    const fetchMerchandise=async()=>{
+      try {
+        const response=await axios.get(`${backend_url}/api/admin/merchandise`);
+        if(response.data.success){
+          setMerchandise(response.data.merchandise);
+        }else{
+          toast.error(response.data.message);
+        }
+        
+      } catch (error) {
+        toast.error(error);
+      }
+    }
+
+    const fetchBlogs=async()=>{
+      try {
+        const response=await axios.get(`${backend_url}/api/admin/blogs`);
+        if(response.data.success){
+          setBlogs(response.data.blogs);
+        }else{
+          toast.error(response.data.message);
+        }
+        
+      } catch (error) {
+        toast.error(error);
+      }
+    }
+    fetchBeats();
+    fetchBlogs();
+    fetchMerchandise();
     fetchOrders();
     fetchUsers();
   },[users,backend_url])
@@ -66,7 +114,7 @@ const DashboardPage = () => {
             </div>
             <div className="dash-top-center-">
               <p>Total Orders</p>
-              <p>1000</p>
+              <p>{orders.length}</p>
             </div>
             
           </div>
@@ -76,7 +124,39 @@ const DashboardPage = () => {
             </div>
             <div className="dash-top-right-1">
               <p>Total Users</p>
-              <p>254</p>
+              <p>{users.length}</p>
+            </div>
+            
+          </div>
+        </div>
+        {/**/}
+        <div style={{marginTop:"20px"}} className="dash-top">
+          <div className="dash-top-left">
+            <div className="dash-top-left-2">
+              <img id='dash-img' src={assets.beatIcon} alt="" />
+            </div>
+            <div className="dash-top-left-1">
+              <p>Total Beats</p>
+              <p>{beats.length}</p>
+            </div>
+          </div>
+          <div className="dash-top-center">
+            <div className="dash-top-center-">
+              <img id='dash-img' src={assets.merch} alt="" />
+            </div>
+            <div className="dash-top-center-">
+              <p>Total Merchandise</p>
+              <p>{merchandise.length}</p>
+            </div>
+            
+          </div>
+          <div className="dash-top-right">
+            <div className="dash-top-right-1">
+              <img id='dash-img' src={assets.blog} alt="" />
+            </div>
+            <div className="dash-top-right-1">
+              <p>Total Blogs</p>
+              <p>{blogs.length}</p>
             </div>
             
           </div>
@@ -100,7 +180,7 @@ const DashboardPage = () => {
                     <p>{user.role}</p>
                     <p>{user.email}</p>
                   </div>
-                ))
+                )).slice(0,10)
               }
             </div>
           </div>
@@ -116,7 +196,7 @@ const DashboardPage = () => {
                     <p>{order.reference}</p>
                     <p>{}</p>
                   </div>
-                )).slice(0,3)
+                )).slice(0,10)
               }
             </div>
           </div>

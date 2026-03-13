@@ -446,5 +446,70 @@ const getProduct=async(req,res)=>{
     }
 }
 
+const getBlogs=async(req,res)=>{
+    try {
+        const blogs=await blogModel.find({});
+        if(!blogs){
+            res.json({
+                success:false,
+                message:"Could not fetch blogs"
+            })
+        }
+        res.json({
+            success:true,
+            message:"Blogs fetched successfully",
+            blogs
+        })
+    } catch (error) {
+        res.json({
+            success:false,
+            message:error.message
+        })
+    }
+}
 
-export {addMerchandise,addBeat,addBlog,adminLogin,deleteMerchandise,updateMerchandise,deleteBeat,deleteBlog,deleteUser,validateUser,fetchOrders,updateOrderStatus,getProduct}
+const getBeats=async(req,res)=>{
+    try {
+        const beats=await beatModel.find({});
+        if(!beats){
+            res.json({
+                success:false,
+                message:"Could not fetch beats"
+            })
+        }
+        res.json({
+            success:true,
+            message:"Beats fetched successfully",
+            beats
+        })
+    } catch (error) {
+        res.json({
+            success:false,
+            message:error.message
+        })
+    }
+}
+
+const getMerchandise=async(req,res)=>{
+    try {
+        const merchandise=await merchandiseModel.find({});
+        if(!merchandise){
+            res.json({
+                success:false,
+                message:"Could not fetch merchandise"
+            })
+        }
+        res.json({
+            success:true,
+            message:"Merchandise fetched successfully",
+            merchandise
+        })
+    } catch (error) {
+        res.json({
+            success:false,
+            message:error.message
+        })
+    }
+}
+
+export {addMerchandise,addBeat,addBlog,adminLogin,deleteMerchandise,updateMerchandise,deleteBeat,deleteBlog,deleteUser,validateUser,fetchOrders,updateOrderStatus,getProduct,getBeats,getBlogs,getMerchandise}

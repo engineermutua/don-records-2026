@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 const PortalPage = () => {
     const [role,setRole]=useState("producer");
-    const {username}=useContext(ShopContext);
+    const {user}=useContext(ShopContext);
   return (
     <>
     <div className="portal-container">
@@ -18,7 +18,7 @@ const PortalPage = () => {
         <div className="fan-portal">
             <div className="artist-portal-header">
                 <h1 onDoubleClick={()=>setRole("producer")} >Fan Dashboard</h1>
-                <p>Welcome back {username}</p>
+                <p>Welcome back {user}</p>
             </div>
         </div>
         </>
@@ -29,7 +29,7 @@ const PortalPage = () => {
         <div className="artist-portal">
              <div className="artist-portal-header">
                 <h1 onDoubleClick={()=>setRole("producer")} >Artist Dashboard</h1>
-                <p>Welcome back {username}</p>
+                <p>Welcome back {user}</p>
             </div>
 
             <div className="artist-portal-prod">
@@ -89,7 +89,7 @@ const PortalPage = () => {
         <div className="producer-portal">
             <div className="producer-portal-header">
                 <h1 onDoubleClick={()=>setRole("artist")}>Producer Dashboard</h1>
-                <p>Welcome back {username}</p>
+                <p>Welcome back {user}</p>
             </div>
             <div className="producer-portal-artists">
                 <div className="producer-artists-header">

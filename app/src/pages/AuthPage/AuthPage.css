@@ -50,12 +50,16 @@
     height: 200px;
     border-radius: 50%;
 }
+#user-avatar:hover{
+    cursor: pointer;
+}
 
 #avatar-class{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     justify-self: center;
+}
+
+#avatar-class:hover{
+    cursor: pointer;
 }
 
 /*

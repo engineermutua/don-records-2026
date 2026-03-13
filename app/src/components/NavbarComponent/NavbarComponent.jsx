@@ -4,14 +4,33 @@ import {assets} from '../../assets/assets.js'
 import { ShopContext } from '../../Context/ShopContext.jsx'
 import { Link, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
+import { useEffect } from 'react'
 
 const NavbarComponent = () => {
-    const {username,count}=useContext(ShopContext);
+    const {count,pic,user,backend_url}=useContext(ShopContext);
     const navigate=useNavigate();
     const [hover,setHover]=useState(false);
+    const [token,setToken]=useState(false);
     const navigateTo=(id)=>{
         document.getElementById(id)?.scrollIntoView({behavior:'smooth'})
     }
+
+
+    useEffect(()=>{
+        const fetchToken=async()=>{
+            try {
+                const resp=await localStorage.getItem("token");
+                if(resp){
+                    setToken(resp);
+                }
+                
+            } catch (error) {
+                console.log(error);
+                toast.error(error);
+            }
+        }
+        fetchToken();
+    },[])
 
   return (
     <>
@@ -45,8 +64,8 @@ const NavbarComponent = () => {
 
             </div>
             <div className="navbar-user">
-                <img onClick={()=>(navigate('/profile'))} id='nav-user-icon' src={assets.userIcon} alt="" />
-                <h4>{username}</h4>
+                <img onClick={()=>(navigate('/profile'))} id='nav-user-icon' src={pic?pic:assets.userIcon} alt="" />
+                <h4>{user?user:"user"}</h4>
             </div>
             <div className="navbar-dropdown">
                 <img onClick={()=>(setHover(!hover), document.getElementById('drop-down-hover').style.display=hover?'none':"block")} id='navbar-dropdown' src={assets.dropDownIcon} alt="" />
@@ -69,7 +88,13 @@ const NavbarComponent = () => {
                 <li onClick={()=>(navigate('/'), navigateTo('featured-producers-container'),document.getElementById('nav-sidemenu').style.display='none')}>Producers</li>
                 <li onClick={()=>(navigate('/'), navigateTo('hero-container'),document.getElementById('nav-sidemenu').style.display='none')}>FAQs</li>
                 <li onClick={()=>(navigate('/contactUs'),document.getElementById('nav-sidemenu').style.display='none')}>Contact Us</li>
-                <li onClick={()=>(navigate('/login'),document.getElementById('nav-sidemenu').style.display='none')}>Login</li>
+                {
+                    token
+                    ?
+                    <li onClick={()=>(localStorage.clear(), localStorage.removeItem("token"),document.getElementById('nav-sidemenu').style.display='none',navigate('/login'))}>Logout</li>
+                    :
+                    <li onClick={()=>(navigate('/login'),document.getElementById('nav-sidemenu').style.display='none')}>Login</li>
+                }
             </ul>
         </div>
         <div className="sidemenu-footer">
@@ -87,7 +112,7 @@ const NavbarComponent = () => {
                 <Link to='/profile'><li onClick={()=>(document.getElementById('drop-down-hover').style.display='none')}>User Profile</li></Link>
                 <Link to='/portal'><li onClick={()=>document.getElementById('drop-down-hover').style.display='none'} >Dashboard</li></Link> 
                 <hr/>
-                <li onClick={()=>(toast.success("Logged out Successfully"),document.getElementById('drop-down-hover').style.display='none',navigate('/login'))}>Logout</li>
+                <li onClick={()=>(localStorage.removeItem("token"),localStorage.removeItem("user"),localStorage.clear(), toast.success("Logged out Successfully"),document.getElementById('drop-down-hover').style.display='none',navigate('/login'))}>Logout</li>
             </ul>
         </div>
     </div>

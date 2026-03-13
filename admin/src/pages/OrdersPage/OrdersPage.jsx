@@ -121,6 +121,9 @@ const OrdersPage = () => {
               <b>Customer</b>
             </div>
             <div className="bottom-class">
+              <b>Phone</b>
+            </div>
+            <div className="bottom-class">
               <b>Address</b>
             </div>
             <div className="bottom-class">
@@ -153,7 +156,11 @@ const OrdersPage = () => {
                   <p>{order.reference}</p>
                 </div>
                 <div className="order-cust">
-                 <Link to={`/user/${order.userId}`}> <p>{order.userId}</p></Link>
+                 <Link to={`/user/${order.userId}`}> <p>{order.user.first_name} {order.user.last_name}</p></Link>
+                </div>
+
+                <div className="order-contact">
+                 <p>{order.user.phone}</p>
                 </div>
                 <div className="order-address">
                   <p>{order.address.county},{order.address.constituency},{order.address.ward}</p>
