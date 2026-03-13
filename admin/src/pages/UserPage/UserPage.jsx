@@ -1,4 +1,4 @@
-import React, {  useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./UserPage.css";
 import { useParams } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -14,6 +14,23 @@ const UserPage = () => {
   const [orders, setOrders] = useState([]);
   const [products, setProducts] = useState([]);
   const [beats, setBeats] = useState([]);
+  {/*
+  const fecthProduct = async (id) => {
+    try {
+      const response = await axios.post(
+        `${backend_url}/api/admin/product/${id}`,
+      );
+      if (response.data.success) {
+        setProduct(response.data.product);
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error);
+    }
+  };
+  */}
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -81,8 +98,17 @@ const UserPage = () => {
               <img id="avatar" src={user.avatar} alt="" />
             </div>
             <div className="user-details">
+              <div className="user-det-left">
+                <p> <b>Username</b> </p>
+                <p><b>Full Names</b></p>
+                <p><b>Contact</b></p>
+                <p><b>Email Address</b></p>
+                <p><b>User Role</b></p>
+                
+              </div>
+              <div className="user-det-right">
               <p>
-                <b>Username:</b> {user.username}
+                 {user.username}
               </p>
               <p>
                 {user.first_name} {user.last_name}
@@ -90,19 +116,18 @@ const UserPage = () => {
               <p>{user.phone}</p>
               <p>{user.email}</p>
               <p>
-                <b>Role:</b> {user.role}
+                {user.role}
               </p>
+              </div>
             </div>
           </div>
 
           {/*----------------------User Bottom-------------------*/}
           <div className="user-bottom">
-            <hr></hr>
             <div className="header">
               <h1>Orders</h1>
             </div>
-            <hr />
-            <div className="orders-container">
+            <div id="orders-container" className="orders-container">
               {orders.map((order) => (
                 <div key={order._id} className="order-container">
                   <div className="order-items">
@@ -111,26 +136,78 @@ const UserPage = () => {
                         if (o.id === product._id) {
                           return (
                             <>
-                              <p>{product.title}</p>
-                              <p>{product.price}</p>
+                            <div key={o.id} className="merch-class">
+                              <h3>Merchandise</h3>
+                              <div className="product-img">
+                                <img
+                                  id="product-img"
+                                  src={product.image[0]}
+                                  alt=""
+                                />
+                                <img
+                                  id="product-img"
+                                  src={product.image[1]}
+                                  alt=""
+                                />
+                              </div>
+                              <div className="product-details">
+                                <hr />
+                                <label htmlFor="title">
+                                  {" "}
+                                  <b>Title</b>{" "}
+                                </label>
+                                <p>{product.title}</p>
+                                <hr />
+                                <label htmlFor="title">
+                                  {" "}
+                                  <b>Price</b>{" "}
+                                </label>
+                                <p>{product.price}</p>
+                                <hr />
+                                <label htmlFor="title">
+                                  {" "}
+                                  <b>Description</b>{" "}
+                                </label>
+                                <p>{product.description}</p>
+                                <hr />
+                              </div>
+                              </div>
                             </>
                           );
-                        }      
-                    }),
-                    ) &&
-                      beats.map((beat) =>
-                        order.items.map((o) => {
-                          if (o.id === beat._id) {
-                            return (
-                              <>
-                                <p>{beat.title}</p>
-                                <p>{beat.price}</p>
-                              </>
-                            );
-                          }
-                        }),
-                      )}
+                        }
+                      }),
+                    )}
+                    {beats.map((b) => 
+                      order.items.map((o) => {
+                        if (o.id === b._id) {
+                          return (
+                            <>
+                            <div key={o.id} className="beat-class">
+                              <h3>Beats</h3>
+                              <div className="beat-image">
+                                <img id="product-img" src={b.thumbnail} alt="" />
+                              </div>
+                              <div className="beat-title">
+                                <hr/>
+                                <label htmlFor="price"> <b>Price</b></label>
+                                <p>{b.price}</p>
+                                <hr/>
+                              </div>
+
+                              <div className="beat description">
+                                <hr/>
+                                <label htmlFor="description"><b>Description</b></label>
+                                <p>{b.description}</p>
+                                <hr/>
+                              </div>
+                            </div>
+                            </>
+                          );
+                        }
+                      })
+                    )}
                   </div>
+
                   <div className="order-method">
                     <p>{order.paymentMethod}</p>
                   </div>

@@ -111,11 +111,11 @@ const loginUser = async (req, res) => {
 
 const updateProfile = async (req, res) => {
   try {
-    const { fname, lname, email, phone, bio, password } = req.body;
+    const { fname, lname, username, email, phone, bio, latest_project } = req.body;
 
     const { userId } = req.params;
 
-    const user = await userModel.findById({ userId });
+    const user = await userModel.findById({ _id:userId });
 
     if (!req.files) {
       res.json({
@@ -130,8 +130,6 @@ const updateProfile = async (req, res) => {
 
     const image_url = await result.secure_url;
 
-    const salt=await bcrypt.genSalt(10);
-    const hash=await bcrypt.hash(password,salt);
 
     const updated_user = await userModel.findByIdAndUpdate(userId, {
       avatar: image_url,
@@ -139,8 +137,9 @@ const updateProfile = async (req, res) => {
       last_name: lname,
       email: email,
       phone: phone,
+      username:username,
+      latest_project:latest_project,
       bio: bio,
-      password: hash
     })
 
     if (!updated_user) {
@@ -153,6 +152,7 @@ const updateProfile = async (req, res) => {
     res.json({
       success: true,
       message: 'Profile updated successfully',
+      user
     });
 
   } catch (error) {
@@ -615,14 +615,17 @@ const placeOrder = async (req, res) => {
   try {
     const { userId, items, amount, address, reference,paymentStatus,paymentMethod } = req.body;
 
+    const user=await userModel.findById({_id:userId});
+
     const new_order = await new orderModel({
       userId,
+      user,
       items,
       amount,
       address,
       reference,
-      paymentStatus:false,
-      paymentMethod:"cash on delivery"
+      paymentStatus,
+      paymentMethod
     });
 
     const order = await new_order.save();

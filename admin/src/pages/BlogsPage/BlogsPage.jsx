@@ -91,7 +91,7 @@ const BlogsPage = () => {
                       <p>Title: {product.title}</p>
                     </div>
                     <div className="merch-quantity">
-                      <p>Descr: {product.description}</p>
+                      <p>{product.tags}</p>
                     </div>
                     <div className="merch-price">
                       <p> {product.isFeatured ?"Featured":"Not featured"}</p>

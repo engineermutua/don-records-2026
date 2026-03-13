@@ -3,6 +3,12 @@ import './FooterComponent.css'
 import { assets } from '../../assets/assets'
 import { Link, useNavigate } from 'react-router-dom'
 import {toast} from 'react-hot-toast'
+import { useContext } from 'react'
+import {ShopContext} from '../../Context/ShopContext.jsx'
+import axios from 'axios'
+import { useState } from 'react'
+
+
 const FooterComponent = () => {
   const navigate=useNavigate()
   const getYear=()=>{
@@ -11,13 +17,21 @@ const FooterComponent = () => {
     
   }
   const admin_url=import.meta.env.VITE_ADMIN_URL;
+  const {backend_url}=useContext(ShopContext)
+  const [email,setEmail]=useState("");
   const navigateTo=(id)=>{
         document.getElementById(id)?.scrollIntoView({behavior:'smooth'})
     }
 
-    const handleSubmit=(e)=>{
+    const handleSubmit=async(e)=>{
+      e.preventDefault();
       try {
-        e.preventDefault();
+        const response=await axios.post(`${backend_url}/api/user/subscribe`,{email},);
+        if(response.data.success){
+          toast.success(response.data.message);
+        }else{
+          toast.error("You are already a subscriber.");
+        } 
       } catch (error) {
         toast.error(error)
       }
@@ -71,8 +85,8 @@ const FooterComponent = () => {
         </div>
         <div className="footer-right-form">
           <form onSubmit={handleSubmit} method='post'>
-            <input type="email" name="" id="" placeholder='Email Address' required/><br/>
-            <button onClick={()=>toast.success('Thank you for subscribing.')}>Subscribe</button>
+            <input type="email" name="" id="" value={email} onChange={(e)=>(setEmail(e.target.value))} placeholder='Email Address' required/><br/>
+            <button type='submit'>Subscribe</button>
           </form>
         </div>
       </div>

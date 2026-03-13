@@ -3,20 +3,27 @@
 }
 .user-page .user-container{
     display: flex;
-    flex-direction:column;
+    justify-content: space-around;
     margin: 15px;
 }
 
-.user-page .user-container .user-top{
-    display: flex;
-    align-items: center;
-    gap: 30px;
+.user-page .user-container .user-top .user-details{
+  display: flex;
 }
+
+
 .user-page .user-container .user-top .user-details p{
     font-size: x-large;
     margin: 10px;
-    background-color: #F1F4F9;
     padding: 10px;
+    border-radius: 5px;
+}
+.user-page .user-container .user-top .user-details .user-det-left p{
+    font-size: x-large;
+    margin: 10px;
+    background-color: #FFFFFF;
+    padding: 10px;
+    border-radius: 5px;
 }
 .user-page .user-container {
     overflow: auto;
@@ -25,7 +32,10 @@
     margin-top: 20px;
 }
 .user-page .user-container .user-bottom .header{
-    background-color: gray;
+    background-color: #C0C0C0;
+    text-align: center;
+    border-radius: 5px;
+
 }
 .user-page .user-container .user-bottom .orders-container{
     display: flex;
@@ -33,7 +43,15 @@
     overflow: auto;
 }
 #avatar{
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
+    width: 400px;
+    margin-left: 20px;
+}
+
+#product-img{
+    width: 100px;
+}
+
+#orders-container{
+    height: 70vh;
+    overflow-y: auto;
 }
