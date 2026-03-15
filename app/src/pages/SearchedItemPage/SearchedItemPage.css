@@ -101,3 +101,142 @@
     width: 300px;
     border-radius: 10px;
 }
+
+@media (max-width:430px) and (min-width:100px) {
+.searched-container{
+    padding: 5px;
+    overflow-x: hidden;
+}
+
+.searched-container .searched-results{
+    margin-top:60px;
+}
+.searched-container .searched-item{
+    display: grid;
+    gap: 1rem;
+    width: 330px;
+    padding: 10px;
+}
+
+.searched-header{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.searched-container .searched-item-details p{
+    margin: 20px 0;
+}
+
+
+.searched-related .searched-related-header{
+    margin: 10px 0;
+}
+
+.searched-item{
+    margin: 10px 0;
+}
+
+
+
+.searched-related .beat-related{
+    width: 100%;
+}
+
+.searched-related .beat-related .beat-related-thumbnail img{
+    width: 50px;
+    border-radius: 5px;
+}
+.beat-related-title{
+    display: none
+}
+
+#beat-related-cart{
+    width: 20px;
+}
+
+#verified-mark{
+    width: 10px;
+}
+.beat-related-producer{
+    cursor: pointer;
+}
+
+#searched-cart{
+    width: 50px;
+    margin: 20px 0;
+}
+#searched-item-image{
+    width:290px;
+}
+}
+
+@media (max-width:1000px) and (min-width:431px) {
+.searched-container{
+    padding: 5px;
+    overflow-x: hidden;
+}
+
+.searched-container .searched-results{
+    margin-top:60px;
+}
+.searched-container .searched-item{
+    display: grid;
+    gap: 1rem;
+    width: 330px;
+    padding: 10px;
+}
+
+.searched-header{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.searched-container .searched-item-details p{
+    margin: 20px 0;
+}
+
+
+.searched-related .searched-related-header{
+    margin: 10px 0;
+}
+
+.searched-item{
+    margin: 10px 0;
+}
+
+.searched-related .beat-related{
+    width: 100%;
+}
+.searched-conta{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    overflow-x: auto;
+}
+.searched-related .beat-related .beat-related-thumbnail img{
+    width: 50px;
+    border-radius: 5px;
+}
+.beat-related-title{
+    display: none
+}
+
+#beat-related-cart{
+    width: 20px;
+}
+
+#verified-mark{
+    width: 10px;
+}
+.beat-related-producer{
+    cursor: pointer;
+}
+
+#searched-cart{
+    width: 50px;
+    margin: 20px 0;
+}
+#searched-item-image{
+    width:290px;
+}
+}

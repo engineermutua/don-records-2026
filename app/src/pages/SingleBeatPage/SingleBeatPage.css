@@ -99,3 +99,62 @@ a{
     width: 15px;
     height: 15px;
 }
+
+@media (max-width:765px) and (min-width:100px) {
+.single-beat-container{
+    padding: 5px;
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+.single-beat{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    margin-top: 70px;
+    gap: 1rem;
+}
+.single-beat-left{
+    gap: 1rem;
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.single-beat-left #single-beat-left-verify{
+    width: 12px;
+    position: relative;
+    top: 2px;
+}
+
+.single-beat-left .single-beat-preview{
+    width: 100%;
+    margin-top: 10px;
+}
+
+.single-beat-left .single-beat-preview audio{
+    width: 100%;
+}
+
+.single-beat-right{
+   max-width: 100%;
+}
+
+.single-beat-right .single-beat-right-header{
+ padding: 10px;
+ text-align: center;
+}
+
+.similar-beat-right{
+    display: flex;
+    overflow-x: scroll;
+    padding: 5px;
+}
+
+#single-beat-related-verify{
+    width: 12px;
+    height: 12px;
+    position: relative;
+    top: 4px;
+}    
+}

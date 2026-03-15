@@ -63,3 +63,24 @@
     }
     
 }
+
+@media (max-width:765px) and (min-width:100px) {
+.featured-artists-container{
+    padding: 5px;
+}
+
+.featured-artists-profile .featured-artist .featured-artist-image{
+    padding: 2px;
+    margin: 1px 10px;
+}
+
+.featured-artists-profile .featured-artist .featured-artist-image img{
+    width: 100px;
+    height: 100px;
+}
+
+.featured-artists-profile .featured-artist .featured-artist-detail img{
+    width: 12px;
+    top: 2px;
+}
+}

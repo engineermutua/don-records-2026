@@ -1,11 +1,30 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './FeaturedBlogsComponent.css'
 import TitleComponent from '../TitleComponent/TitleComponent'
 import { Link } from 'react-router-dom'
 import { ShopContext } from '../../Context/ShopContext'
+import axios from 'axios'
 
 const FeaturedBlogsComponent = () => {
-    const {blogs}=useContext(ShopContext);
+    const {backend_url}=useContext(ShopContext);
+    const [blogs,setBlogs]=useState([]);
+
+    useEffect(()=>{
+        const fetchBlogs=async()=>{
+            try {
+                const response=await axios.get(`${backend_url}/api/user/blogs`);
+                if(response.data.success){
+                    setBlogs(response.data.blogs);
+                }else{
+                    console.log(response.data.message);
+                }
+            } catch (error) {
+                console.log(error);
+                
+            }
+        }
+        fetchBlogs();
+    },[blogs,backend_url])
   return (
     <>
     <div className="featured-blogs-container">

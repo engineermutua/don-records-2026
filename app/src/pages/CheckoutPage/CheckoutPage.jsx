@@ -1,14 +1,60 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './CheckoutPage.css'
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-import {assets} from '../../assets/assets.js'
+import { ShopContext } from "../../Context/ShopContext";
+import axios from 'axios'
 
 const CheckoutPage = () => {
     const [mpesa,setMpesa]=useState(false);
     const [paypal,setPaypal]=useState(false);
     const [cod,setCod]=useState(true);
     const navigate=useNavigate();
+    const [cartData, setCartData] = useState([]);
+  const [products,setProducts]=useState([]);
+  const {
+    currency,
+    cartItems,
+    getCartAmount,
+    backend_url
+  } = useContext(ShopContext);
+  
+
+  useEffect(()=>{
+    const fetchProducts=async()=>{
+      try {
+        const response=await axios.get(`${backend_url}/api/user/products`);
+        if(response.data.success){
+          setProducts(response.data.products)
+        }else{
+          console.log(response.data.message);
+        }
+      } catch (error) {
+        console.log(error);
+        
+      }
+    }
+    fetchProducts()
+  },[products,backend_url])
+
+  useEffect(() => {    
+    if (products.merchandise && Object.keys(cartItems).length > 0) {
+      const tempData = [];
+
+      for (const productId in cartItems) {
+        if (cartItems[productId] > 0) {
+          tempData.push({
+            _id: productId,
+            quantity: cartItems[productId],
+          });
+          
+        }
+      }
+      setCartData(tempData);
+    }
+
+    
+  }, [cartItems, products]);
   return (
     <>
     <div className="checkout-container">
@@ -42,19 +88,37 @@ const CheckoutPage = () => {
         </div>
         {/*---------------------------------*/}
         <div className="checkout-right">
-            <h1>Your Order</h1>
-            <div className="checkout-right-order">
-                <div className="checkout-right-order-img">
-                    <img id='checkout-right-order-img' src={assets.product5} alt="" />
-                </div>
-                <div className="checkout-right-order-details">
-                    <p>Shirt</p>
-                    <p>Kes 5,000</p>
-                </div>
+            <h1>Your Orders</h1>
+            <div id='checkout-right-items' className="checkout-right-items">
+            
+             {
+                cartData.map((item, index) => {
+                const product =
+                products.merchandise.find(
+                    (product) => product._id === item._id,
+                ) || products.beats.find((product) => product._id === item._id);              
+
+                return (
+                    <>
+                    <div key={index} className="checkout-right-order">
+                        <div className="checkout-right-order-img">
+                            <img id='checkout-right-order-img' src={product.image || product.thumbnail} alt="" />
+                        </div>
+                        <div  className="checkout-right-order-details">
+                            <p>{product.title}</p>
+                            <p>{currency} {product.price}</p>
+                        </div>
+                    </div>
+                    
+                    </>
+                    )
+                    
+                }  
+            )} 
             </div>
 
-            <hr />
-            <p>Subtotal: kes 5,000</p>
+             <hr/>   
+            <p>Subtotal: {currency} {getCartAmount()}</p>
             <hr />
 
             <div className="checkout-right-payment">

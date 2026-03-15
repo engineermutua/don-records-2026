@@ -1,20 +1,39 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './FeaturedArtistsComponents.css'
 import TitleComponent from '../TitleComponent/TitleComponent'
 import {  assets } from '../../assets/assets'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { ShopContext } from '../../Context/ShopContext'
+import axios from 'axios'
 
 const FeaturedArtistsComponents = () => {
-    const {users}=useContext(ShopContext);
+    const {backend_url}=useContext(ShopContext);
+    const [artists,setArtists]=useState([]);
+
+    useEffect(()=>{
+        const fetchArtists=async()=>{
+            try {
+                const response=await axios.get(`${backend_url}/api/user/artists`);
+                if(response.data.success){
+                    setArtists(response.data.artists);
+                }else{
+                    console.log(response.data.message);
+                }
+                
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        fetchArtists();
+    },[artists,backend_url])
   return (
     <>
     <div id='featured-artists-container' className="featured-artists-container">
         <TitleComponent title="Feature Artists"/>
         <div className="featured-artists-profile">
             {
-                users.map((artist)=>(
+                artists.map((artist)=>(
                     artist.role==="artist" && artist.isFeatured?
                     <>
                     <div key={artist._id} className="featured-artist">

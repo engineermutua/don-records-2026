@@ -17,3 +17,20 @@
 .above-footer-container p img:hover{
     cursor: pointer;
 }
+
+@media (max-width:765px) and (min-width:100px) {
+.above-footer-container{
+    padding: 5px;
+    overflow-x: auto;
+    padding-top:50px;
+    
+}
+
+.above-footer-container p img{
+    width: 50px;
+}
+
+.above-footer-container h2{
+    font-size: 10px;
+}
+}

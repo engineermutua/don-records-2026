@@ -7,7 +7,7 @@ import toast from 'react-hot-toast'
 import { useEffect } from 'react'
 
 const NavbarComponent = () => {
-    const {count,pic,user,backend_url}=useContext(ShopContext);
+    const {getCartCount,pic,user}=useContext(ShopContext);
     const navigate=useNavigate();
     const [hover,setHover]=useState(false);
     const [token,setToken]=useState(false);
@@ -53,10 +53,10 @@ const NavbarComponent = () => {
             <div className="navbar-cart">
                 <img onClick={()=>navigate('/cart')} id='nav-cart-icon' src={assets.cartIcon} alt="" />
                 {
-                    count>0
+                    getCartCount()>0
                     ?
                     <div id='nav-cart-count' className="nav-cart-count">
-                        <p>{count}</p> 
+                        <p>{getCartCount()}</p> 
                     </div>
                     :
                     <></>

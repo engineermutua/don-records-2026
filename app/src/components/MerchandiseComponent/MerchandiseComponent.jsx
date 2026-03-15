@@ -1,13 +1,31 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './MerchandiseComponent.css'
 import TitleComponent from '../TitleComponent/TitleComponent'
 import { assets } from '../../assets/assets'
 import { ShopContext } from '../../Context/ShopContext'
 import { Link } from 'react-router-dom'
 import toast from 'react-hot-toast'
+import axios from 'axios'
 
 const MerchandiseComponent = () => {
-    const {currency,addToCart,merchandise}=useContext(ShopContext);
+    const {currency,addToCart,backend_url}=useContext(ShopContext);
+        const [merchandise,setMerchandise]=useState([]);
+        useEffect(()=>{
+            const fetchMerchandise=async()=>{
+                try {
+                    const response=await axios.get(`${backend_url}/api/user/merchandise`);
+                    if(response.data.success){
+                        setMerchandise(response.data.merchandise);
+                    }else(
+                        console.log(response.data.message)
+                    );
+                } catch (error) {
+                    console.log(error);
+                    
+                }
+            }
+            fetchMerchandise();
+        },[merchandise,backend_url])
   return (
     <>
     <div id='featured-merchandise-container' className="featured-merchandise-container">

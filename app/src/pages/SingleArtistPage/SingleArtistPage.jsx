@@ -12,8 +12,6 @@ const SingleArtistPage = () => {
   const [artist, setArtist] = useState(false);
   const {backend_url}=useContext(ShopContext)
 
-  
-
   useEffect(() => {
     const fetchArtist = async () => {
     try {

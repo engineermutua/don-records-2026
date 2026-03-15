@@ -1,9 +1,10 @@
 import express from 'express'
 import upload from '../middleware/multer.js';
-import { addToCart, artist, beat, blog, clearCart, contact, fetchArtists, fetchBeats, fetchBlogs, fetchMerchandise, fetchProducers, fetchUsers, getCart, loginUser, merchandise, myOrders, placeOrder, producer, registerUser, searchBeat, subscribe, updateCart, updateProfile, user } from '../controllers/userController.js';
+import { addToCart, artist, beat, blog, clearCart, contact, fetchArtists, fetchBeats, fetchBlogs, fetchMerchandise, fetchProducers, fetchProducts, fetchUsers, getCart, loginUser, merchandise, myOrders, placeOrder, producer, registerUser, searchBeat, subscribe, updateCart, updateProfile, user } from '../controllers/userController.js';
 import authUser from '../middleware/auth.js';
 import generateToken from '../middleware/mpesa.js';
 import {handleSTKPush,callbackMpesa} from '../controllers/mpesaController.js';
+import { paypalPayment, cancelPayment, handlePayment } from '../controllers/paypalController.js';
 
 const userRouter=express.Router();
 
@@ -26,16 +27,23 @@ userRouter.post('/user/:userId',user);
 userRouter.post('/subscribe',subscribe);
 userRouter.post('/search',searchBeat);
 userRouter.post('/contact',contact);
+userRouter.get('/products',fetchProducts);
 //Cart
-userRouter.post('/add',addToCart);
-userRouter.post('/update',updateCart);
-userRouter.post('/cart',getCart);
-userRouter.post('/clear',clearCart);
+userRouter.post('/addToCart',authUser,addToCart);
+userRouter.post('/updatecart',authUser,updateCart);
+userRouter.post('/cart',authUser,getCart);
+userRouter.post('/clear',authUser,clearCart);
 //Orders
 userRouter.post('/order',placeOrder);
 userRouter.post('/orders',myOrders);
+//mpesa
 userRouter.post('/lipa',generateToken,handleSTKPush)
 userRouter.post('/callback-mpesa',callbackMpesa)
+
+//paypal
+userRouter.post('/paypal',paypalPayment);
+userRouter.get('/paypalSuccess',handlePayment);
+userRouter.get('/paypalCancel',cancelPayment);
 
 
 export default userRouter;

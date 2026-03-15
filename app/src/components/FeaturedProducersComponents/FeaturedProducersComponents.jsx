@@ -1,20 +1,39 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './FeaturedProducersComponents.css'
 import TitleComponent from '../TitleComponent/TitleComponent'
 import { assets } from '../../assets/assets'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { ShopContext } from '../../Context/ShopContext'
+import axios from 'axios'
 
 const FeaturedProducersComponents = () => {
-    const {users}=useContext(ShopContext);
+    const {users,backend_url}=useContext(ShopContext);
+    const [producers,setProducers]=useState([]);
+
+    useEffect(()=>{
+        const fetchProducers=async()=>{
+            try {
+                const response=await axios.get(`${backend_url}/api/user/producers`);
+                if(response.data.success){
+                    setProducers(response.data.producers);
+                }else{
+                    console.log(response.data.message);
+                }
+                
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        fetchProducers();
+    },[producers,backend_url])
   return (
     <>
     <div  id='featured-producers-container' className="featured-producers-container">
         <TitleComponent title="Featured Producers"/>
         <div className="featured-producers">
             {
-                users.map((producer)=>(
+                producers.map((producer)=>(
                     producer.role==="producer" && producer.isFeatured ?
                     <>
                     <div key={producer._id} className="featured-producer">

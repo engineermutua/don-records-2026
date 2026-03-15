@@ -108,9 +108,9 @@ const SingleProducerPage = () => {
           </div>
 
           <div className="single-producer-right-frame">
-            <h1>Latest Beat Or Project</h1>
+            <h2>Latest Beat Or Project</h2>
             <iframe
-              src={producer.embedded_link}
+              src={producer.latest_project}
               frameBorder="0"
               title="Latest Song"
               width="600"

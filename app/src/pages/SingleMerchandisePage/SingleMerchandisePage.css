@@ -84,3 +84,38 @@
     color: #000000;
 }
 
+@media (max-width:765px) and (min-width:100px) {
+.single-merchandise-container{
+    padding: 5px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.single-merchandise-container .single-merchandise{
+    margin-top: 70px;
+    width: 100%;
+    display: flex;
+}
+
+.single-merchandise-container .single-merchandise .single-merchandise-image{
+    padding: 5px;
+}
+
+.single-merchandise-container .single-merch-related{
+    margin-top: 20px;
+    width: 100%;
+}
+
+.single-merchandise-container .single-merch-related .single-merch-related-header{
+    padding: 10px;
+    font-size: 12px;
+}
+
+.single-merchandise-container .single-merch-related .single-merch{
+    padding: 5px;
+}
+.single-merchandise-container .single-merch-related .single-merch .single-m{
+    margin: 2px;
+}
+}

@@ -10,8 +10,9 @@ const SingleBlogPage = () => {
   const { id } = useParams();
 
   const [blog, setBlog] = useState({});
+  const [blogs, setBlogs] = useState([]);
 
-  const { backend_url,blogs } = useContext(ShopContext);
+  const { backend_url } = useContext(ShopContext);
 
   useEffect(() => {
     const fetchBlog = async () => {
@@ -30,7 +31,22 @@ const SingleBlogPage = () => {
     fetchBlog();
   }, [id, blog, backend_url]);
 
- 
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const response = await axios.get(`${backend_url}/api/user/blogs`);
+        if (response.data.success) {
+          setBlogs(response.data.blogs);
+        } else {
+          console.log(response.data.message);
+        }
+      } catch (error) {
+        toast.error(error);
+      }
+    };
+    fetchBlogs();
+  }, [blogs, backend_url]);
+
 
   return (
     <>
@@ -60,7 +76,7 @@ const SingleBlogPage = () => {
             <img src={blog.image} alt="" />
           </div>
           <div className="single-blog-title">
-            <h1>{blog.title}</h1>
+            <h3>{blog.title}</h3>
           </div>
           <div className="single-blog-description">
             <p>{blog.description}</p>
@@ -80,14 +96,16 @@ const SingleBlogPage = () => {
                     {" "}
                     <img
                       id="related-blog-image"
-                      onClick={() => window.location.reload()}
                       src={blo.image}
                       alt=""
                     />
                   </Link>
                 </div>
                 <div className="related-blog-details">
-                  <h1>{blo.title}</h1>
+                  <h6>{blo.title}</h6>
+                </div>
+                <div className="related-blog-description">
+                  <h6>{blo.description}</h6>
                 </div>
               </div>
             ))}

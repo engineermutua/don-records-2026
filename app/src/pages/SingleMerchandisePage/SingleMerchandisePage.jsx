@@ -9,7 +9,8 @@ import axios from "axios";
 const SingleMerchandisePage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(false);
-  const { currency,addToCart,backend_url,merchandise } = useContext(ShopContext);
+  const [merchandise,setMerchandise]=useState([]);
+  const { currency,addToCart,backend_url} = useContext(ShopContext);
   
   useEffect(() => {
     const fetchProduct = async () => {
@@ -27,6 +28,23 @@ const SingleMerchandisePage = () => {
   }
     fetchProduct();
   }, [id, product,backend_url]);
+
+
+  useEffect(() => {
+    const fetchMerchandise = async () => {
+    try {
+      const response=await axios.get(`${backend_url}/api/user/merchandise`)
+      if(response.data.success){
+        setMerchandise(response.data.merchandise);
+      }else{
+        console.log(response.data.message);
+      }
+    } catch (error) {
+      toast.error(error);
+    }
+  }
+    fetchMerchandise();
+  }, [merchandise,backend_url]);
 
   return (
     <>

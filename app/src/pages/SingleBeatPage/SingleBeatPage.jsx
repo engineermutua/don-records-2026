@@ -9,9 +9,29 @@ import axios from "axios";
 const SingleBeatPage = () => {
   const { id } = useParams();
 
-  const { currency, addToCart, backend_url,beats } = useContext(ShopContext);
+  const { currency, addToCart, backend_url } = useContext(ShopContext);
 
   const [beat, setBeat] = useState({});
+
+  const [beats, setBeats] = useState([]);
+
+  useEffect(()=>{
+    const fetchBeats=async()=>{
+      try {
+        const response=await axios.get(`${backend_url}/api/user/beats`);
+        if(response.data.success){
+          setBeats(response.data.beats);
+        }else{
+          console.log(response.data.message);
+          
+        }
+      } catch (error) {
+        console.log(error);
+        
+      }
+    }
+    fetchBeats()
+  },[beats,backend_url])
 
 
   useEffect(() => {

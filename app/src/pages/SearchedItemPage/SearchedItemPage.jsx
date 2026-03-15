@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./SearchedItemPage.css";
-import { assets, beats } from "../../assets/assets";
+import { assets } from "../../assets/assets";
 import { ShopContext } from "../../Context/ShopContext";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -28,6 +28,26 @@ const SearchedItemPage = () => {
     }
     navigate(`/searchResults/${term}`);
   };
+
+  const [beats, setBeats] = useState([]);
+
+  useEffect(()=>{
+    const fetchBeats=async()=>{
+      try {
+        const response=await axios.get(`${backend_url}/api/user/beats`);
+        if(response.data.success){
+          setBeats(response.data.beats);
+        }else{
+          console.log(response.data.message);
+          
+        }
+      } catch (error) {
+        console.log(error);
+        
+      }
+    }
+    fetchBeats()
+  },[beats,backend_url])
   return (
     <>
       <div className="searched-container">
@@ -45,6 +65,7 @@ const SearchedItemPage = () => {
           <div className="searched-header">
             <h3>Search results for {search} </h3>
           </div>
+          <div className="searched-conta">
           {searched.length > 1 ? (
             searched.map((beat) => (
               <div className="searched-item">
@@ -83,6 +104,7 @@ const SearchedItemPage = () => {
               <p>No Beats Found</p>
             </>
           )}
+          </div>
 
           <div className="searched-related">
             <div className="searched-related-header">

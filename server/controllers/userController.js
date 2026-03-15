@@ -13,7 +13,7 @@ import dayjs from "dayjs";
 
 
 const createToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "1h" });
+  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "90d" });
 };
 
 const registerUser = async (req, res) => {
@@ -486,9 +486,8 @@ const searchBeat = async (req, res) => {
 
 const addToCart = async (req, res) => {
   try {
-    const { userId, productId } = req.body;
+    const { userId,productId } = req.body;
 
-    console.log(productId);
 
     const user = await userModel.findById({ _id: userId });
 
@@ -566,7 +565,7 @@ const updateCart = async (req, res) => {
 const getCart = async (req, res) => {
   try {
     const { userId } = req.body;
-    const user = await userModel.findById({ _id: userId });
+    const user = await userModel.findById({ _id:userId });
     if (!user) {
       res.json({
         success: false,
@@ -751,6 +750,30 @@ const deleteOrder=async(req,res)=>{
   }
 }
 
+const fetchProducts=async(req,res)=>{
+  try {
+    const [merchandise,beats]=await Promise.all([
+      merchandiseModel.find({}),
+      beatModel.find({})
+    ]);
+
+    const products={
+      merchandise,
+      beats
+    }
+    res.json({
+      success:true,
+      message:"Products Fetched Successfully",
+      products
+    })
+    
+  } catch (error) {
+    res.json({
+      success: false,
+      message: error.message,
+    });
+  }
+}
 
 
 
@@ -780,4 +803,5 @@ export {
   user,
   contact,
   deleteOrder,
+  fetchProducts
 };

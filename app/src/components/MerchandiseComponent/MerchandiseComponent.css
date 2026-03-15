@@ -2,11 +2,11 @@
     background-color: #282828;
     color: #FAF9F6;
     padding: 10px;
-    overflow: hidden;
 }
 
 .featured-merchandise{
     display: flex;
+    overflow-x: auto;
 }
 
 .featured-merchandise .featured-merch .featured-merch-image img{
@@ -37,4 +37,31 @@
 
 .featured-merch-detail1 h4{
     margin-bottom: 10px;
+}
+
+
+@media (max-width:765px) and (min-width:100px) {
+.featured-merchandise-container{
+    padding: 5px;
+}
+
+.featured-merchandise{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.featured-merchandise .featured-merch .featured-merch-image img{
+    height: 250px;
+}
+#featured-merch-cart{
+    max-width: 40%;
+    padding-right: 10px;
+}
+.featured-merch-details{
+    padding: 5px;
+}
+.featured-merch-detail1 h4{
+    margin-bottom: 10px;
+}
+ 
 }

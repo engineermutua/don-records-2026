@@ -30,14 +30,14 @@ const AuthPage = () => {
     try {
       if(login){
         const response=await axios.post(`${backend_url}/api/user/login`,{email,password},)
-        console.log(response);
-        
         if(response.data.success){
           setUserId(response.data.user._id);
           localStorage.setItem("user",response.data.user._id)
-  
-          setToken(response.data.token);
-          localStorage.setItem("token",response.data.token);
+          let token=localStorage.getItem("token");
+          if(!token){
+            setToken(response.data.token);
+            localStorage.setItem("token",response.data.token);
+          }
           toast.success(response.data.message);
           navigate('/')
         }else{
