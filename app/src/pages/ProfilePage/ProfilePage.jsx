@@ -15,13 +15,13 @@ const ProfilePage = () => {
   const [uId, setUid] = useState("");
 
   const [avatar, setAvatar] = useState(false);
-  const [fname, setFname] = useState(user.first_name);
-  const [lname, setLname] = useState(user.last_name);
-  const [email, setEmail] = useState(user.email);
-  const [username, setUSername] = useState(user.username);
-  const [phone, setPhone] = useState(user.phone);
-  const [bio, setBio] = useState(user.bio);
-  const [latestProject, setLatestProject] = useState(user.latest_project);
+  const [latestProject, setLatestProject] = useState("");
+  const [instagram, setInstagram] = useState("");
+  const [spotify, setSpotify] = useState("");
+  const [itunes, setItunes] = useState("");
+  const [youtube, setYoutube] = useState("");
+  const [whatsapp, setWhatsapp] = useState("");
+  const [bio, setBio] = useState("");
 
   const navigate = useNavigate();
 
@@ -32,11 +32,12 @@ const ProfilePage = () => {
       avatar
         ? formData.append("avatar", avatar)
         : formData.append("avatar", "");
-      formData.append("fname", fname);
-      formData.append("lname", lname);
-      formData.append("email", email);
-      formData.append("phone", phone);
-      formData.append("username", username);
+      formData.append("latest_project", latestProject);
+      formData.append("instagram", instagram);
+      formData.append("spotify", spotify);
+      formData.append("itunes", itunes);
+      formData.append("youtube", youtube);
+      formData.append("whatsapp", whatsapp);
       formData.append("bio", bio);
 
       const response = await axios.post(
@@ -64,7 +65,6 @@ const ProfilePage = () => {
         }
       } catch (error) {
         console.log(error);
-        toast.error(error);
       }
     };
     fetchToken();
@@ -86,11 +86,10 @@ const ProfilePage = () => {
         }
       } catch (error) {
         console.log(error);
-        toast.error(error);
       }
     };
     fetchUser();
-  }, [user, backend_url]);
+  }, [user, backend_url,uId]);
   return (
     <>
       <div className="profile-container">
@@ -122,81 +121,76 @@ const ProfilePage = () => {
           <div className="profile-right-form">
             <form onSubmit={handleSubmit}>
               <div className="input-class">
-                <input
-                  type="text"
-                  name=""
-                  id=""
-                  value={fname}
-                  onChange={(e) => setFname(e.target.value)}
-                  placeholder={user.first_name}
-                  required
-                />
-                <input
-                  type="text"
-                  name=""
-                  id=""
-                  value={lname}
-                  onChange={(e) => setLname(e.target.value)}
-                  placeholder={user.last_name}
-                  required
-                />
-              </div>
-              <div className="input-class">
-                <input
-                  type="email"
-                  name=""
-                  id=""
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder={user.email}
-                  required
-                />
-              </div>
-              <div className="input-class">
-                <input
-                  type="text"
-                  name=""
-                  id=""
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  placeholder={user.phone}
-                  required
-                />
-                <input
-                  type="text"
-                  name=""
-                  id=""
-                  value={username}
-                  onChange={(e) => setUSername(e.target.value)}
-                  placeholder={user.username}
-                  required
-                />
-              </div>
-              <div className="input-class">
+                <label htmlFor="lp">Latest project(Embedded Link)</label>
                 <input
                   type="text"
                   name=""
                   id=""
                   value={latestProject}
                   onChange={(e) => setLatestProject(e.target.value)}
-                  placeholder={
-                    user.latest_project !== ""
-                      ? user.latest_project
-                      : "Latest project"
-                  }
+                  placeholder={user.latest_project}
+                  required
+                />
+                <label htmlFor="ig">Instagram</label>
+                <input
+                  type="text"
+                  name=""
+                  id=""
+                  value={instagram}
+                  onChange={(e) => setInstagram(e.target.value)}
+                  placeholder={user.instagram}
                   required
                 />
               </div>
               <div className="input-class">
-                <textarea
-                  rows={5}
+                <label htmlFor="spotify">Spotify</label>
+                <input
+                  type="text"
                   name=""
                   id=""
-                  value={bio}
-                  onChange={(e) => setBio(e.target.value)}
-                  placeholder={user.bio}
+                  value={spotify}
+                  onChange={(e) => setSpotify(e.target.value)}
+                  placeholder={user.spotify}
                   required
-                ></textarea>
+                />
+              </div>
+              <div className="input-class">
+                <label htmlFor="itunes">Itunes</label>
+                <input
+                  type="text"
+                  name=""
+                  id=""
+                  value={itunes}
+                  onChange={(e) => setItunes(e.target.value)}
+                  placeholder={user.itunes}
+                  required
+                />
+                <label htmlFor="youtube">YouTube</label>
+                <input
+                  type="text"
+                  name=""
+                  id=""
+                  value={youtube}
+                  onChange={(e) => setYoutube(e.target.value)}
+                  placeholder={user.youtube}
+                  required
+                />
+              </div>
+              <div className="input-class">
+                <label htmlFor="whatsapp">Whatsapp</label>
+                <input
+                  type="text"
+                  name=""
+                  id=""
+                  value={whatsapp}
+                  onChange={(e) => setWhatsapp(e.target.value)}
+                  placeholder={user.whatsapp}
+                  required
+                />
+              </div>
+              <div className="input-class">
+                <label htmlFor="bio">BIO</label>
+                <textarea name="" rows={5} id="" value={bio} onChange={(e)=>setBio(e.target.value)} placeholder={user.bio}></textarea>
               </div>
               <div className="input-btn">
                 <button type="submit">Change</button>

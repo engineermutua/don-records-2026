@@ -2,27 +2,31 @@ import React, { useEffect, useState } from "react";
 import "./SingleArtistPage.css";
 import { Link, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
-import { artists, assets } from "../../assets/assets";
+import { assets } from "../../assets/assets";
+import axios from 'axios'
+import { useContext } from "react";
+import { ShopContext } from "../../Context/ShopContext";
 
 const SingleArtistPage = () => {
   const { username } = useParams();
   const [artist, setArtist] = useState(false);
+  const {backend_url}=useContext(ShopContext)
 
-  const fetchArtist = async () => {
+  useEffect(() => {
+    const fetchArtist = async () => {
     try {
-      artists.map((art) => {
-        if (art.name === username) {
-          setArtist(art);
-        }
-      });
+      const response=await axios.post(`${backend_url}/api/user/artist/${username}`);
+      if(response.data.success){
+        setArtist(response.data.artist);
+      }else{
+        toast.error(response.data.message);
+      }
     } catch (error) {
       toast.error(error);
     }
-  };
-
-  useEffect(() => {
+  }
     fetchArtist();
-  }, [username, artist]);
+  }, [username, artist,backend_url]);
   return (
     <>
       <div className="single-artist-container">
@@ -33,7 +37,7 @@ const SingleArtistPage = () => {
           </div>
           <div className="single-artist-details">
             <h4>
-              {artist.name}{" "}
+              {artist.username}{" "}
               <img
                 id="single-artist-verify"
                 src={assets.blueCheckMark}
@@ -43,7 +47,7 @@ const SingleArtistPage = () => {
             <div className="single-artist-button">
               <button
                 onClick={() =>
-                  toast.success(`Started Following ${artist.name}`)
+                  toast.success(`Started Following ${artist.username}`)
                 }
               >
                 Follow
@@ -84,8 +88,8 @@ const SingleArtistPage = () => {
           <div className="single-artist-right-frame">
             <h1>Latest Song</h1>
             <iframe
-              src={artist.embedded_link}
-              frameborder="0"
+              src={artist.latest_project}
+              frameBorder="0"
               title="Latest Song"
               width="600"
               height="400"

@@ -64,3 +64,32 @@
     }
     
 }
+
+
+@media (max-width:765px) and (min-width:100px) {
+.featured-producers-container{
+    padding: 5px;
+}
+
+
+.featured-producer{
+    padding: 2px;
+}
+
+.featured-producers .featured-producer .featured-producer-image{
+    border-radius: 100px;
+    padding: 2px;
+    margin: 1px 5px;
+}
+
+.featured-producers .featured-producer .featured-producer-image img{
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+}
+
+.featured-producers .featured-producer .featured-producer-details p img{
+    width: 12px;
+    top: 2px;
+}  
+}

@@ -67,3 +67,25 @@
 .profile-right .profile-right-form form button:hover{
     cursor: pointer;
 }
+
+@media (max-width:500px) and (min-width:100px) {
+.profile-container{
+    padding-bottom: 50px;
+    flex-direction: column;
+    gap: 1px;
+}
+.profile-left{
+    margin-top: 60px;
+}
+.profile-left .profile-left-avatar{
+    max-width: 100%;
+    justify-self: center;
+}
+
+
+.profile-right{
+    margin-top: 10px;
+    width: 100%;
+}
+ 
+}

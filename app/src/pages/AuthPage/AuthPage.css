@@ -62,6 +62,24 @@
     cursor: pointer;
 }
 
+@media (max-width:765px) and (min-width:100px) {
+.register-container{
+    padding: 5px;
+    width: 100%;
+    padding-bottom: 20px;
+}
+.register-container .register-form{
+    margin-top: 80px;
+    width: 100%;
+}
+
+#user-avatar{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}  
+}
+
 /*
 black
   #000000 - 1

@@ -2,27 +2,33 @@ import React, { useEffect, useState } from "react";
 import "./SingleProducerPage.css";
 import { Link, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
-import { assets, producers } from "../../assets/assets.js";
+import { assets } from "../../assets/assets.js";
+import axios from "axios";
+import { useContext } from "react";
+import { ShopContext } from "../../Context/ShopContext.jsx";
 
 const SingleProducerPage = () => {
-  const { username } = useParams();
+  const { username} = useParams();
+  const {backend_url}=useContext(ShopContext);
   const [producer, setproducer] = useState(false);
 
-  const fetchproducer = async () => {
-    try {
-      producers.map((prod) => {
-        if (prod.name === username) {
-          setproducer(prod);
-        }
-      });
-    } catch (error) {
-      toast.error(error);
-    }
-  };
-
   useEffect(() => {
+    const fetchproducer = async () => {
+      try {
+        const response = await axios.post(
+          `${backend_url}/api/user/producer/${username}`,
+        );        
+        if (response.data.success) {
+          setproducer(response.data.producer);
+        } else {
+          toast.error(response.data.message);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
     fetchproducer();
-  }, [username, producer]);
+  }, [username, producer, backend_url]);
   return (
     <>
       <div className="single-producer-container">
@@ -33,7 +39,7 @@ const SingleProducerPage = () => {
           </div>
           <div className="single-producer-details">
             <h4>
-              {producer.name}{" "}
+              {producer.username}{" "}
               <img
                 id="single-producer-verify"
                 src={assets.goldCheckMark}
@@ -43,7 +49,7 @@ const SingleProducerPage = () => {
             <div className="single-producer-button">
               <button
                 onClick={() =>
-                  toast.success(`Started Following ${producer.name}`)
+                  toast.success(`Started Following ${producer.username}`)
                 }
               >
                 Follow
@@ -102,10 +108,10 @@ const SingleProducerPage = () => {
           </div>
 
           <div className="single-producer-right-frame">
-            <h1>Latest Beat Or Project</h1>
+            <h2>Latest Beat Or Project</h2>
             <iframe
-              src={producer.embedded_link}
-              frameborder="0"
+              src={producer.latest_project}
+              frameBorder="0"
               title="Latest Song"
               width="600"
               height="400"

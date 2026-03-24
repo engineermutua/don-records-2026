@@ -36,6 +36,22 @@ const UsersPage = () => {
     }
   }
 
+  const featureUser=async(id)=>{
+    try {
+      const response=await axios.post(`${backend_url}/api/admin/feature/${id}`);
+      if(response.data.success){
+        toast("User has been featured")
+      }else{
+        toast.error("Could not Feature user.")
+        console.log(response.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error)
+      
+    }
+  }
+
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -133,6 +149,7 @@ const UsersPage = () => {
                   </div>
                   <div className="user-act">
                     <img onClick={()=>validateUser(user._id)} id="user-act" src={user.isVerified?assets.approve:assets.approved} alt="" />
+                    <img id="user-act" onClick={()=>(featureUser(user._id))} src={user.isFeatured?assets.featured:assets.feature} alt="" />
                     <img onClick={()=>deleteUser(user._id)} id="user-act" src={assets.deleteI} alt="" />
                    {/* <img id="user-act" src={assets.edit} alt="" />*/}
                   </div>

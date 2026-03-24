@@ -1,13 +1,31 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './BeatsComponent.css'
 import TitleComponent from '../TitleComponent/TitleComponent'
-import { assets, beats } from '../../assets/assets'
+import { assets } from '../../assets/assets'
 import { ShopContext } from '../../Context/ShopContext'
 import { Link } from 'react-router-dom'
 import toast from 'react-hot-toast'
+import axios from 'axios'
 
 const BeatsComponent = () => {
-    const {currency,addToCart}=useContext(ShopContext);
+    const {currency,addToCart,backend_url}=useContext(ShopContext);
+    const [beats,setBeats]=useState([]);
+    useEffect(()=>{
+        const fetchBeats=async()=>{
+            try {
+                const response=await axios.get(`${backend_url}/api/user/beats`);
+                if(response.data.success){
+                    setBeats(response.data.beats);
+                }else(
+                    console.log(response.data.message)
+                );
+            } catch (error) {
+                console.log(error);
+                
+            }
+        }
+        fetchBeats();
+    },[beats,backend_url])
   return (
     <>
     <div id='beats-component-container' className="beats-component-container">
@@ -15,12 +33,12 @@ const BeatsComponent = () => {
         <div className="featured-beats-container">
             {
                 beats.map((beat)=>(
-                    beat.featured?
+                    beat.isFeatured?
                     <>
-                    <div className="featured-beat">
-                        <div key={beat._id} className="featured-beat-container">
+                    <div key={beat._id} className="featured-beat">
+                        <div  className="featured-beat-container">
                             <div className="featured-beat-thumbnail">
-                               <Link to={`/beat/${beat._id}`}><img src={beat.thumbnail} alt="" /></Link> 
+                               <Link to={`/beat/${beat._id}`}><img src={beat.thumbnail} alt="thumbnail" /></Link> 
                             </div>
                             
                             <div className="featured-beat-details">
@@ -36,11 +54,11 @@ const BeatsComponent = () => {
                         <div className="featured-beat-producer">
                           <Link to={`/producer/${beat.producer}`}> <p>@{beat.producer}<img id='featured-beat-checkmark' src={assets.goldCheckMark}  alt="" /> </p></Link> 
                         </div>
-                        </div>
+                    </div>
                     </>
                     :
                     <>
-                    <p>No Featured beats</p>
+                    
                     </>
                     
                 ))

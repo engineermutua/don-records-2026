@@ -25,6 +25,8 @@ import approve from './check-mark.png'
 import approved from './check-mark1.png'
 import search from './magnifying-glass.png'
 import fileI from './music-file.png'
+import featured from './premium-account.png'
+import feature from './premium-account1.png'
 
 export const assets={
     sideIcon,
@@ -51,7 +53,9 @@ export const assets={
     approve,
     approved,
     search,
-    fileI
+    fileI,
+    feature,
+    featured
 }
 
 export const products=[

@@ -372,6 +372,34 @@ const validateUser=async(req,res)=>{
     }
 }
 
+
+
+const featureUser=async(req,res)=>{
+    try {
+        const {userId}=req.params;
+        const user=await userModel.findByIdAndUpdate(userId,{isFeatured:true});
+        if(!user){
+            res.json({
+                success:false,
+                message:"Could not find user"
+            });
+        }
+
+        res.json({
+            success:true,
+            message:"User has been Featured",
+            user
+        });
+        
+    } catch (error) {
+        res.json({
+            success:false,
+            message:error.message
+        })
+    }
+}
+ 
+
 const fetchOrders=async(req,res)=>{
     try {
         const orders=await orderModel.find({});
@@ -512,4 +540,4 @@ const getMerchandise=async(req,res)=>{
     }
 }
 
-export {addMerchandise,addBeat,addBlog,adminLogin,deleteMerchandise,updateMerchandise,deleteBeat,deleteBlog,deleteUser,validateUser,fetchOrders,updateOrderStatus,getProduct,getBeats,getBlogs,getMerchandise}
+export {addMerchandise,addBeat,addBlog,adminLogin,deleteMerchandise,updateMerchandise,deleteBeat,deleteBlog,deleteUser,validateUser,fetchOrders,updateOrderStatus,getProduct,getBeats,getBlogs,getMerchandise,featureUser}

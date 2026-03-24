@@ -1,46 +1,52 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./SingleBlogPage.css";
 import { Link, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
-import { assets, blogs } from "../../assets/assets.js";
+import { assets } from "../../assets/assets.js";
+import axios from "axios";
+import { ShopContext } from "../../Context/ShopContext.jsx";
 
 const SingleBlogPage = () => {
   const { id } = useParams();
 
-  const date = new Date();
+  const [blog, setBlog] = useState({});
+  const [blogs, setBlogs] = useState([]);
 
-  const [blog, setBlog] = useState(false);
-
-  const fetchBlog =async() => {
-    try {
-      blogs.map((b) => {
-        if(b._id === id) {
-          setBlog(b);
-          console.log(b);
-        }
-      });
-    } catch (error) {
-      toast.error(error);
-    }
-  };
+  const { backend_url } = useContext(ShopContext);
 
   useEffect(() => {
+    const fetchBlog = async () => {
+      try {
+        const response = await axios.post(`${backend_url}/api/user/blog/${id}`);
+        if (response.data.success) {
+          setBlog(response.data.blog);
+        } else {
+          console.log(response.data.message);
+          toast(response.data.message);
+        }
+      } catch (error) {
+        toast.error(error);
+      }
+    };
     fetchBlog();
-  }, [id]);
+  }, [id, blog, backend_url]);
 
-  const container=document.querySelector('.related-blogs');
-  const scrollSpeed=2;
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const response = await axios.get(`${backend_url}/api/user/blogs`);
+        if (response.data.success) {
+          setBlogs(response.data.blogs);
+        } else {
+          console.log(response.data.message);
+        }
+      } catch (error) {
+        toast.error(error);
+      }
+    };
+    fetchBlogs();
+  }, [blogs, backend_url]);
 
-  function autoScroll() {
-  if (container.scrollLeft >= (container.scrollWidth - container.clientWidth)) {
-    container.scrollLeft = 0;
-  } else {
-    container.scrollLeft += scrollSpeed;
-  }
-}
-
-// Set interval for speed (e.g., 30ms)
-setInterval(autoScroll, 30);
 
   return (
     <>
@@ -48,48 +54,64 @@ setInterval(autoScroll, 30);
         <div className="single-blog">
           <div className="single-blog-header">
             <p>
-              Created on {date.getDate()}/{date.getMonth()}/
-              {date.getUTCFullYear()} at {date.getHours() - 12}:
-              {date.getMinutes()}
-              {date.getHours() > 12 ? "PM" : "Am"}
+              Created on {new Date(blog.createdAt).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
             </p>
-           <Link to={`/producer/${blog.author}`}><p>@{blog.author} <img id="verified" src={blog.featured ? assets.goldCheckMark : ""} alt="" /> </p></Link> 
+            <Link to={`/producer/the_don`}>
+              <p>
+                @the_don{" "}
+                <img
+                  id="verified"
+                  src={blog.isFeatured ? assets.goldCheckMark : ""}
+                  alt=""
+                />{" "}
+              </p>
+            </Link>
           </div>
 
           <div className="single-blog-image">
-            <img src={blog.images} alt="" />
+            <img src={blog.image} alt="" />
           </div>
           <div className="single-blog-title">
-            <h1>{blog.title}</h1>
+            <h3>{blog.title}</h3>
           </div>
           <div className="single-blog-description">
             <p>{blog.description}</p>
           </div>
         </div>
         {/*--------------Related Blogs---------------*/}
-        <hr style={{marginBottom:"10px"}}/>
+        <hr style={{ marginBottom: "10px" }} />
         <div className="single-blog-related">
-        <div className="related-blogs-header">
+          <div className="related-blogs-header">
             <h1>You Might Like</h1>
-        </div>
-        <div className="related-blogs">
-            {
-                blogs.map((blo)=>(
-                    <div key={blo._id} className="related-blog">
-                        <div className="related-blog-image">
-                          <Link to={`/blog/${blo._id}`}> <img id="related-blog-image" onClick={()=>window.location.reload()} src={blo.images[0]} alt="" /></Link> 
-                        </div>
-                        <div className="related-blog-details">
-                            <h1>{blo.title}</h1>
-                        </div>
-                    </div>
-                ))
-            }
+          </div>
+          <div className="related-blogs">
+            {blogs.map((blo) => (
+              <div key={blo._id} className="related-blog">
+                <div className="related-blog-image">
+                  <Link to={`/blog/${blo._id}`}>
+                    {" "}
+                    <img
+                      id="related-blog-image"
+                      src={blo.image}
+                      alt=""
+                    />
+                  </Link>
+                </div>
+                <div className="related-blog-details">
+                  <h6>{blo.title}</h6>
+                </div>
+                <div className="related-blog-description">
+                  <h6>{blo.description}</h6>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-      </div>
-
-      
     </>
   );
 };

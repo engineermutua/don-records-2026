@@ -8,9 +8,12 @@ import blogModel from "../models/blogModel.js";
 import subscriberModel from "../models/subscriberModel.js";
 import orderModel from "../models/orderModel.js";
 import nodemailer from 'nodemailer'
+import axios from "axios";
+import dayjs from "dayjs";
+
 
 const createToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "1h" });
+  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "90d" });
 };
 
 const registerUser = async (req, res) => {
@@ -111,7 +114,7 @@ const loginUser = async (req, res) => {
 
 const updateProfile = async (req, res) => {
   try {
-    const { fname, lname, username, email, phone, bio, latest_project } = req.body;
+    const { latest_project, instagram, spotify, itunes, youtube, bio, whatsapp } = req.body;
 
     const { userId } = req.params;
 
@@ -132,13 +135,13 @@ const updateProfile = async (req, res) => {
 
 
     const updated_user = await userModel.findByIdAndUpdate(userId, {
-      avatar: image_url,
-      first_name: fname,
-      last_name: lname,
-      email: email,
-      phone: phone,
-      username:username,
+      avatar: image_url?image_url:user.avatar,
       latest_project:latest_project,
+      instagram:instagram,
+      spotify:spotify,
+      itunes:itunes,
+      youtube:youtube,
+      whatsapp:whatsapp,
       bio: bio,
     })
 
@@ -315,7 +318,7 @@ const artist = async (req, res) => {
   try {
     const { artistId } = req.params;
 
-    const artist = await userModel.findById({ _id: artistId });
+    const artist = await userModel.findOne({ username: artistId });
 
     if (!artist) {
       res.json({
@@ -359,7 +362,7 @@ const producer = async (req, res) => {
   try {
     const { producerId } = req.params;
 
-    const producer = await userModel.findById({ _id: producerId });
+    const producer = await userModel.findOne({ username: producerId });
 
     if (!producer) {
       res.json({
@@ -483,9 +486,8 @@ const searchBeat = async (req, res) => {
 
 const addToCart = async (req, res) => {
   try {
-    const { userId, productId } = req.body;
+    const { userId,productId } = req.body;
 
-    console.log(productId);
 
     const user = await userModel.findById({ _id: userId });
 
@@ -563,7 +565,7 @@ const updateCart = async (req, res) => {
 const getCart = async (req, res) => {
   try {
     const { userId } = req.body;
-    const user = await userModel.findById({ _id: userId });
+    const user = await userModel.findById({ _id:userId });
     if (!user) {
       res.json({
         success: false,
@@ -748,6 +750,33 @@ const deleteOrder=async(req,res)=>{
   }
 }
 
+const fetchProducts=async(req,res)=>{
+  try {
+    const [merchandise,beats]=await Promise.all([
+      merchandiseModel.find({}),
+      beatModel.find({})
+    ]);
+
+    const products={
+      merchandise,
+      beats
+    }
+    res.json({
+      success:true,
+      message:"Products Fetched Successfully",
+      products
+    })
+    
+  } catch (error) {
+    res.json({
+      success: false,
+      message: error.message,
+    });
+  }
+}
+
+
+
 export {
   registerUser,
   loginUser,
@@ -773,5 +802,6 @@ export {
   producer,
   user,
   contact,
-  deleteOrder
+  deleteOrder,
+  fetchProducts
 };

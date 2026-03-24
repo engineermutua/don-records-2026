@@ -97,3 +97,43 @@
  text-decoration: none;
  color: #FAF9F6;
 }
+
+@media (max-width:765px) and (min-width:100px) {
+.footer-container{
+    flex-direction: column-reverse;
+    padding: 5px;  
+    gap: 1rem; 
+}
+
+.footer-container .footer-left{
+    margin-top: 10px;
+    width: 100%;
+}
+
+.footer-container .footer-left .footer-left-links{
+    display: flex;
+    gap:0.8rem;
+}
+
+.footer-container .footer-left .footer-left-links img{
+    width: 35px;
+}
+
+.footer-container .footer-center{
+    width: 100%;
+
+}
+
+.footer-container .footer-right{
+    width: 100%;
+}
+
+.footer-right form input{
+    width: 100%;
+}
+
+.footer-right form button{
+    width: 100%;
+
+} 
+}

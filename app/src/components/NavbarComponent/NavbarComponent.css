@@ -160,6 +160,7 @@
 #nav-cart-count{
     position: relative;
     left: 18px;
+    align-content: center;
     bottom: 18px;
     background-color: #FF0000;
     width: 15px;
@@ -175,6 +176,71 @@
 #nav-user-icon{
     border-radius: 100px;
 }
+
+/*---------------------Mobile screens-------------------------*/
+@media (max-width:768px){
+.drop-down-hover{
+    right: 5px;
+    margin-top: 5px;
+}
+}
+
+@media (max-width:430px) and (min-width:100px) {
+.navbar-container .navbar-left .navbar-logo{
+    margin-left: 1px;
+    word-spacing: 5px;
+    letter-spacing: 2px;
+}
+
+.navbar-container .navbar-left .navbar-logo h1{
+    font-size: 30px;
+}
+
+.navbar-container .navbar-right{
+    display: flex;
+    gap: 1rem;
+}
+
+.navbar-container .navbar-right .navbar-user h4{
+    display: none;
+    
+}
+
+.nav-sidemenu{
+    width: 200px;
+}
+
+.nav-sidemenu .sidemenu-footer{
+    width: 200px;
+}
+
+
+.nav-sidemenu .sidemenu-list ul li{
+    margin: 20px 5px;
+}
+
+#nav-cart-count{
+    align-content: center;
+}
+
+#nav-user-icon{
+    border-radius: 100px;
+}
+.drop-down-hover{
+    z-index: 1000;
+    position: fixed;
+    right: 5px;
+    margin-top: 5px;
+    width: 250px;
+    height: fit-content;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #C0C0C0;
+    display: none;
+}
+    
+}
+
 /*
 black
 	#000000 - 1

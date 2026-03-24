@@ -117,6 +117,29 @@
 }
 }
 
+
+/*---------------------Mobile screens-------------------------*/
+
+@media (max-width:765px) and (min-width:100px) {
+.hero-container{
+    margin-top: 50px;
+}
+
+.hero-container .hero-explore button{
+    padding: 10px 100px;
+}
+
+.hero-container .hero-search-bar{
+    top: 35%;
+    width: 90%;
+}
+
+.hero-container .hero-search-bar form input{
+    width: 100%;
+}
+   
+}
+
 /*
 black
 	#000000 - 1

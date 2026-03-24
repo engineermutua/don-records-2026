@@ -1,37 +1,70 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './OrderPage.css'
 import {assets} from '../../assets/assets.js'
+import { ShopContext } from "../../Context/ShopContext";
+import axios from 'axios'
 
 const OrderPage = () => {
 
   const date=new Date();
+  const {backend_url,token,products}=useContext(ShopContext);
+  const [orders,setOrders]=useState([]);
+
+  useEffect(()=>{
+    const fetchOrders=async()=>{
+      try {
+        const response=await axios.post(`${backend_url}/api/user/orders`,{},{headers:{token}})
+        if(response.data.success){
+          setOrders(response.data.orders)
+        }else{
+          console.log(response.data.message);
+        } 
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchOrders()
+  },[orders,backend_url,token])
   return (
     <>
     <div className="order-container">
         <div className="order-container-header">
           <h1>Your Orders</h1>
         </div>
-        <div className="order-box">
+        {
+          orders.map((order)=>(
+        <div key={order._id} className="order-box">
           <div className="order-box-header">
-            <p><b>Order:</b> #78U65RT8y6</p>
-            <p><b>Date</b> {0}{date.getDay()}/{0}{date.getMonth()}/{date.getFullYear()}</p>
+            <p><b>Order:</b>{order.reference}</p>
+            <p><b>Date</b> {new Date(order.createdAt).toLocaleDateString("en-US", {year: "numeric", month: "long", day: "numeric", })}{" "}</p>
           </div>
           <hr />
-          <div className="order-item">
-            <div className="order-item-img">
-              <img id='order-item-img' src={assets.product5} alt="" />
+          {
+            order.items.map((item)=>{
+              const orderInfo=(products.merchandise?.find((product)=>product._id===item._id) || products.beats?.find((product)=>product._id===item._id));    
+              return(
+               <div key={orderInfo._id} className="order-item" id='order-item'>
+                <div className="order-item-img">
+                  <img id='order-item-img' src={orderInfo.image || orderInfo.thumbnail} alt="" />
+                </div>
+                <div className="order-item-title">
+                  <p>{orderInfo.title}</p>
+                </div>
+                <div className="order-item-status">
+                  <p>Order Placed</p>
+                </div>
+                <div className="order-item-expected">
+                  <p>Expceted by <b>{new Date(order.createdAt).toLocaleDateString("en-US", {year: "numeric", month: "long", day: "numeric", })}{" "}</b></p>
+                </div>
             </div>
-            <div className="order-item-title">
-              <p>Gaza Shirt</p>
-            </div>
-            <div className="order-item-status">
-              <p>Order Placed</p>
-            </div>
-            <div className="order-item-expected">
-              <p>Expceted by <b>{date.getDay()+7}/{0}{date.getMonth()}/{date.getFullYear()}</b></p>
-            </div>
-          </div>
+              )
+            })
+          }
+
+          
         </div>
+          ))
+        }
     </div>
     </>
   )

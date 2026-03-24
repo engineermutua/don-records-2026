@@ -1,37 +1,57 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { assets, beats } from "../../assets/assets";
+import { assets } from "../../assets/assets";
 import toast from "react-hot-toast";
 import "./SingleBeatPage.css";
-import { ShopContext } from '../../Context/ShopContext'
-import { useRef } from "react";
-
+import { ShopContext } from "../../Context/ShopContext";
+import axios from "axios";
 
 const SingleBeatPage = () => {
   const { id } = useParams();
 
-  const {currency,addToCart}=useContext(ShopContext)
+  const { currency, addToCart, backend_url } = useContext(ShopContext);
 
-  const [beat, setBeat] = useState(false);
+  const [beat, setBeat] = useState({});
 
-  const audio_tag=useRef(null);
+  const [beats, setBeats] = useState([]);
 
-
-  const fetchBeat = async () => {
-    try {
-      beats.map((beat) => {
-        if (beat._id === id) {
-          setBeat(beat);
+  useEffect(()=>{
+    const fetchBeats=async()=>{
+      try {
+        const response=await axios.get(`${backend_url}/api/user/beats`);
+        if(response.data.success){
+          setBeats(response.data.beats);
+        }else{
+          console.log(response.data.message);
+          
         }
-      });
-    } catch (error) {
-      toast.error(error);
+      } catch (error) {
+        console.log(error);
+        
+      }
     }
-  };
+    fetchBeats()
+  },[beats,backend_url])
+
 
   useEffect(() => {
+    const fetchBeat = async () => {
+      try {
+        const response = await axios.post(`${backend_url}/api/user/beat/${id}`);
+        if(response.data.success){
+          setBeat(response.data.beat);
+        }else{
+          toast(response.data.message);
+          console.log(response.data.message);
+          
+        }
+      } catch (error) {
+        toast.error(error);
+        console.log(error);
+      }
+    };
     fetchBeat();
-  }, [id, beat]);
+  }, [id, beat,backend_url]);
   return (
     <>
       <div className="single-beat-container">
@@ -41,32 +61,39 @@ const SingleBeatPage = () => {
             <div className="single-beat-left-image">
               <img id="single-beat-left-img" src={beat.thumbnail} alt="" />
               <div className="single-beat-preview">
-                <audio 
-                  ref={audio_tag} 
-                  controls 
-                  preload="auto" 
-                  autoPlay
-                  controlsList="nodownload" 
-                  onContextMenu={(e) => e.preventDefault()}
+                <audio
+                    controls
+                    preload="auto"
+                    controlsList="nodownload"
+                    onContextMenu={(e) => e.preventDefault()}
                   >
-                  <source src={beat?beat.audio:""} type="audio/mpeg" />
+                    <source src={beat.audio} type="audio/mpeg" />
+                    <source src={beat.audio} type="audio/ogg"/>
                     Your browser does not support the audio element.
                   </audio>
               </div>
               <div className="single-beat-left-details">
-                <h3>{beat.title} by <Link to={`/producer/${beat.producer}`}>@{beat.producer}</Link>{" "}
+                <h3>
+                  {beat.title} by{" "}
+                  <Link to={`/producer/${beat.producer}`}>
+                    @{beat.producer}
+                  </Link>{" "}
                   <img
                     id="single-beat-left-verify"
                     src={assets.goldCheckMark}
                     alt=""
                   />{" "}
                 </h3>
-                
-                
-                <b>{currency} {beat.price}</b>
+
+                <b>
+                  {currency} {beat.price}
+                </b>
                 <div className="cart-img">
                   <img
-                    onClick={()=>(addToCart(beat._id),toast.success(`${beat.title} added to cart`))}
+                    onClick={() => (
+                      addToCart(beat._id),
+                      toast.success(`${beat.title} added to cart`)
+                    )}
                     id="single-beat-left-cart"
                     src={assets.blackCart}
                     alt=""
@@ -87,7 +114,17 @@ const SingleBeatPage = () => {
                     <img src={beat.thumbnail} alt="" />
                   </Link>
                   <p>{beat.title}</p>
-                 <Link to={`/producer/${beat.producer}`}> <p>@{beat.producer} <img id="single-beat-related-verify" src={assets.goldCheckMark} alt=""/></p></Link>
+                  <Link to={`/producer/${beat.producer}`}>
+                    {" "}
+                    <p>
+                      @{beat.producer}{" "}
+                      <img
+                        id="single-beat-related-verify"
+                        src={assets.goldCheckMark}
+                        alt=""
+                      />
+                    </p>
+                  </Link>
                 </div>
               ))}
             </div>

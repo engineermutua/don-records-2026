@@ -7,6 +7,7 @@
 .featured-beats-container{
     display: flex;
     gap: 1rem;
+    overflow-x: auto;
 }
 .featured-beat-container{
     border: 1px solid #C0C0C0;
@@ -46,4 +47,31 @@
     color: #FAF9F6;
 }
 
+@media (max-width:765px) and (min-width:100px) {
+ .beats-component-container{
+    padding: 5px;
+}
+.featured-beats-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.featured-beat-container{
+    border: 0.5px solid #C0C0C0;
+    border-style: dashed;
+    padding: 5px;
+}
+
+.featured-beat-producer{
+    display: none;
+}
+
+#featured-beat-cart-image{
+    max-width: 30%;
+} 
+
+#featured-beat-checkmark{
+    max-width: 12px;
+    top: 2px;
+}  
+}
 

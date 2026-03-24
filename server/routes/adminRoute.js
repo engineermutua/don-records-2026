@@ -1,5 +1,5 @@
 import express from 'express'
-import { addBeat, addBlog, addMerchandise, adminLogin, deleteBeat, deleteBlog, deleteMerchandise, deleteUser, fetchOrders, getBeats, getBlogs, getMerchandise, getProduct, updateMerchandise, updateOrderStatus, validateUser } from '../controllers/adminController.js';
+import { addBeat, addBlog, addMerchandise, adminLogin, deleteBeat, deleteBlog, deleteMerchandise, deleteUser, featureUser, fetchOrders, getBeats, getBlogs, getMerchandise, getProduct, updateMerchandise, updateOrderStatus, validateUser } from '../controllers/adminController.js';
 import upload from '../middleware/multer.js';
 import adminAuth from '../middleware/adminAuth.js';
 import { deleteOrder } from '../controllers/userController.js';
@@ -16,6 +16,7 @@ adminRouter.post('/deleteBeat/:beatId',deleteBeat);
 adminRouter.post('/deleteBlog/:blogId',deleteBlog);
 adminRouter.post('/deleteUser/:userId',deleteUser);
 adminRouter.post('/validateUser/:userId',validateUser);
+adminRouter.post('/feature/:userId',featureUser);
 adminRouter.get('/orders',fetchOrders);
 adminRouter.post('/updateStatus/:orderId',updateOrderStatus);
 adminRouter.post('/deleteOrder/:orderId',deleteOrder);
