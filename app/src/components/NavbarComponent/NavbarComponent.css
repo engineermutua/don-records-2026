@@ -151,10 +151,11 @@
     list-style:none;
 }
 .nav-sidemenu .sidemenu-list ul li{
-    margin: 10px;
+    margin: 20px 0px;
 }
 .nav-sidemenu .sidemenu-list ul li:hover{
     cursor: pointer;
+    font-size: 15px;
 }
 
 #nav-cart-count{
@@ -176,7 +177,15 @@
 #nav-user-icon{
     border-radius: 100px;
 }
-
+#green-dot-notifs{
+    width: 10px;
+    height: 10px;
+    background-color: #32CD32;
+    border-radius: 100px;
+    position: relative;
+    left: 93px;
+    bottom: 13px;
+}
 /*---------------------Mobile screens-------------------------*/
 @media (max-width:768px){
 .drop-down-hover{

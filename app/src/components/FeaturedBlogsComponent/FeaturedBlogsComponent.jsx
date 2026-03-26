@@ -25,7 +25,8 @@ const FeaturedBlogsComponent = () => {
         }
         fetchBlogs();
     },[blogs,backend_url])
-  return (
+  if(blogs.length>0){
+    return (
     <>
     <div className="featured-blogs-container">
         <TitleComponent title="Recent Blogs & Updates"/>
@@ -54,6 +55,34 @@ const FeaturedBlogsComponent = () => {
     </div>
     </>
   )
+  }else{
+    return(
+        <>
+        <div id="glitter-class" className="glitter-class">
+        <TitleComponent title="Recent Blogs & Updates"/>
+        <div className="glitter">
+          <div className="glitter-box">
+            <div className="glitter-main"></div>
+            <div className="glitter-tag"></div>
+          </div>
+          <div className="glitter-box">
+            <div className="glitter-main"></div>
+            <div className="glitter-tag"></div>
+          </div>
+          <div className="glitter-box">
+            <div className="glitter-main"></div>
+            <div className="glitter-tag"></div>
+          </div>
+          <div className="glitter-box">
+            <div className="glitter-main"></div>
+            <div className="glitter-tag"></div>
+          </div>
+          
+        </div>
+        </div>
+      </>
+    )
+  }
 }
 
 export default FeaturedBlogsComponent

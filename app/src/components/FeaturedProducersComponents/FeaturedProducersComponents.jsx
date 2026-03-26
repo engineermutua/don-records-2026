@@ -8,7 +8,7 @@ import { ShopContext } from '../../Context/ShopContext'
 import axios from 'axios'
 
 const FeaturedProducersComponents = () => {
-    const {users,backend_url}=useContext(ShopContext);
+    const {backend_url}=useContext(ShopContext);
     const [producers,setProducers]=useState([]);
 
     useEffect(()=>{
@@ -27,7 +27,8 @@ const FeaturedProducersComponents = () => {
         }
         fetchProducers();
     },[producers,backend_url])
-  return (
+  if(producers.length>0){
+    return (
     <>
     <div  id='featured-producers-container' className="featured-producers-container">
         <TitleComponent title="Featured Producers"/>
@@ -54,6 +55,81 @@ const FeaturedProducersComponents = () => {
     </div>
     </>
   )
+  }else{
+    return(
+        <>
+        <div id="glitter-class-producer" className="glitter-class-producer">
+          <TitleComponent title="Featured Producers"/>
+          <div className="glitter">
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+          </div>
+        </div>
+      </>
+    )
+  }
 }
 
 export default FeaturedProducersComponents

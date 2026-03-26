@@ -10,11 +10,14 @@ import paypal from "paypal-rest-sdk";
 const paypalPayment=async(req,res)=>{
     try {
         const {items,total}=req.body;
-        
+        console.log(items);
+        console.log(total);
         const amount={
             "currency":"USD",
             "total":total
         }
+        console.log(amount);
+        
         // Creating a payment data object
         const paymentData={
             "intent":"sale",
@@ -33,18 +36,18 @@ const paypalPayment=async(req,res)=>{
                 "description":"payment using paypal"
             }]
         }
+        console.log(paymentData);
+        
+        
         // creating payment 
         paypal.payment.create(paymentData, function (err, payment) {
             if (err) {
               throw err;
             } else {
-              for (let i = 0; i < payment.links.length; i++) {
-                if (payment.links[i].rel === "approval_url") {
-                  res.redirect(payment.links[i].href)
-                }
-              }
+                return res.json({payment}) 
             }
         })
+
         
     } catch (error) {
         console.log(error);
@@ -65,7 +68,7 @@ const handlePayment=(req,res)=>{
     paypal.payment.execute(paymentId, executePayment, (error, payment) => {
       if (error) {
         console.error('Error executing PayPal payment:', error);
-        res.redirect('/api/user/paypalCancel');
+        res.send('Failed');
       } else {
         
         res.send('Payment Success'); 

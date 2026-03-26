@@ -3,33 +3,59 @@ import './PortalPage.css'
 import {ShopContext} from '../../Context/ShopContext'
 import {artists, assets, producers} from '../../assets/assets'
 import toast from 'react-hot-toast'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 const PortalPage = () => {
-    const [role,setRole]=useState("producer");
-    const {user}=useContext(ShopContext);
+    const {backend_url}=useContext(ShopContext);
+    const [user,setUser]=useState({});
+
+    const navigate=useNavigate()
+
+    useState(()=>{
+        const fetchUser=async()=>{
+            const userId=localStorage.getItem("user");
+            if(!userId){
+                toast.error('Login to access Dashboard');
+                navigate('/login');
+            } 
+            try {               
+                const response=await axios.post(`${backend_url}/api/user/user/${userId}`);
+                console.log(response);
+                if(response.data.success){
+                    setUser(response.data.user);                    
+                }else{
+                    console.log(response.data.message);
+                }
+                
+            } catch (error) {
+                console.log(error); 
+            }
+        }
+        fetchUser()
+    },[backend_url])
   return (
     <>
     <div className="portal-container">
     {
-        role==="fan"
+        user.role==="fan"
         ?
         <>
         <div className="fan-portal">
             <div className="artist-portal-header">
-                <h1 onDoubleClick={()=>setRole("producer")} >Fan Dashboard</h1>
-                <p>Welcome back {user}</p>
+                <h1>Fan Dashboard</h1>
+                <p>Welcome back {user.username}</p>
             </div>
         </div>
         </>
         :
-        role==="artist"
+        user.role==="artist"
         ?
         <>
         <div className="artist-portal">
              <div className="artist-portal-header">
-                <h1 onDoubleClick={()=>setRole("producer")} >Artist Dashboard</h1>
-                <p>Welcome back {user}</p>
+                <h1>Artist Dashboard</h1>
+                <p>Welcome back {user.username}</p>
             </div>
 
             <div className="artist-portal-prod">
@@ -83,13 +109,13 @@ const PortalPage = () => {
         </div>
         </>
         :
-        role==="producer"
+        user.role==="producer"
         ?
         <>
         <div className="producer-portal">
             <div className="producer-portal-header">
-                <h1 onDoubleClick={()=>setRole("artist")}>Producer Dashboard</h1>
-                <p>Welcome back {user}</p>
+                <h1>Producer Dashboard</h1>
+                <p>Welcome back {user.username}</p>
             </div>
             <div className="producer-portal-artists">
                 <div className="producer-artists-header">
@@ -125,7 +151,7 @@ const PortalPage = () => {
                                   <Link to={`/producer/${producer.name}`}> <img id='producer-prod-img' src={producer.avatar} alt="" /></Link> 
                                 </div> 
                                 <div className="producer-prod-details">
-                                    <p>{producer.name} <img id='producer-verify' src={producer.featured?assets.goldCheckMark:""} alt="" /> </p>
+                                    <p>{producer.name} <img id='producer-verify' src={producer.featured?assets.goldCheckMark:"https://share.google/Alz9KVeznyw7wJrOl"} alt="" /> </p>
                                 </div>
                             </div>
                         ))

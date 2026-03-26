@@ -27,10 +27,11 @@ const FeaturedArtistsComponents = () => {
         }
         fetchArtists();
     },[artists,backend_url])
-  return (
+  if(artists.length>0){
+    return (
     <>
     <div id='featured-artists-container' className="featured-artists-container">
-        <TitleComponent title="Feature Artists"/>
+        <TitleComponent title="Featured Artists"/>
         <div className="featured-artists-profile">
             {
                 artists.map((artist)=>(
@@ -53,6 +54,81 @@ const FeaturedArtistsComponents = () => {
     </div>
     </>
   )
+  }else{
+    return(
+        <>
+        <div id="glitter-class-artist" className="glitter-class-artist">
+          <TitleComponent title="Featured Artists"/>
+          <div className="glitter">
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+            <div className="glitter-box">
+              <div className="glitter-main"></div>
+              <div className="glitter-tag"></div>
+            </div>
+          </div>
+        </div>
+      </>
+    )
+  }
 }
 
 export default FeaturedArtistsComponents

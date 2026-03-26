@@ -84,6 +84,12 @@ const NavbarComponent = () => {
                 <li onClick={()=>(navigate('/'), navigateTo('beats-component-container'),document.getElementById('nav-sidemenu').style.display='none')}>Beats</li>
                 <li onClick={()=>(navigate('/'), navigateTo('hero-container'),document.getElementById('nav-sidemenu').style.display='none')}>Music</li>
                 <li onClick={()=>(navigate('/'), navigateTo('featured-merchandise-container'),document.getElementById('nav-sidemenu').style.display='none')}>Merchandise</li>
+                <li onClick={()=>(navigate('/'),navigate('/notifications'),document.getElementById('nav-sidemenu').style.display='none')} >
+                    <div>
+                        <p>Notifications</p>
+                        <div id='green-dot-notifs' className='green-dot-notifs'></div>
+                    </div>
+                </li>
                 <li onClick={()=>(navigate('/'), navigateTo('featured-artists-container'),document.getElementById('nav-sidemenu').style.display='none')}>Artists</li>
                 <li onClick={()=>(navigate('/'), navigateTo('featured-producers-container'),document.getElementById('nav-sidemenu').style.display='none')}>Producers</li>
                 <li onClick={()=>(navigate('/'), navigateTo('hero-container'),document.getElementById('nav-sidemenu').style.display='none')}>FAQs</li>

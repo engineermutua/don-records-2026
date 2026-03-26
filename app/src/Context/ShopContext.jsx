@@ -21,6 +21,8 @@ const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
   const [products,setProducts]=useState([]);
 
+  const [loading,setLoading]=useState(false);
+
   const backend_url = import.meta.env.VITE_BACKEND_URL;
 
   const addToCart = async (productId) => {
@@ -148,7 +150,7 @@ const ShopContextProvider = (props) => {
           setUserId(resp);
           const response = await axios.post(
             `${backend_url}/api/user/user/${resp}`,
-          );
+          );          
           setPic(response.data.user.avatar);
           setUser(response.data.user.username);
         } else {
@@ -199,7 +201,9 @@ const ShopContextProvider = (props) => {
     myCart,
     products,
     setCartItems,
-    cartItems
+    cartItems,
+    loading,
+    setLoading
   };
 
   return (

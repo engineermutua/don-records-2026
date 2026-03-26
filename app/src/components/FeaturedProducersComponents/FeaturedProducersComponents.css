@@ -52,6 +52,47 @@
     top: 4px;
 }
 
+
+#glitter-class-producer{
+    width: 100%;
+    background-color: #282828;
+    overflow-x: auto;
+    padding: 10px;
+}
+#glitter-class-producer .glitter{
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+#glitter-class-producer .glitter-box .glitter-main{
+    background-color: #C0C0C0;
+    width: 120px;
+    height: 120px;
+    border-radius: 100px;
+    animation: glitter 2s infinite;
+}
+
+
+@keyframes glitter {
+    0%{
+        opacity: 0.2;
+    }
+    25%{
+        opacity: 0.4;
+    }
+    50%{
+        opacity: 0.6;
+    }
+    75%{
+        opacity: 0.8;
+    }
+    100%{
+        opacity: 1;
+    }
+    
+}
+
+
 @keyframes fade {
     0%{
         opacity:0;
@@ -91,5 +132,11 @@
 .featured-producers .featured-producer .featured-producer-details p img{
     width: 12px;
     top: 2px;
-}  
+}
+
+#glitter-class-producer .glitter-box .glitter-main{
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+}
 }

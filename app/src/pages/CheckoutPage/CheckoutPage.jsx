@@ -20,6 +20,7 @@ const CheckoutPage = () => {
     const [note,setNote]=useState("");
     const navigate=useNavigate();
     const [cartData, setCartData] = useState([]);
+    const [item,setItem]=useState([]);
   const [products,setProducts]=useState([]);
   const {
     currency,
@@ -29,9 +30,21 @@ const CheckoutPage = () => {
     backend_url
   } = useContext(ShopContext);
 
-  const date=new Date();
-  const time=`${"order"+date.getDay(),date.getMonth(),date.getFullYear(),date.getHours(),date.getMinutes(),date.getSeconds(),date.getMilliseconds()}`
+  const getTimestamp = () => {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+    const seconds = String(date.getSeconds()).padStart(2, "0");
 
+    return `TDE${year}${month}${day}${hours}${minutes}${seconds}`;
+  };
+
+  const reference=getTimestamp();
+
+  //Cash On Delivery
   const placeOrderCod=async()=>{
     const formData=new FormData();
     formData.append("fname",fname);
@@ -43,7 +56,7 @@ const CheckoutPage = () => {
     formData.append("street",street);
     formData.append("note",note);
     try {
-      const response=await axios.post(`${backend_url}/api/user/order`,{items:cartData,amount:getCartAmount(),address:formData,reference:date.getMinutes()},{headers:{token}});
+      const response=await axios.post(`${backend_url}/api/user/order`,{items:cartData,amount:getCartAmount(),address:formData,reference:reference},{headers:{token}});
       console.log(response);
       if(response.data.success){
         toast.success(response.data.message);
@@ -59,9 +72,72 @@ const CheckoutPage = () => {
     }
   }
 
+
+  //Paypal
+  const placeOrderPaypal=async()=>{
+    console.log(cartData);
+    try {
+      const response=await axios.post(`${backend_url}/api/user/paypal`,{items:item,total:(getCartAmount()/129).toFixed(2)});
+      console.log(response);  
+      if(response.data.payment.links){
+        for(let i=0;i<response.data.payment.links.length;i++){
+          if(response.data.payment.links[i].rel==="approval_url"){
+            toast.success("Redirecting you to paypal.")
+            window.location.href=response.data.payment.links[i].href
+            //console.log(response.data.payment.links[i].href); 
+          }
+        }
+      }
+    } catch (error) {
+      console.log(error);
+      
+    }
+  }
+
+  //Mpesa
+  const placeOrderMpesa=async()=>{
+    try {
+      const response=await axios.post(`${backend_url}/api/user/lipa`,{phone:"254742169773",amount:1});
+      console.log(response.data.data);
+      if(response.data.data.ResponseCode==0){
+        toast.success(response.data.data.CustomerMessage);  
+      }
+      
+    } catch (error) {
+      console.log(error);
+      
+    }
+  }
+
   useEffect(()=>{
-    console.log(time);
+    const fetchItem=async()=>{
+      try {
+      const tempData = [];
+      for (const productId in cartItems) {
+          const itemInfo=(products.merchandise?.find((product)=>product._id===productId) || products.beats?.find((product)=>product._id===productId));
+          if (cartItems[productId] > 0) {
+            tempData.push({
+              name:itemInfo.title,
+              price:(itemInfo.price/129).toFixed(2),
+              sku: productId,
+              currency: "USD",
+              quantity: cartItems[productId],
+              
+      })    
+      }
+      }
+      setItem(tempData);      
+        
+      } catch (error) {
+        console.log(error);
+        
+      }
+    }
     
+    fetchItem()
+  },[products,cartItems])
+
+  useEffect(()=>{   
     const fetchProducts=async()=>{
       try {
         const response=await axios.get(`${backend_url}/api/user/products`);
@@ -190,13 +266,13 @@ const CheckoutPage = () => {
                     mpesa
                     ?
                     <>
-                    <button onClick={()=>toast.success("Feature under Development. Use Cash on delivery")} style={{backgroundColor:mpesa?"#32CD32":""}}>Lipa Na Mpesa</button>
+                    <button onClick={()=>placeOrderMpesa()} style={{backgroundColor:mpesa?"#32CD32":""}}>Lipa Na Mpesa</button>
                     </>
                     :
                     paypal
                     ?
                     <>
-                    <button onClick={()=>toast.success("Feature under Development. Use Cash on delivery")} style={{backgroundColor:paypal?"#1F51FF":"",color:paypal?"#FAF9F6 ":""}}>Pay With PayPay</button>
+                    <button onClick={()=>placeOrderPaypal()} style={{backgroundColor:paypal?"#1F51FF":"",color:paypal?"#FAF9F6 ":""}}>Pay With PayPay</button>
                     </>
                     :
                     cod
