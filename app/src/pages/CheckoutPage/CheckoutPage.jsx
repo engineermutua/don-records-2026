@@ -97,7 +97,7 @@ const CheckoutPage = () => {
   //Mpesa
   const placeOrderMpesa=async()=>{
     try {
-      const response=await axios.post(`${backend_url}/api/user/lipa`,{phone:"254798037881",amount:1});
+      const response=await axios.post(`${backend_url}/api/user/lipa`,{phone:"254742169773",amount:1});
       console.log(response.data.data);
       if(response.data.data.ResponseCode==0){
         toast.success(response.data.data.CustomerMessage);  

@@ -21,9 +21,9 @@ const handleSTKPush = async (req, res) => {
   const dataToEncode = shortCode + passKey + timestamp;
   const password = Buffer.from(dataToEncode).toString("base64");
 
-  //NGROK callback URL port 3000
-  const callbackURL =
-    "https://ulises-unvexatious-chubbily.ngrok-free.dev/api/user/callback-mpesa";
+  //Render callback URL
+  const callbackURL = "https://don-records-2026.onrender.com/api/user/callback-mpesa";
+    
 
   const payload = {
     BusinessShortCode: shortCode,
@@ -58,24 +58,39 @@ const handleSTKPush = async (req, res) => {
 
 
 const callbackMpesa=async(req, res) => {
-  res.status(200).json({ ResultCode: 0, ResultDesc: 'Accepted' });
   const callbackData = req.body;
-  console.log(callbackData);
+  console.log("Callback data",callbackData);
   
-  if(callbackData.ResultCode === 0){
+  if(callbackData.Body.stkCallback.ResultCode === 0){
     console.log("Success");
-       
-  }else{
-    console.log("failed");
+    console.log(callbackData.Body.stkCallback.CallbackMetadata.Item);  
     
-  }
+    console.log("===========================================");
+    
 
-  console.log("Here is the callback data!", req.body);
-  
-  res.json({ 
+    const metadata=callbackData.Body.stkCallback.CallbackMetadata.Item;
+
+    const getMetaItem=(name)=>{
+      const item=metadata.find(i=>i.Name===name);
+      return item ? item.Value : null;
+    }
+
+    const  amount=getMetaItem('Amount');
+    const mpesaReceipt = getMetaItem('MpesaReceiptNumber');
+    const phoneNumber = getMetaItem('PhoneNumber');
+    const transactionDate = getMetaItem('TransactionDate');
+
+    console.log({ amount, mpesaReceipt, phoneNumber });
+
+  }else{
+    console.log("Failed");
+    console.log(callbackData.Body.stkCallback.ResultCode);
+    console.log(callbackData.Body.stkCallback.ResultDesc);
+    console.log(callbackData.Body.stkCallback.CheckoutRequestID);
+  }
+  return res.json({ 
     success:true,
-    callbackData,
-});
+  });
 }
 
 export {handleSTKPush,callbackMpesa};

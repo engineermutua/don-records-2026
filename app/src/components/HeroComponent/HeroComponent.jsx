@@ -40,16 +40,15 @@ const HeroComponent = () => {
   return (
     <>
       <div id="hero-container" className="hero-container">
-        
-        {loading ? (
-          <>
-          <LoaderComponent text="Loading..."/>
-          </>
-        ) : (
           <>
             <img src={assets.heroImage6} alt="" />
-            <div className="hero-search-bar">
-              <form onSubmit={handleSubmit} method="post">
+            <div style={{backgroundColor:loading?"transparent":"#000000"}} className="hero-search-bar">
+              {
+                loading
+                ?
+                <LoaderComponent text="Loading..."/>
+                :
+                <form onSubmit={handleSubmit} method="post">
                 <input
                   type="text"
                   name=""
@@ -59,6 +58,7 @@ const HeroComponent = () => {
                   placeholder="Use Emotion, mood & artist names..."
                 />
               </form>
+              }
             </div>
             <div className="hero-explore">
               <button onClick={() => navigateTo("beats-component-container")}>
@@ -66,7 +66,6 @@ const HeroComponent = () => {
               </button>
             </div>
           </>
-        )}
       </div>
     </>
   );

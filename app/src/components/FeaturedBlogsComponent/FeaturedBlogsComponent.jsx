@@ -25,7 +25,7 @@ const FeaturedBlogsComponent = () => {
         }
         fetchBlogs();
     },[blogs,backend_url])
-  if(blogs.length<0){
+  if(blogs.length>0){
     return (
     <>
     <div className="featured-blogs-container">
