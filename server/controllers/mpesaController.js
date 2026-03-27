@@ -1,8 +1,18 @@
 import axios from 'axios'
 import dayjs from 'dayjs';
+import userModel from '../models/userModel.js';
+import orderModel from '../models/orderModel.js';
 
 const handleSTKPush = async (req, res) => {
-  const { phone, amount } = req.body;
+  const { phone, amount,userId,items,address } = req.body;
+  
+  const user=await userModel.findById(userId)
+  if(!user){
+    console.log("Not Found");
+    
+  }
+  console.log(user);
+  
   
   //get timestamp
   const year = dayjs().format("YYYY");
@@ -22,7 +32,7 @@ const handleSTKPush = async (req, res) => {
   const password = Buffer.from(dataToEncode).toString("base64");
 
   //Render callback URL
-  const callbackURL = "https://don-records-2026.onrender.com/api/user/callback-mpesa";
+  const callbackURL ="https://don-records-2026.onrender.com/api/user/callback-mpesa";
     
 
   const payload = {
@@ -42,9 +52,27 @@ const handleSTKPush = async (req, res) => {
   try {
     const response=await axios.post('https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest',payload,{headers:{Authorization:`Bearer ${req.token}`}})
 
+    const new_order=await new orderModel({
+      userId,
+      user,
+      items,
+      amount,
+      address,
+      reference:response.data.CheckoutRequestID,
+      paymentStatus:false,
+      paymentMethod:"Mpesa"
+    });
+
+    
+
+    const order=await new_order.save();
+    console.log(order);
+    
+    
     res.status(201).json({
         success:true,
         data:response.data,
+        message:order
     })
     
     
@@ -59,6 +87,14 @@ const handleSTKPush = async (req, res) => {
 
 const callbackMpesa=async(req, res) => {
   const callbackData = req.body;
+
+  const order=await orderModel.findOne({reference:callbackData.Body.stkCallback.CheckoutRequestID})
+    if(!order){
+      console.log("Order Not Found");
+    }
+  const orderId=order._id;
+
+  
   console.log("Callback data",callbackData);
   
   if(callbackData.Body.stkCallback.ResultCode === 0){
@@ -66,8 +102,18 @@ const callbackMpesa=async(req, res) => {
     console.log(callbackData.Body.stkCallback.CallbackMetadata.Item);  
     
     console.log("===========================================");
-    
 
+    console.log("Order");
+    
+    const order=await orderModel.findOne({reference:callbackData.Body.stkCallback.CheckoutRequestID})
+    if(!order){
+      console.log("Order Not Found");
+      
+    }
+    console.log(order);
+    const orderId=order._id;
+    console.log(orderId);
+    
     const metadata=callbackData.Body.stkCallback.CallbackMetadata.Item;
 
     const getMetaItem=(name)=>{
@@ -80,15 +126,32 @@ const callbackMpesa=async(req, res) => {
     const phoneNumber = getMetaItem('PhoneNumber');
     const transactionDate = getMetaItem('TransactionDate');
 
+    const new_order=await orderModel.findByIdAndUpdate(orderId,{
+      userId:order.userId,
+      user:order.user,
+      items:order.items,
+      reference:mpesaReceipt,
+      amount:order.amount,
+      address:order.address,
+      paymentStatus:true,
+      paymentMethod:"Mpesa",
+      status:"Order Received"
+    },{new:true});
+
+    await userModel.findByIdAndUpdate(userId,{cart:{}});
+
+    console.log("=========New Order==========");
+    console.log(new_order);
+    
     console.log({ amount, mpesaReceipt, phoneNumber });
 
   }else{
-    console.log("Failed");
-    console.log(callbackData.Body.stkCallback.ResultCode);
-    console.log(callbackData.Body.stkCallback.ResultDesc);
-    console.log(callbackData.Body.stkCallback.CheckoutRequestID);
+    const delete_order=await orderModel.findByIdAndDelete(orderId);
+    console.log("==============Failed Transaction=============");
+    console.log(delete_order);
   }
-  return res.json({ 
+
+  res.json({ 
     success:true,
   });
 }

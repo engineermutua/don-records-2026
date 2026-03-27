@@ -626,11 +626,14 @@ const placeOrder = async (req, res) => {
       amount,
       address,
       reference,
-      paymentStatus,
-      paymentMethod
+      paymentStatus:false,
+      paymentMethod:"cash on Delivery"
     });
 
     const order = await new_order.save();
+
+    
+    await userModel.findByIdAndUpdate(userId,{cart:{}});
 
     res.json({
       success: true,

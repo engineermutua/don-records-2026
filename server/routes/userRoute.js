@@ -37,11 +37,11 @@ userRouter.post('/clear',authUser,clearCart);
 userRouter.post('/order',authUser,placeOrder);
 userRouter.post('/orders',authUser,myOrders);
 //mpesa
-userRouter.post('/lipa',generateToken,handleSTKPush)
+userRouter.post('/lipa',authUser,generateToken,handleSTKPush)
 userRouter.post('/callback-mpesa',callbackMpesa)
 
 //paypal
-userRouter.post('/paypal',paypalPayment);
+userRouter.post('/paypal',authUser,paypalPayment);
 userRouter.get('/paypalSuccess',handlePayment);
 userRouter.get('/paypalCancel',cancelPayment);
 

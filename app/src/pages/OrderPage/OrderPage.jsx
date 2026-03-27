@@ -1,12 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './OrderPage.css'
-import {assets} from '../../assets/assets.js'
 import { ShopContext } from "../../Context/ShopContext";
 import axios from 'axios'
 
 const OrderPage = () => {
 
-  const date=new Date();
   const {backend_url,token,products}=useContext(ShopContext);
   const [orders,setOrders]=useState([]);
 
@@ -16,6 +14,7 @@ const OrderPage = () => {
         const response=await axios.post(`${backend_url}/api/user/orders`,{},{headers:{token}})
         if(response.data.success){
           setOrders(response.data.orders)
+          
         }else{
           console.log(response.data.message);
         } 
@@ -24,6 +23,8 @@ const OrderPage = () => {
       }
     }
     fetchOrders()
+    
+    
   },[orders,backend_url,token])
   return (
     <>
@@ -33,25 +34,28 @@ const OrderPage = () => {
         </div>
         {
           orders.map((order)=>(
+            
         <div key={order._id} className="order-box">
           <div className="order-box-header">
             <p><b>Order:</b>{order.reference}</p>
             <p><b>Date</b> {new Date(order.createdAt).toLocaleDateString("en-US", {year: "numeric", month: "long", day: "numeric", })}{" "}</p>
           </div>
-          <hr />
+          <hr style={{marginBottom:"10px"}}/>
           {
             order.items.map((item)=>{
-              const orderInfo=(products.merchandise?.find((product)=>product._id===item._id) || products.beats?.find((product)=>product._id===item._id));    
+              
+              const orderInfo=(products.merchandise?.find((product)=>product._id===(item._id || item.sku )) || products.beats?.find((product)=>product._id===(item._id || item.sku )));   
+               
               return(
-               <div key={orderInfo._id} className="order-item" id='order-item'>
+               <div key={item._id} className="order-item" id='order-item'>
                 <div className="order-item-img">
-                  <img id='order-item-img' src={orderInfo.image || orderInfo.thumbnail} alt="" />
+                  <img id='order-item-img' src={orderInfo.thumbnail? orderInfo.thumbnail : orderInfo.image?orderInfo.image:orderInfo.image[0]} alt="" />
                 </div>
                 <div className="order-item-title">
                   <p>{orderInfo.title}</p>
                 </div>
                 <div className="order-item-status">
-                  <p>Order Placed</p>
+                  <p>{order.status}</p>
                 </div>
                 <div className="order-item-expected">
                   <p>Expceted by <b>{new Date(order.createdAt).toLocaleDateString("en-US", {year: "numeric", month: "long", day: "numeric", })}{" "}</b></p>

@@ -9,7 +9,7 @@ const orderSchema=new mongoose.Schema({
     address:{type:Object,default:{}},
     paymentStatus:{type:Boolean,default:false},
     status:{type:String,default:'order placed'},
-    paymentMethod:{type:String,default:"cash on delivery"},
+    paymentMethod:{type:String},
     date:{type:Date,default:Date.now()},
 },{minimize:false,timestamps:true});
 

@@ -75,9 +75,11 @@ const CheckoutPage = () => {
 
   //Paypal
   const placeOrderPaypal=async()=>{
-    console.log(cartData);
+    const address={fname,lname,email,phone,county,postal,ward,street,note};
+    console.log(address);
+    
     try {
-      const response=await axios.post(`${backend_url}/api/user/paypal`,{items:item,total:(getCartAmount()/129).toFixed(2)});
+      const response=await axios.post(`${backend_url}/api/user/paypal`,{items:item,total:(getCartAmount()/129).toFixed(2),address:address,reference:reference},{headers:{token}});
       console.log(response);  
       if(response.data.payment.links){
         for(let i=0;i<response.data.payment.links.length;i++){
@@ -96,16 +98,19 @@ const CheckoutPage = () => {
 
   //Mpesa
   const placeOrderMpesa=async()=>{
+    const address={fname,lname,email,phone,county,postal,ward,street,note};
     try {
-      const response=await axios.post(`${backend_url}/api/user/lipa`,{phone:"254742169773",amount:1});
-      console.log(response.data.data);
-      if(response.data.data.ResponseCode==0){
-        toast.success(response.data.data.CustomerMessage);  
+      const response=await axios.post(`${backend_url}/api/user/lipa`,{phone:address.phone,amount:getCartAmount(),items:cartData,address:address},{headers:{token}});
+      console.log(response.data);
+      if(response.data.data.ResponseCode===0){
+        toast.success(response.data.data.ResponseDescription);
+        navigate('/order')
+      }else{
+        toast.error(response.data.data.ResponseDescription);
+        navigate('/order')
       }
-      
     } catch (error) {
       console.log(error);
-      
     }
   }
 
@@ -122,7 +127,7 @@ const CheckoutPage = () => {
               sku: productId,
               currency: "USD",
               quantity: cartItems[productId],
-              
+
       })    
       }
       }
@@ -179,7 +184,7 @@ const CheckoutPage = () => {
         <div className="checkout-left">
             <h1>Delivery Address</h1>
             <div className="checkout-left-form">
-                <form>
+                <form onSubmit={(e)=>e.preventDefault()}>
                     <div className="form-class">
                         <input type="text" value={fname} onChange={(e)=>setFname(e.target.value)} name="fname" id="" placeholder='First Name' />
                         <input type="text" value={lname} onChange={(e)=>setLname(e.target.value)} name="lname" id=""  placeholder='Last Name'/>

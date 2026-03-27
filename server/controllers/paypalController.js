@@ -1,4 +1,6 @@
 import paypal from "paypal-rest-sdk";
+import userModel from '../models/userModel.js';
+import orderModel from '../models/orderModel.js';
 
 
   paypal.configure({
@@ -9,9 +11,39 @@ import paypal from "paypal-rest-sdk";
 
 const paypalPayment=async(req,res)=>{
     try {
-        const {items,total}=req.body;
+        const {items,total,userId,address,reference}=req.body;
         console.log(items);
         console.log(total);
+        console.log(address);
+
+        const user=await userModel.findById(userId);
+        if(!user){
+            console.log("Could not find user");            
+        }
+        console.log("==============User===============");
+        
+        console.log(user);
+        
+        const new_order=await new orderModel({
+            userId,
+            user,
+            items,
+            amount:(total*129),
+            address,
+            reference,
+            paymentStatus:false,
+            paymentMethod:"Paypal"            
+        });
+
+        const order=await new_order.save();
+
+        console.log("=============Order Queued For Processing==============");
+        console.log(order);
+
+        await userModel.findByIdAndUpdate(userId,{cart:{}});
+        
+        
+        
         const amount={
             "currency":"USD",
             "total":total
@@ -44,11 +76,13 @@ const paypalPayment=async(req,res)=>{
             if (err) {
               throw err;
             } else {
-                return res.json({payment}) 
+                return res.json({
+                    success:true,
+                    payment,
+                    message:order
+                }) 
             }
         })
-
-        
     } catch (error) {
         console.log(error);
         res.json({
@@ -59,9 +93,10 @@ const paypalPayment=async(req,res)=>{
     }
 }
 
-const handlePayment=(req,res)=>{
+const handlePayment=async(req,res)=>{
     const payerId=req.query.PayerID;
     const paymentId = req.query.paymentId;
+    
     const executePayment = {
       payer_id: payerId,
     };
@@ -70,14 +105,13 @@ const handlePayment=(req,res)=>{
         console.error('Error executing PayPal payment:', error);
         res.send('Failed');
       } else {
-        
-        res.send('Payment Success'); 
+        res.redirect(`${process.env.FRONTEND_URL}/order`) 
       }
     });
 }
 
 const cancelPayment=(req,res)=>{
-    res.send('Failed');
+    res.redirect(`${process.env.FRONTEND_URL}/cart`) 
 }
 
 
